@@ -19,6 +19,15 @@ function App() {
           Learn React
         </a>
       </header>
+
+<div className="grid-container">
+  <div className="grid-x">
+    <div className="cell small-6">6 cells</div>
+    <div className="cell small-6">6 cells</div>
+  </div>
+</div>
+
+
     </div>
   );
 }
