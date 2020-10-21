@@ -1,37 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import logo from './logo.svg';
-
+//import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss';
+//import HomePage from './components/pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-
-<div className="grid-container">
-  <div className="grid-x">
-    <div className="cell small-6">6 cells</div>
-    <div className="cell small-6">6 cells</div>
-  </div>
-</div>
-
-
-    </div>
+      <div className="grid-container">
+          <div className="grid-x grid-margin-x grid-margin-y">
+            <div className="cell small-6 colortest">LEFT</div>
+            <div className="cell small-6 colortest">RIGHT</div>
+            <div className="cell small-6 colortest">LEFT</div>
+            <div className="cell small-6 colortest">RIGHT</div>
+          </div>
+      </div>
   );
 }
 
