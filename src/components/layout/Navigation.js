@@ -1,14 +1,14 @@
 import React from 'react';
 //import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './Home.scss';
+import './Navigation.scss';
 //import HomePage from './components/pages/Home';
 
-function Home() {
+function Navigation() {
   return (
       <div className="grid-x">
-          <p>MAIN CONTENT HOME</p>
+          <div className="cell auto">Navigation</div>
       </div>
   );
 }
 
-export default Home;
+export default Navigation;
