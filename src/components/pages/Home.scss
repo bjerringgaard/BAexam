@@ -1,2 +1,11 @@
 @import '../../settings';
 @import '~foundation-sites/scss/foundation';
+
+
+@import '~foundation-sites/scss/foundation';
+
+.containerHome {
+    min-height: 80vh;
+    background-color: $white;
+    color: $dark-gray;
+}

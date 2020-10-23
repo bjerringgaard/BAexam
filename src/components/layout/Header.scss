@@ -1,2 +1,8 @@
 @import '../../settings';
 @import '~foundation-sites/scss/foundation';
+
+.header {
+    min-height: 10vh;
+    background-color: $dark-gray;
+    color: $white;
+}
