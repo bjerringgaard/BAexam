@@ -1,8 +1,7 @@
 import React from 'react';
-//import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './Header.scss';
 import Navigator from './Navigation';
-//import HomePage from './components/pages/Home';
+
 
 function Header() {
   return (
