@@ -1,7 +1,7 @@
 import React from 'react';
 import './OwnerPage.scss';
 import firebase from '../../../Firebase'
-
+import { EditInput } from "./EditInput";
 function OwnerPage() {
 
 // State fra React Hooks   
@@ -20,26 +20,37 @@ React.useEffect(() => {
 },[]); 
 
 // Tilføjer til Collection Owner
-const onCreate = () => {
+const onCreate = (e) => {
+    e.preventDefault()
     const db = firebase.firestore()
     db.collection('owner').add({
         headerOwner: newOwnerHeader
     })
+    .then (() =>{
+        setnewOwnerHeader('')
+    })
 }
-
   return (
-      <div className="grid-x main-area">
-          <div className="cell auto admin-component">
-              <input value={newOwnerHeader} onChange={(e) => setnewOwnerHeader(e.target.value)} /><br /><br />
-              <div className="button" onClick={onCreate}>Tilføj Header</div>
-              <h1>OwnerPage</h1>
-              {/* Mapper igennem indholdet af owners fra firebase */}
-              {owner.map(owners =>(
-                  <p key={owners.headerOwner}>{owners.headerOwner}</p>
-              ))}
-          </div>
-      </div>
+    <div className="grid-x main-area">
+        <div className="cell auto admin-component">
+            <ul>
+            <input
+                value={newOwnerHeader}
+                onChange={e => setnewOwnerHeader(e.target.value)}
+            />
+            <button onClick={onCreate}>Create</button>
+            {owner.map(owner => (
+                <li key={owner.OwnerHeader}>
+                <EditInput owner={owner} />
+                </li>
+            ))}
+            </ul>   
+        {/* Mapper igennem indholdet af owners fra firebase */}
+            {owner.map(owners =>(
+            <p key={owners.headerOwner}>{owners.headerOwner}</p>
+            ))}
+        </div>
+    </div>
   );
 }
-
 export default OwnerPage;
