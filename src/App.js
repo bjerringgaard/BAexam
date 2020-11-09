@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer'
 import Home from './components/pages/Home'
 import Login from './components/pages/Login'
 import UserPage from './components/pages/user/UserPage'
+import UserEdit from './components/pages/user/UserEdit'
 import OwnerPage from './components/pages/owner/OwnerPage'
 import './App.scss';
 import Admin from './components/pages/Admin'
@@ -20,6 +21,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/admin" component={Admin} />
               <Route path="/userpage" component={UserPage} />
+              <Route path="/useredit" component={UserEdit} />
               <Route path="/ownerpage" component={OwnerPage} />
               </Switch>
             <Footer />

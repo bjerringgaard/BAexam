@@ -1,15 +1,97 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './UserPage.scss';
 
 
 function UserPage() {
   return (
-      <div className="grid-x main-area">
-          <div className="cell auto admin-component">
-              <h1>UserPage</h1>
-              <p>Tænker det skal være en knap herinde et sted der gør man kan edit sin bruger data? </p>
+  <div className="grid-x main-area">
+      <div className="cell auto admin-component">
+        <div className="profile-banner">
+          <div id="logo">
+            <img src="http://placekitten.com/200/200" alt=""/>
           </div>
+          <div>
+            <h1>USERNAME</h1>
+            <h3>COMPANY NAME</h3>
+          </div>
+        </div>
+        <Link to="/useredit"><p id="editProfile">PROFILE SETTINGS</p></Link>
+        
+        <div className="messe-entry">
+          <h2>MESSE TITLE</h2>
+
+          <div className="company-entry">
+            <div className="company-action">
+              <h5>COMPANY NAME</h5>
+              <p>NUM</p>
+              <p>...</p>
+            </div>
+
+            <div className="company-items">
+              <div id="first-row">
+                <div className="item-doctype"><p>DOCTYPE</p></div>
+                <div className="item-action">
+                  <p>COMMENT</p>
+                  <p>DELETE</p>
+                </div>
+              </div>
+
+              <div className="item-docinfo">
+                <h5>TITLE</h5>
+                <p>TEXT</p>
+                <hr/>
+              </div>
+
+              <div className="item-comment">
+                <div id="profileimg">
+                  <img src="http://placekitten.com/50/50" alt=""/>
+                </div>
+                  <div id="comment-info">
+                    <div id="first-row">
+                      <p><b>USERNAME</b></p>
+                      <p>CommentTime</p>
+                    </div>
+                    <p>CommentText</p>
+                  </div>
+              </div>
+            </div>
+
+        {/*
+            <div className="company-items">
+              <div id="first-row">
+                <div className="item-doctype"><p>DOCTYPE</p></div>
+                <div className="item-action">
+                  <p>COMMENT</p>
+                  <p>DELETE</p>
+                </div>
+              </div>
+
+              <div className="item-docinfo">
+                <h5>TITLE</h5>
+                <p>TEXT</p>
+                <hr/>
+              </div>
+
+              <div className="item-comment">
+                <div id="profileimg">
+                  <img src="http://placekitten.com/50/50" alt=""/>
+                </div>
+                  <div id="comment-info">
+                    <div id="first-row">
+                      <p><b>USERNAME</b></p>
+                      <p>CommentTime</p>
+                    </div>
+                    <p>CommentText</p>
+                  </div>
+              </div>
+            </div>
+          */}
+
+          </div>
+        </div>
       </div>
+  </div>
   );
 }
 

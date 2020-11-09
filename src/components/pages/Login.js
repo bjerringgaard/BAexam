@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 //import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './Login.scss';
 //import HomePage from './components/pages/Home';
@@ -8,17 +9,26 @@ function Login() {
       <div className="grid-x main-area">
           <div className="cell auto login-form">
             <form>
-              <h1>Login Form</h1>
-              <p>Fusce molestie vestibulum ligula id facilisis. Mauris dapibus neque a neque eleifend, ac egestas lectus vestibulum. Praesent id lobortis odio. Donec suscipit massa sed elit consectetur efficitur. Vestibulum suscipit lacinia eros, eu imperdiet ex ultrices eu. Mauris ligula dolor, imperdiet et eleifend quis, viverra ut eros. Fusce ac magna tortor. Nulla quis accumsan tellus, et elementum odio. Cras finibus, turpis eu semper pharetra, justo elit gravida magna, eu convallis velit dui sit amet turpis. Donec posuere tristique sapien ac pulvinar. Pellentesque ut congue nulla. Pellentesque vel interdum sem.</p>
-              <label>
-              Navn
-              <input type="text" name="name" />
-              </label>
-              <label>
-              Email
-              <input type="text" name="name" />
-              </label>
-              <input type="submit" value="Submit" />
+              <div className="banner">              
+                <h1>PROJEKT NAVN</h1>
+                <h3>Login</h3>
+                  <div id="logo">
+                    <img src="http://placekitten.com/200/200" alt=""/>
+                  </div>
+              </div>
+              <div id="form">
+                <label for="email">Email</label>
+                <input type="text" name="email" />
+                
+                <label for="password">Password</label>
+                <input type="text" name="password" />
+                
+                <input type="submit" value="Submit" />
+                <div id="bottom-text">
+                  <p>Ingen Konto? <Link to="/login">Opret bruger her</Link></p>
+                  <p>Vil du vide mere om os? <Link to="/about">Klik her</Link></p>
+                </div>
+              </div>
             </form>
           </div>
       </div>

@@ -1,3 +1,146 @@
 @import '../../../settings';
 @import '~foundation-sites/scss/foundation';
 
+
+.profile-banner {
+  background-color: $app-background;
+  color: $fullwhite;
+  
+  border-radius: 25px;
+  height: 250px;
+  
+  display: flex;
+  align-items: flex-end;
+  
+    #logo{
+    margin-left: 50px;
+    margin-bottom: -50px;
+
+      img{
+      border-radius: 25px;
+      }
+    }
+  
+    h1{
+      margin-left: 30px;
+    }
+    
+    h3{
+      margin-bottom: 20px;
+      margin-left: 30px;
+    }
+  }
+
+#editProfile{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 25px;
+  margin-top: 10px;
+  color: black;
+}
+
+.messe-entry{
+  margin-left: 20px;
+  margin-top: 50px;
+
+  .company-action{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    h5{
+      padding: 10px 20px;
+      background-color: $app-background;
+      color: $fullwhite;
+      border-radius: 10px;
+      width: fit-content;
+    }
+
+    p{
+      font-size: 20px;
+      margin: 0;
+      margin-left: 20px;
+      color: #505050;
+
+      &:last-child{
+        margin-left: auto;
+        margin-right: 50px;
+        font-size: 24px;
+      }
+    }
+  }
+  .company-menu{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .company-items{
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+
+    #first-row{
+      display: flex;
+
+      .item-doctype{
+        background-color: red;
+        color: $fullwhite;
+        border-radius: 10px;
+        padding: 7px 10px;
+        p{
+          margin: 0;
+        }
+      }
+      
+      .item-action{
+        display: flex;
+        margin-left: auto;
+        p{
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .item-docinfo{
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 20px;
+    }
+
+    .item-comment{
+      margin-left: 10px;
+      margin-bottom: 30px;
+      display: flex;
+
+      &:last-child{
+        margin-bottom: 10px;
+      }
+
+      #profileimg{
+        img{
+          border-radius: 10px;
+          }
+      }
+
+      #comment-info{
+        flex-direction: column;
+        margin-left: 20px;
+
+        p{
+          margin: 0;
+        }
+      }
+
+      #first-row{
+        display: flex;
+        
+        p{
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
