@@ -2,7 +2,7 @@ import firebase from 'firebase'
 import "firebase/storage"
 
 
-const firebaseConfig = {
+const config = {
 
     apiKey: "AIzaSyDGlsVDlfeFINmGMH6NZ7K0HU8GIb7T7GY",
     authDomain: "baexam-ef57c.firebaseapp.com",
@@ -13,9 +13,7 @@ const firebaseConfig = {
     appId: "1:695297053014:web:995578f44aca8e619146f7"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-firebase.initializeApp(config);
+    firebase.initializeApp(config);
 
 
 export default firebase;

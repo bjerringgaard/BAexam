@@ -12,7 +12,7 @@
   display: flex;
   align-items: flex-end;
   
-    #logo{
+    .logo{
     margin-left: 50px;
     margin-bottom: -50px;
 
@@ -31,7 +31,7 @@
     }
   }
 
-#editProfile{
+.editProfile{
   display: flex;
   justify-content: flex-end;
   margin-right: 25px;
@@ -81,7 +81,7 @@
     margin-right: 20px;
     margin-bottom: 30px;
 
-    #first-row{
+    .first-row{
       display: flex;
 
       .item-doctype{
@@ -118,13 +118,13 @@
         margin-bottom: 10px;
       }
 
-      #profileimg{
+      .profileimg{
         img{
           border-radius: 10px;
           }
       }
 
-      #comment-info{
+      .comment-info{
         flex-direction: column;
         margin-left: 20px;
 
@@ -133,7 +133,7 @@
         }
       }
 
-      #first-row{
+      .first-row{
         display: flex;
         
         p{
@@ -145,8 +145,7 @@
 }
 
 // EditUser
-
-.edit-banner{
+  .edituser-banner{
   background-color: $app-background;
   color: $fullwhite;
   height: 250px;
@@ -158,65 +157,72 @@
   align-items: center;
   justify-content: flex-end;
 
-    #logo{
+  &__logo{
     margin-bottom: -60px;
     display: flex;
     flex-direction: column;
 
-    button{
-      margin-top: 10px;
-    }
+      button{
+        margin-top: 10px;
+      }
       img{
-      border-radius: 25px;
+        border-radius: 25px;
       }
     }
-}
+  }
 
-.edit-main{
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
+  .edituser-main{
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+  
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 50px 10px;
 
-  margin: 0 auto;
-  margin-top: 30px;
-  padding: 50px 10px;
-  form{
-    input{
-      height: 50px;
-      border-radius: 10px;
+    &__form{
+      form{
+        input{
+          height: 50px;
+          border-radius: 10px;
+        }
+    
+        label{
+          margin-left: 10px;
+          margin-top: 20px;
+        }
+    
+        input[type=submit]{
+          display: flex;
+          width: 100%;
+          justify-content: center;
+    
+          background-color: $app-background;
+          color: $fullwhite;
+    
+          border: none;
+        }
+      }
     }
-
-    label{
-      margin-left: 10px;
-      margin-top: 20px;
+    
+    &__password{
+      button{
+        padding: 10px 20px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+      }
     }
-
-    input[type=submit]{
-      display: flex;
-      width: 100%;
-      justify-content: center;
-
-      background-color: $app-background;
-      color: $fullwhite;
-
-      border: none;
+  
+    &__logout, &__delete{
+      button{
+        padding: 10px 20px;
+        border: 1px solid red;
+        color: red;
+        border-radius: 5px;
+      }
     }
   }
 
-  #edit-password{
-    button{
-      padding: 10px 20px;
-      border: 1px solid lightgray;
-      border-radius: 5px;
-    }
-  }
 
-  #edit-logout, #edit-delete{
-    button{
-      padding: 10px 20px;
-      border: 1px solid red;
-      color: red;
-      border-radius: 5px;
-    }
-  }
-}
+
+

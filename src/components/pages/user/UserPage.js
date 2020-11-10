@@ -5,10 +5,10 @@ import './UserPage.scss';
 
 function UserPage() {
   return (
-  <div className="grid-x main-area">
+  <div className="grclassName-x main-area">
       <div className="cell auto admin-component">
         <div className="profile-banner">
-          <div id="logo">
+          <div className="logo">
             <img src="http://placekitten.com/200/200" alt=""/>
           </div>
           <div>
@@ -16,7 +16,7 @@ function UserPage() {
             <h3>COMPANY NAME</h3>
           </div>
         </div>
-        <Link to="/useredit"><p id="editProfile">PROFILE SETTINGS</p></Link>
+        <Link to="/useredit"><p className="editProfile">PROFILE SETTINGS</p></Link>
         
         <div className="messe-entry">
           <h2>MESSE TITLE</h2>
@@ -29,7 +29,7 @@ function UserPage() {
             </div>
 
             <div className="company-items">
-              <div id="first-row">
+              <div className="first-row">
                 <div className="item-doctype"><p>DOCTYPE</p></div>
                 <div className="item-action">
                   <p>COMMENT</p>
@@ -44,11 +44,11 @@ function UserPage() {
               </div>
 
               <div className="item-comment">
-                <div id="profileimg">
+                <div className="profileimg">
                   <img src="http://placekitten.com/50/50" alt=""/>
                 </div>
-                  <div id="comment-info">
-                    <div id="first-row">
+                  <div className="comment-info">
+                    <div className="first-row">
                       <p><b>USERNAME</b></p>
                       <p>CommentTime</p>
                     </div>
@@ -57,9 +57,9 @@ function UserPage() {
               </div>
             </div>
 
-        {/*
+        
             <div className="company-items">
-              <div id="first-row">
+              <div className="first-row">
                 <div className="item-doctype"><p>DOCTYPE</p></div>
                 <div className="item-action">
                   <p>COMMENT</p>
@@ -74,11 +74,11 @@ function UserPage() {
               </div>
 
               <div className="item-comment">
-                <div id="profileimg">
+                <div className="profileimg">
                   <img src="http://placekitten.com/50/50" alt=""/>
                 </div>
-                  <div id="comment-info">
-                    <div id="first-row">
+                  <div className="comment-info">
+                    <div className="first-row">
                       <p><b>USERNAME</b></p>
                       <p>CommentTime</p>
                     </div>
@@ -86,7 +86,7 @@ function UserPage() {
                   </div>
               </div>
             </div>
-          */}
+          
 
           </div>
         </div>
