@@ -1,7 +1,7 @@
 @import '../../../settings';
 @import '~foundation-sites/scss/foundation';
 
-
+// User Profile
 .profile-banner {
   background-color: $app-background;
   color: $fullwhite;
@@ -144,3 +144,79 @@
   }
 }
 
+// EditUser
+
+.edit-banner{
+  background-color: $app-background;
+  color: $fullwhite;
+  height: 250px;
+
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+    #logo{
+    margin-bottom: -60px;
+    display: flex;
+    flex-direction: column;
+
+    button{
+      margin-top: 10px;
+    }
+      img{
+      border-radius: 25px;
+      }
+    }
+}
+
+.edit-main{
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 50px 10px;
+  form{
+    input{
+      height: 50px;
+      border-radius: 10px;
+    }
+
+    label{
+      margin-left: 10px;
+      margin-top: 20px;
+    }
+
+    input[type=submit]{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      background-color: $app-background;
+      color: $fullwhite;
+
+      border: none;
+    }
+  }
+
+  #edit-password{
+    button{
+      padding: 10px 20px;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+    }
+  }
+
+  #edit-logout, #edit-delete{
+    button{
+      padding: 10px 20px;
+      border: 1px solid red;
+      color: red;
+      border-radius: 5px;
+    }
+  }
+}
