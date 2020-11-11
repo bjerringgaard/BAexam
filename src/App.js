@@ -4,28 +4,35 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Home from './components/pages/Home'
 import Login from './components/pages/Login'
+import SignUp from './components/pages/SignUp'
 import UserPage from './components/pages/user/UserPage'
 import UserEdit from './components/pages/user/UserEdit'
 import OwnerPage from './components/pages/owner/OwnerPage'
 import './App.scss';
 import Admin from './components/pages/Admin'
+import { AuthProvider} from './Auth'
+import PrivateRoute from './PrivateRoute'
 
 
 function App() {
   return (
       <div className="grid-container">
+       {/* GIVER ADGANG TIL OM BRUGEREN ER LOGGET IND ELLER EJ VED BRUG AF CONTEXT API */}
+        <AuthProvider>
           <Router>
             <Header />
               <Switch>  
               <Route path="/" exact component={Home} />
               <Route path="/login" component={Login} />
-              <Route path="/admin" component={Admin} />
+              <Route path="/signup" component={SignUp} />
+              <PrivateRoute path="/admin" component={Admin} />
               <Route path="/userpage" component={UserPage} />
               <Route path="/useredit" component={UserEdit} />
               <Route path="/ownerpage" component={OwnerPage} />
               </Switch>
             <Footer />
           </Router>
+        </AuthProvider>
       </div>
   );
 }
