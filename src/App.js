@@ -6,8 +6,9 @@ import Home from './components/pages/Home'
 import Login from './components/pages/Login'
 import SignUp from './components/pages/SignUp'
 import UserPage from './components/pages/user/UserPage'
-import UserEdit from './components/pages/user/UserEdit'
+  import UserEdit from './components/pages/user/UserEdit'
 import OwnerPage from './components/pages/owner/OwnerPage'
+  import OwnerEdit from './components/pages/owner/OwnerEdit'
 import './App.scss';
 import Admin from './components/pages/Admin'
 import { AuthProvider} from './Auth'
@@ -27,8 +28,9 @@ function App() {
               <Route path="/signup" component={SignUp} />
               <PrivateRoute path="/admin" component={Admin} />
               <Route path="/userpage" component={UserPage} />
-              <Route path="/useredit" component={UserEdit} />
+                <Route path="/useredit" component={UserEdit} />
               <Route path="/ownerpage" component={OwnerPage} />
+                <Route path="/owneredit" component={OwnerEdit} />
               </Switch>
             <Footer />
           </Router>

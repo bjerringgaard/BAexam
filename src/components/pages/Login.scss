@@ -5,7 +5,7 @@
     padding: 25px;
 }
 
-.banner {
+.login-banner {
 background-color: $app-background;
 color: $fullwhite;
 
@@ -16,7 +16,7 @@ flex-direction: column;
 align-items: center;
 justify-items: center;
 
-  #logo{
+  &__logo{
   margin-bottom: -40px;
 
     img{
@@ -33,7 +33,7 @@ justify-items: center;
   }
 }
 
-#form{
+.login-form{
   max-width: 700px;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@ justify-items: center;
     border: none;
   }
 
-  #bottom-text{
+  &__bottom-text{
     margin-top: 30px;
     margin-left: 10px;
     p{

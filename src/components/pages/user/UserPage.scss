@@ -2,7 +2,7 @@
 @import '~foundation-sites/scss/foundation';
 
 // User Profile
-.profile-banner {
+.userpage-banner {
   background-color: $app-background;
   color: $fullwhite;
   
@@ -12,7 +12,7 @@
   display: flex;
   align-items: flex-end;
   
-    .logo{
+    &__logo{
     margin-left: 50px;
     margin-bottom: -50px;
 
@@ -31,7 +31,7 @@
     }
   }
 
-.editProfile{
+.userPage-profileSettings{
   display: flex;
   justify-content: flex-end;
   margin-right: 25px;
@@ -39,11 +39,11 @@
   color: black;
 }
 
-.messe-entry{
+.userPage-messe{
   margin-left: 20px;
   margin-top: 50px;
 
-  .company-action{
+  &__action{
     display: flex;
     align-items: center;
     width: 100%;
@@ -74,17 +74,17 @@
     justify-content: flex-end;
   }
 
-  .company-items{
+  .userPage-items{
     border: 1px solid lightgrey;
     border-radius: 10px;
     padding: 20px;
     margin-right: 20px;
     margin-bottom: 30px;
 
-    .first-row{
+    &__first-row{
       display: flex;
 
-      .item-doctype{
+      &__doctype{
         background-color: red;
         color: $fullwhite;
         border-radius: 10px;
@@ -94,7 +94,7 @@
         }
       }
       
-      .item-action{
+      &__action{
         display: flex;
         margin-left: auto;
         p{
@@ -103,13 +103,13 @@
       }
     }
 
-    .item-docinfo{
+    &__docinfo{
       margin-left: 10px;
       margin-right: 10px;
       margin-top: 20px;
     }
 
-    .item-comment{
+    .userPage-comment{
       margin-left: 10px;
       margin-bottom: 30px;
       display: flex;
@@ -118,13 +118,13 @@
         margin-bottom: 10px;
       }
 
-      .profileimg{
+      &__profileimg{
         img{
           border-radius: 10px;
           }
       }
 
-      .comment-info{
+      &__info{
         flex-direction: column;
         margin-left: 20px;
 
@@ -133,7 +133,7 @@
         }
       }
 
-      .first-row{
+      &__first-row{
         display: flex;
         
         p{

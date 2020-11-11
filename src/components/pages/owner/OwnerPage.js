@@ -2,6 +2,7 @@ import React from 'react';
 import './OwnerPage.scss';
 import firebase from '../../../Firebase'
 import { EditInput } from "./EditInput";
+import {Link} from 'react-router-dom';
 function OwnerPage() {
 
 // State fra React Hooks   
@@ -49,6 +50,48 @@ const onCreate = (e) => {
             {owner.map(owners =>(
             <p key={owners.headerOwner}>{owners.headerOwner}</p>
             ))}
+
+            <div className="ownerPage-banner">
+              <div className="ownerPage-banner__logo">
+                <img src="http://placekitten.com/200/200" alt=""/>
+              </div>
+              <div>
+                <h1>USERNAME</h1>
+                <h3>COMPANY NAME</h3>
+              </div>
+            </div>
+            <Link to="/ownerEdit"><p className="ownerPage-addContent">TILFØJ INDHOLD</p></Link>
+
+              <div className="ownerPage-messe">
+                <div className="ownerPage-messe__action">
+                  <h5>MESSE TITEL</h5>
+                  <p>NUM</p>
+                  <p>...</p>
+                </div>
+
+                <div className="ownerPage-item">
+                    <div className="ownerPage-item__info">
+                      <h5>TITLE</h5>
+                      <p>TEXT</p>
+                    </div>
+                    <div className="ownerPage-itemAction">
+                      <div className="ownerPage-itemAction__bookmark"><p>BOOKMARK</p></div>
+                      <div className="ownerPage-itemAction__doctype"><p>DOCTYPE</p></div>
+                    </div>
+
+                    <hr/>
+
+                    <div className="ownerPage-comment">
+                      <div className="ownerPage-comment__profileimg">
+                        <img src="http://placekitten.com/50/50" alt=""/>
+                      </div>
+                        <form action="">
+                          <input type="text" placeholder="Tilføj en kommentar..."/>
+                          <input type="submit"/>
+                        </form>
+                    </div>
+                </div>   
+              </div>
         </div>
     </div>
   );
