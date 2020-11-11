@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import firebase from './Firebase';
 
 export const AuthContext = React.createContext();
 
+export function useAuth() {
+    return useContext(AuthContext)
+  }
+
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState();
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
@@ -18,12 +22,9 @@ export const AuthProvider = ({ children }) => {
     return <>Loading...</>
   }
 
+
   return (
-    <AuthContext.Provider
-      value={{
-        currentUser
-      }}
-    >
+    <AuthContext.Provider value={{currentUser}}>
       {children}
     </AuthContext.Provider>
   );

@@ -10,11 +10,18 @@ const SignUp = ({ history }) => {
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const {email, password} = event.target.elements;
+        const db = firebase.firestore()
         try {
             await firebase
             .auth()
-            .createUserWithEmailAndPassword(email.value, password.value);
+            .createUserWithEmailAndPassword(email.value, password.value)
+            .then(cred => {
+                db.collection('usertest123').doc(cred.user.uid).set({
+                   bio: 'TEST OM DET VIRKER'
+                })
+              })
             history.push ('/admin');
+        
         }
         catch (error) {
             alert(error);

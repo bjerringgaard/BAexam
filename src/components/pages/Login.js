@@ -29,7 +29,7 @@ const Login = ({ history }) => {
 
 
   if (currentUser) {
-    return <Redirect to="/" />;
+    return <Redirect to="/admin" />;
   }
 
   return (
@@ -38,6 +38,7 @@ const Login = ({ history }) => {
           <form onSubmit={handleLogin}>
               <div className="banner">              
                 <h1>PROJEKT NAVN</h1>
+
                 <h3>Login</h3>
                   <div id="logo">
                     <img src="http://placekitten.com/200/200" alt=""/>
