@@ -4,27 +4,20 @@ import firebase from '../../../Firebase'
 import './OwnerPage.scss';
 
 function OwnerEdit() {
-
   const [company, setCompany] = React.useState([]);
-  //const [loading, setLoading] = React.useState(false);
-
-  const ref = firebase.firestore().collection('items');
-
-  function getCompany() {
-    //setLoading(true);
-    ref.where('companyID', '==', 'egeteknik').onSnapshot((querySnapshot) => {
-        const items = [];
-        querySnapshot.forEach((doc) => {
-          items.push(doc.data());
-        });
-        setCompany(items);
-        //setLoading(false);
-      });
-  }
 
   React.useEffect(() => {
-    getCompany();
-  }, []);
+    // Database med Collection navn Items
+    const db = firebase.firestore().collection('items');
+
+    // Sortere igennem "items" efter firma ider = Egeteknik (Snapshot for Auto update på siden)
+    return db.where('companyID', '==', 'egeteknik').onSnapshot((snapshot) => {
+      // Starter Array Items (Empty) hvor efetr vi looper igennem og tilføjerdata til vores state. 
+      const items = [];
+      snapshot.forEach(doc => items.push(({...doc.data(), id: doc.id })));
+        setCompany(items);
+      });
+    },[]); 
 
   return (
       <div className="grid-x main-area">
