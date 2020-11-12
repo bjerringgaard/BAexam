@@ -2,7 +2,7 @@
 @import '~foundation-sites/scss/foundation';
 
 // User Profile
-.userpage-banner {
+.userPage-banner {
   background-color: $app-background;
   color: $fullwhite;
   
@@ -83,25 +83,26 @@
 
     &__first-row{
       display: flex;
+    }
 
-      &__doctype{
-        background-color: red;
-        color: $fullwhite;
-        border-radius: 10px;
-        padding: 7px 10px;
-        p{
-          margin: 0;
-        }
-      }
-      
-      &__action{
-        display: flex;
-        margin-left: auto;
-        p{
-          margin-right: 10px;
-        }
+    &__doctype{
+      background-color: red;
+      color: $fullwhite;
+      border-radius: 10px;
+      padding: 7px 10px;
+      p{
+        margin: 0;
       }
     }
+    
+    &__action{
+      display: flex;
+      margin-left: auto;
+      p{
+        margin-right: 10px;
+      }
+    }
+
 
     &__docinfo{
       margin-left: 10px;

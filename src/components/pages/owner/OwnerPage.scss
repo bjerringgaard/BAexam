@@ -99,7 +99,7 @@
         background-color: blue;
         color: $fullwhite;
         border-radius: 10px;
-        padding: 7px 10px;
+        padding: 5px 10px;
         width: fit-content;
         margin-right: 10px;
         margin-left: 10px;
@@ -109,13 +109,22 @@
       }
   
       &__doctype{
-        background-color: red;
-        color: $fullwhite;
-        border-radius: 10px;
-        padding: 7px 10px;
-        width: fit-content;
+        margin-left: 5px;
         p{
+          color: $fullwhite;
+          border-radius: 10px;
+          padding: 5px 20px;
+          width: fit-content;
           margin: 0;
+          background-color: lightgreen;
+        }
+
+        .PDF{
+          background-color: crimson;
+        }
+
+        .MP4{
+          background-color: lightblue;
         }
       }
     }

@@ -22,7 +22,7 @@ function UserPage() {
           <h2>MESSE TITLE</h2>
 
           <div className="userPage-messe__entry">
-            <div className="userpage-messe__action">
+            <div className="userPage-messe__action">
               <h5>COMPANY NAME</h5>
               <p>NUM</p>
               <p>...</p>
@@ -56,38 +56,6 @@ function UserPage() {
                   </div>
               </div>
             </div>
-
-        
-            <div className="company-items">
-              <div className="first-row">
-                <div className="item-doctype"><p>DOCTYPE</p></div>
-                <div className="item-action">
-                  <p>COMMENT</p>
-                  <p>DELETE</p>
-                </div>
-              </div>
-
-              <div className="item-docinfo">
-                <h5>TITLE</h5>
-                <p>TEXT</p>
-                <hr/>
-              </div>
-
-              <div className="item-comment">
-                <div className="profileimg">
-                  <img src="http://placekitten.com/50/50" alt=""/>
-                </div>
-                  <div className="comment-info">
-                    <div className="first-row">
-                      <p><b>USERNAME</b></p>
-                      <p>CommentTime</p>
-                    </div>
-                    <p>CommentText</p>
-                  </div>
-              </div>
-            </div>
-          
-
           </div>
         </div>
       </div>

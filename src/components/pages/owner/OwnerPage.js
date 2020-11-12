@@ -31,6 +31,8 @@ const onCreate = (e) => {
         setnewOwnerHeader('')
     })
 }
+
+
   return (
     <div className="grid-x main-area">
         <div className="cell auto admin-component">
@@ -56,8 +58,7 @@ const onCreate = (e) => {
                 <img src="http://placekitten.com/200/200" alt=""/>
               </div>
               <div>
-                <h1>USERNAME</h1>
-                <h3>COMPANY NAME</h3>
+                <h1>COMPANY NAME</h1>
               </div>
             </div>
             <Link to="/ownerEdit"><p className="ownerPage-addContent">TILFØJ INDHOLD</p></Link>

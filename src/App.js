@@ -9,6 +9,7 @@ import UserPage from './components/pages/user/UserPage'
   import UserEdit from './components/pages/user/UserEdit'
 import OwnerPage from './components/pages/owner/OwnerPage'
   import OwnerEdit from './components/pages/owner/OwnerEdit'
+import About from './components/pages/About'
 import './App.scss';
 import Admin from './components/pages/Admin'
 import { AuthProvider} from './Auth'
@@ -30,7 +31,8 @@ function App() {
               <Route path="/userpage" component={UserPage} />
                 <Route path="/useredit" component={UserEdit} />
               <Route path="/ownerpage" component={OwnerPage} />
-                <Route path="/owneredit" component={OwnerEdit} />
+                <Route path="/owneredit/:companyURL" component={OwnerEdit} />
+              <Route path="/about" component={About}/>
               </Switch>
             <Footer />
           </Router>

@@ -1,20 +1,21 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import firebase from '../../../Firebase'
 import './OwnerPage.scss';
 
 function OwnerEdit() {
   const [company, setCompany] = React.useState([]);
+  const { companyURL } = useParams();
 
   React.useEffect(() => {
     // Database med Collection navn Items
     const db = firebase.firestore().collection('items');
 
     // Sortere igennem "items" efter firma ider = Egeteknik (Snapshot for Auto update på siden)
-    return db.where('companyID', '==', 'egeteknik').onSnapshot((snapshot) => {
+    return db.where('companyID', '==', companyURL).onSnapshot((snapshot) => {
       // Starter Array Items (Empty) hvor efetr vi looper igennem og tilføjerdata til vores state. 
       const items = [];
-      snapshot.forEach(doc => items.push(({...doc.data(), id: doc.id })));
+      snapshot.forEach((doc) => {items.push(doc.data())});
         setCompany(items);
       });
     },[]); 
@@ -27,8 +28,7 @@ function OwnerEdit() {
                   <img src="http://placekitten.com/200/200" alt=""/>
                 </div>
                 <div>
-                  <h1>USERNAME</h1>
-                  <h3>COMPANY NAME</h3>
+                  <h1>{companyURL}</h1>
                 </div>
               </div>
               <Link to="/ownerpage"><p className="ownerPage-addContent">SE SOM BRUGER</p></Link>
@@ -44,37 +44,24 @@ function OwnerEdit() {
                   <p>...</p>
                 </div>
 
-                <div className="ownerPage-item">
-                    <div className="ownerPage-item__info">
-                      <h5>TITLE</h5>
-                      <p>TEXT</p>
-                    </div>
+                {company.map(companies =>(
+                  <div key={companies.id} className="ownerPage-item">
                     <div className="ownerPage-itemAction">
-                      <div className="ownerPage-itemAction__bookmark"><p>BOOKMARK</p></div>
-                      <div className="ownerPage-itemAction__doctype"><p>DOCTYPE</p></div>
-                    </div>
-
-                    <hr/>
-
-                    <div className="ownerPage-comment">
-                      <div className="ownerPage-comment__profileimg">
-                        <img src="http://placekitten.com/50/50" alt=""/>
+                      <div className="ownerPage-itemAction__doctype">
+                        <p className={companies.itemFile}>{companies.itemFile}</p>
                       </div>
-                        <form action="">
-                          <input type="text" placeholder="Tilføj en kommentar..."/>
-                          <input type="submit"/>
-                        </form>
                     </div>
-                </div>
+                      <div className="ownerPage-item__info">
+                        <h5>{companies.itemTitle}</h5>
+                        <p>{companies.itemDesc}</p>
+                      </div>
+                    </div>
+                  ))}
+
                 <div className="ownerEdit-addItem">
                   <h6>TILFØJ INDHOLD</h6>
                 </div>   
               </div>
-
-            {company.map(companies =>(
-              <p key={companies.id}>{companies.itemTitle}</p>
-            ))}
-
           </div>
       </div>
   );
