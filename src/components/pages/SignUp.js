@@ -16,8 +16,9 @@ const SignUp = ({ history }) => {
             .auth()
             .createUserWithEmailAndPassword(email.value, password.value)
             .then(cred => {
-                db.collection('usertest123').doc(cred.user.uid).set({
-                  bio: 'TEST OM DET VIRKER'
+                db.collection('accounts').doc(cred.user.uid).set({
+                   admin: false,
+                   owner: false
                 })
               })
             history.push ('/admin');

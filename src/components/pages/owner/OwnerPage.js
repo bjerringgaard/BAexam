@@ -50,7 +50,10 @@ const onCreate = (e) => {
             </ul>   
         {/* Mapper igennem indholdet af owners fra firebase */}
             {owner.map(owners =>(
+              <div>
             <p key={owners.headerOwner}>{owners.headerOwner}</p>
+            <Link to={`/moviepage/${owners.headerOwner +1}`}></Link>
+            </div>
             ))}
 
             <div className="ownerPage-banner">
