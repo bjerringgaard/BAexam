@@ -17,8 +17,8 @@ const SignUp = ({ history }) => {
             .createUserWithEmailAndPassword(email.value, password.value)
             .then(cred => {
                 db.collection('accounts').doc(cred.user.uid).set({
-                   admin: false,
-                   owner: false
+                  admin: false,
+                  owner: false
                 })
               })
             history.push ('/admin');
