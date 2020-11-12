@@ -17,7 +17,7 @@ const SignUp = ({ history }) => {
             .createUserWithEmailAndPassword(email.value, password.value)
             .then(cred => {
                 db.collection('usertest123').doc(cred.user.uid).set({
-                   bio: 'TEST OM DET VIRKER'
+                  bio: 'TEST OM DET VIRKER'
                 })
               })
             history.push ('/admin');
@@ -31,7 +31,6 @@ const SignUp = ({ history }) => {
   return (
       <div className="grid-x main-area">
           <div className="cell auto login-form">
-             
             <form onSubmit={handleSignUp}>
               <div id="form">
               <h1>Sign Up Page</h1>
