@@ -7,13 +7,6 @@ import './Home.scss';
 //import HomePage from './components/pages/Home';
 
 function Home () {
-
-
-  React.useEffect(() => {
-
-   },[]); 
-
-
   return (
       <div className="grid-x main-area home-component">
           <div className="cell">

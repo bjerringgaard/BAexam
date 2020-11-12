@@ -52,7 +52,6 @@ const onCreate = (e) => {
             {owner.map(owners =>(
               <div>
             <p key={owners.headerOwner}>{owners.headerOwner}</p>
-            <Link to={`/moviepage/${owners.headerOwner +1}`}></Link>
             </div>
             ))}
 
