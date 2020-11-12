@@ -1,0 +1,18 @@
+@import '../../settings';
+@import '~foundation-sites/scss/foundation';
+
+
+
+.admin-component {
+    padding: 25px;
+}
+
+button {
+    background-color: crimson;
+    color: white;
+    padding: 20px;
+}
+
+.welcome {
+    font-size: 1.8rem;
+}

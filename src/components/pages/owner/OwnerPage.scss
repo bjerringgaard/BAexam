@@ -1,0 +1,199 @@
+@import '../../../settings';
+@import '~foundation-sites/scss/foundation';
+
+.login-form {
+    padding: 25px;
+}
+
+.delete {
+    background-color: crimson;
+}
+
+// Owner Page
+.ownerPage-banner {
+  background-color: $app-background;
+  color: $fullwhite;
+  
+  border-radius: 25px;
+  height: 250px;
+  
+  display: flex;
+  align-items: flex-end;
+  
+  &__logo{
+  margin-left: 50px;
+  margin-bottom: -50px;
+
+    img{
+    border-radius: 25px;
+    }
+  }
+
+  h1{
+    margin-left: 30px;
+  }
+  
+  h3{
+    margin-bottom: 20px;
+    margin-left: 30px;
+  }
+}
+
+.ownerPage-addContent{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 25px;
+  margin-top: 10px;
+  color: black;
+}
+
+.ownerPage-messe{
+  margin-left: 20px;
+  margin-top: 40px;
+
+  &__action{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    h5{
+      padding: 10px 20px;
+      background-color: $app-background;
+      color: $fullwhite;
+      border-radius: 10px;
+      width: fit-content;
+    }
+
+    p{
+      font-size: 20px;
+      margin: 0;
+      margin-left: 20px;
+      color: #505050;
+
+      &:last-child{
+        margin-left: auto;
+        margin-right: 50px;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .ownerPage-item{
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+
+    &__info{
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 20px;
+    }
+
+    .ownerPage-itemAction{
+      display: flex;
+      align-items: center;
+
+      &__bookmark{
+        background-color: blue;
+        color: $fullwhite;
+        border-radius: 10px;
+        padding: 5px 10px;
+        width: fit-content;
+        margin-right: 10px;
+        margin-left: 10px;
+        p{
+          margin: 0;
+        }
+      }
+  
+      &__doctype{
+        margin-left: 5px;
+        p{
+          color: $fullwhite;
+          border-radius: 10px;
+          padding: 5px 20px;
+          width: fit-content;
+          margin: 0;
+          background-color: lightgreen;
+        }
+
+        .PDF{
+          background-color: crimson;
+        }
+
+        .MP4{
+          background-color: lightblue;
+        }
+      }
+    }
+  }
+
+  .ownerPage-comment{
+    margin-left: 10px;
+    margin-bottom: 30px;
+    display: flex;
+
+    &__profileimg{
+      img{
+        border-radius: 10px;
+        }
+    }
+
+    form {
+      display: flex;
+      width: 100%;
+
+      input[type=text]{
+        flex-grow: 1;
+        height: 50px;
+        border: 1px solid lightgrey;
+        border-radius: 10px;
+        margin: 0 10px;
+        box-shadow: none;
+      }
+
+      input[type=submit]{
+        justify-content: center;
+        height: 50px;
+        width: fit-content;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        border-radius: 10px;
+    
+        background-color: $app-background;
+        color: $fullwhite;
+    
+        border: none;
+      }
+    }
+  }
+}
+
+// Owner Edit
+.ownerEdit-addMesse{
+  padding: 20px;
+  margin: 50px 20px 0px 20px;
+  
+  display: flex;
+  justify-content: center;
+
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+
+  h5{
+    margin: 0;
+    color: lightgray;
+  }
+}
+
+.ownerEdit-addItem{
+  h6{
+    margin-left: 10px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    color: lightgray;
+  }
+}

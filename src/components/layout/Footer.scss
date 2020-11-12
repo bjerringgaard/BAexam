@@ -1,0 +1,15 @@
+@import '../../settings';
+@import '~foundation-sites/scss/foundation';
+
+.footer {
+    min-height: 10vh;
+    background-color: blue;
+    color: $white;
+
+    @include breakpoint(large) {
+        background-color: $dark-gray;
+      }
+
+}
+
+

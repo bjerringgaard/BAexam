@@ -1,14 +1,14 @@
 import React from 'react';
 //import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './Footer.scss';
+import './ExpoItems.scss';
 //import HomePage from './components/pages/Home';
 
-function Footer() {
+function ExpoItems() {
   return (
-      <div className="grid-x footer">
-          <div className="cell auto">FOOOTER</div>
+      <div className="grid-x">
+          <div className="cell auto">EXPO ITEMS LIST</div>
       </div>
   );
 }
 
-export default Footer;
+export default ExpoItems;

@@ -1,26 +1,23 @@
-import React from 'react';
-import ExpoItems from '../layout/ExpoItems';
-import { Link, Route } from "react-router-dom"
-//import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, {useContext} from 'react';
+import './Admin.scss';
 import firebase from '../../Firebase'
-import './Home.scss';
-//import HomePage from './components/pages/Home';
+import { useAuth } from "../../Auth";
 
-function Home () {
+
+function Admin() { 
+
+    const {currentUser} = useAuth();
+
   return (
-      <div className="grid-x main-area home-component">
-          <div className="cell">
-          <h1>Home Component</h1>
+      <div className="grid-x main-area">
+          <div className="cell auto admin-component">
+              <h1>Admin Panel</h1>
+              <p className="welcome">Velkommen <strong>{currentUser.email}</strong></p>
               <p>Fusce molestie vestibulum ligula id facilisis. Mauris dapibus neque a neque eleifend, ac egestas lectus vestibulum. Praesent id lobortis odio. Donec suscipit massa sed elit consectetur efficitur. Vestibulum suscipit lacinia eros, eu imperdiet ex ultrices eu. Mauris ligula dolor, imperdiet et eleifend quis, viverra ut eros. Fusce ac magna tortor. Nulla quis accumsan tellus, et elementum odio. Cras finibus, turpis eu semper pharetra, justo elit gravida magna, eu convallis velit dui sit amet turpis. Donec posuere tristique sapien ac pulvinar. Pellentesque ut congue nulla. Pellentesque vel interdum sem.</p>
-              
+              <button onClick={() => firebase.auth().signOut()}>Sign Out</button>  
           </div>
-          <div className="cell">
-            
-            <ExpoItems />
-          </div>
-          
       </div>
   );
 }
 
-export default Home;
+export default Admin;

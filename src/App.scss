@@ -1,14 +1,15 @@
 
 @import 'settings';
 @import '~foundation-sites/scss/foundation';
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.latest{
-  color: $dark-gray;
-  font-size: 100px;
+body {
+  background-color: #f7f8f6;
+  font-family: 'Roboto', sans-serif;
 }
 
-
-.colortest{
-  background-color: crimson;
+.main-area {
+  min-height: 80vh;
+  background-color: $white;
+  color: $dark-gray;
 }
