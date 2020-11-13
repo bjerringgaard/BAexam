@@ -30,6 +30,7 @@
     padding: 25px;
     color: #e4e4db;
     margin-top: 25px;
+    margin-bottom: 25px;
     border-radius: 10px;
 
     &__header {
@@ -86,9 +87,43 @@
 
 .create-owner {
  margin-top: 25px;
+ padding: 25px;
+ background-color: #383838;
+ border-radius: 10px;
 
  h1 {
     font-weight: 600;
  }
+
+ input {
+     background-color: #505050;
+     color: $white;
+
+     &:focus {
+         background-color: #505050;
+     }
+ }
+
+ label{
+     margin-top: 10px;
+ }
+
+ button {
+    background-color: #1f1f1f;
+    color: $white;
+    padding: 20px;
+    outline: none;
+    margin-top: 15px;
+
+    &:hover {
+        background-color: #58cc8d;
+        color: $black;
+    }
+}
+
+  &__header {
+    color: $white;
+    font-weight: 600;
+  }
 
 }
