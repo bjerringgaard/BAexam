@@ -16,3 +16,30 @@ button {
 .welcome {
     font-size: 1.8rem;
 }
+
+.admin-panel {
+    background-color: #383838;
+    padding: 25px;
+    color: #e4e4db;
+    margin-top: 25px;
+
+
+    &__content {
+        background-color: #505050;
+        margin-top: 25px;
+        padding: 25px;
+        width: 100%;
+    }
+
+    svg {
+        font-size: 25px;
+        margin-right: 10px;
+        
+    }
+
+    .icons {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+}
