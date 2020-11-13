@@ -14,6 +14,7 @@ import './App.scss';
 import Admin from './components/pages/Admin'
 import { AuthProvider} from './Auth'
 import PrivateRoute from './PrivateRoute'
+import TestingFirebase from './components/pages/TestingFirebase';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
               <Route path="/userpage" component={UserPage} />
                 <Route path="/useredit" component={UserEdit} />
               <Route path="/ownerpage" component={OwnerPage} />
+              <Route path="/testpage" component={TestingFirebase} />
                 <Route path="/owneredit/:companyURL" component={OwnerEdit} />
               <Route path="/about" component={About}/>
               </Switch>
