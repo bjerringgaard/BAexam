@@ -2,19 +2,27 @@
 @import '~foundation-sites/scss/foundation';
 
 
-
 .admin-component {
     padding: 25px;
-}
 
-button {
-    background-color: crimson;
-    color: white;
-    padding: 20px;
-}
+    &__sign-out{
+        display: flex;
+        justify-content: flex-end;
+    }
 
-.welcome {
-    font-size: 1.8rem;
+    button {
+        background-color: #1f1f1f;
+        color: white;
+        padding: 20px;
+    }
+
+    &__welcome {
+        font-size: 1rem;
+    }
+
+    h1{
+       font-weight: 600;
+    }
 }
 
 .admin-panel {
@@ -22,13 +30,26 @@ button {
     padding: 25px;
     color: #e4e4db;
     margin-top: 25px;
+    border-radius: 10px;
 
     &__header {
         font-weight: 600;
+
+        svg{
+            color: #58cc8d;
+        }
+    }
+
+    &__text {
+        padding-left: 25px;
+    }
+
+    &__create {
+        display: flex;
+        justify-content: flex-end;
     }
 
     &__content {
-        
         margin-top: 25px;
         margin-bottom: 25px;
         width: 100%;
@@ -36,7 +57,11 @@ button {
 
     svg {
         font-size: 25px;
-        margin-right: 10px;
+        margin-right: 15px;
+
+        &:hover {
+            color: #56d7af;
+        }
         
     }
 
