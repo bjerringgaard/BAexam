@@ -20,7 +20,7 @@
         font-size: 1rem;
     }
 
-    h1{
+    h1 {
        font-weight: 600;
     }
 }
@@ -81,5 +81,14 @@
     &__owners {
         background-color: #585858;
     }
+
+}
+
+.create-owner {
+ margin-top: 25px;
+
+ h1 {
+    font-weight: 600;
+ }
 
 }

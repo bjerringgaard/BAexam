@@ -3,6 +3,7 @@ import './Admin.scss';
 import firebase from '../../Firebase'
 import { useAuth } from "../../Auth";
 import AdminView from './AdminView';
+import CreateOwner from './CreateOwner';
 
 function Admin() { 
     const {currentUser} = useAuth();
@@ -19,6 +20,7 @@ function Admin() {
     </div>
     <h1>Admin Panel</h1>
         <AdminView />
+        <CreateOwner />
      </div>
   );
 }
