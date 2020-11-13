@@ -2,8 +2,7 @@ import React, {useContext} from 'react';
 import './Admin.scss';
 import firebase from '../../Firebase'
 import { useAuth } from "../../Auth";
-import { RiDeleteBinLine } from 'react-icons/ri';
-import { FiRefreshCw } from 'react-icons/fi';
+import AdminView from './AdminView';
 
 function Admin() { 
 
@@ -22,26 +21,7 @@ function Admin() {
           </div>
     </div>
 
-    <div className="grid-x admin-panel">
-        <div className="cell small-6">Users</div>
-            <div className="cell small-6">Owners</div>
-            <div className="grid-x admin-panel__content">
-                <div className="cell small-6">
-                    <ul>
-                        <li>Bruger 1</li>
-                        <li>Bruger 1</li>
-                        <li>Bruger 1</li>
-                    </ul>
-                </div>
-            <div className="cell small-6">
-
-                <div className="grid-x">
-                    <div className="cell auto">Bruger 1</div>
-                    <div className="cell auto icons"><RiDeleteBinLine /> <FiRefreshCw /></div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <AdminView />
 
 
       </div>
