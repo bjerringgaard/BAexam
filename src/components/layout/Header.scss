@@ -3,6 +3,53 @@
 
 .header {
     min-height: 10vh;
-    background-color: $dark-gray;
+    background-color: #383838;
     color: $white;
+
+    &__navigation {
+        flex-direction: column;
+        display: flex;
+        align-items: flex-end;
+        padding-right: 25px;
+        justify-content: center;
+        height: 10vh;
+        font-size: 5px;
+
+        a {
+            color: $white;
+        }
+    
+        a:hover {
+            color: $dollargreen;
+        }
+    
+        ul{
+            list-style: none;
+            display: flex; 
+            justify-content: flex-end;
+            align-items: center;
+        }
+    
+        ul li {
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 10px;
+            cursor: pointer;
+        }
+    }
+
+  
+
+    &__logo {
+        flex-direction: column;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: 25px;
+        
+        p {
+            font-size: 1.8em;
+        }
+    }
+
 }
