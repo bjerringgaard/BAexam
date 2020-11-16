@@ -1,10 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { FiRefreshCw } from 'react-icons/fi';
 import { BsPersonPlus } from 'react-icons/bs';
+import firebase from '../../Firebase'
 
 export default function AdminView() {
+
+    const [accounts, setAccounts] = useState([])
+
+    useEffect(() =>{
+        firebase
+        .firestore()
+        .collection('accounts')
+        .where('company', '==', true)
+        .onSnapshot((snapshot) => {
+            const newAccount = snapshot.docs.map((doc) =>({
+                id: doc.id,
+                ...doc.data()
+            }))
+            setAccounts(newAccount)
+        })
+        
+    },[])
+
+
     return (
+        <div>
+       
+             
         <div>
         <div className="grid-x admin-panel">
         <div className="cell small-6 admin-panel__header">
@@ -22,8 +45,11 @@ export default function AdminView() {
             <div className="grid-x admin-panel__content">
                 <div className="cell small-6 admin-panel__owners">
                     <div className="grid-x admin-panel__information">
-                        <div className="cell auto">Bruger 1</div>
-                        <div className="cell auto icons"><RiDeleteBinLine /> <FiRefreshCw /></div>
+                    {accounts.map(account => (
+                        <div key={account.id}>
+                            <div className="cell small-12">{account.name} <RiDeleteBinLine /> <FiRefreshCw /></div><br></br>
+                        </div>
+                        ))}
                     </div>
                 </div>
             <div className="cell small-6 admin-panel__users">
@@ -38,6 +64,11 @@ export default function AdminView() {
             </div>
         </div>
         </div>
+        </div>
+
+            
+
+
         </div>
     )
 }

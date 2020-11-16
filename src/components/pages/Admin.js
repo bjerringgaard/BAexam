@@ -8,6 +8,7 @@ import CreateOwner from './CreateOwner';
 function Admin() { 
     const {currentUser} = useAuth();
 
+
   return (
     <div className="admin-component main-area">
         <div className="grid-x">
