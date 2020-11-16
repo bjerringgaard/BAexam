@@ -3,6 +3,7 @@ import './OwnerPage.scss';
 import firebase from '../../../Firebase'
 import { EditInput } from "./EditInput";
 import {Link} from 'react-router-dom';
+
 function OwnerPage() {
 
 // State fra React Hooks   
@@ -54,16 +55,7 @@ const onCreate = (e) => {
             <p key={owners.headerOwner}>{owners.headerOwner}</p>
             </div>
             ))}
-
-            <div className="ownerPage-banner">
-              <div className="ownerPage-banner__logo">
-                <img src="http://placekitten.com/200/200" alt=""/>
-              </div>
-              <div>
-                <h1>COMPANY NAME</h1>
-              </div>
-            </div>
-            <Link to="/ownerEdit"><p className="ownerPage-addContent">TILFØJ INDHOLD</p></Link>
+            <Link to="/ownerEdit/egeteknik"><p className="ownerPage-addContent">TILFØJ INDHOLD</p></Link>
 
               <div className="ownerPage-messe">
                 <div className="ownerPage-messe__action">

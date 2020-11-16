@@ -31,9 +31,9 @@ function App() {
               <PrivateRoute path="/admin" component={Admin} />
               <Route path="/userpage" component={UserPage} />
                 <Route path="/useredit" component={UserEdit} />
-              <Route path="/ownerpage" component={OwnerPage} />
               <Route path="/testpage" component={TestingFirebase} />
-                <Route path="/owneredit/:companyURL" component={OwnerEdit} />
+              <Route path="/ownerpage" component={OwnerPage} />
+                <Route path="/owneredit/:companyID" component={OwnerEdit} />
               <Route path="/about" component={About}/>
               </Switch>
             <Footer />
