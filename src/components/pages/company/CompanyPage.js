@@ -1,14 +1,16 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
 import firebase from '../../../Firebase'
-import './OwnerPage.scss';
+import { useAuth } from "../../../Auth";
 
-import { BsFileEarmarkPlus, BsTrash } from 'react-icons/bs';
+import './CompanyPage.scss';
+import { BsFileEarmarkPlus, BsTrash, BsBookmark } from 'react-icons/bs';
 
-import OwnerEdit_Banner from './OwnerEdit_Banner';
+import CompanyPage_Banner from './CompanyPage_Banner';
 
-function OwnerEdit() {
+function CompanyPage() {
   const db = firebase.firestore().collection('items');
+  const { currentUser } = useAuth();
 
   const [company, setCompany] = React.useState([]);
   const { companyID } = useParams();
@@ -62,15 +64,15 @@ function OwnerEdit() {
   return (
       <div className="grid-x main-area">
           <div className="cell auto admin-component">
-              <OwnerEdit_Banner />
+              <CompanyPage_Banner />
 
               <div className="ownerPage-messe">
                 <div className="ownerPage-messe__action">
                   <h2>MESSE TITEL</h2>
                   <p>NUM</p>
                   <div className="right"> 
-                    <p><BsTrash/></p>
-                    <p><BsFileEarmarkPlus /></p>
+                    { currentUser ?  <Link to="/company/egeteknik"><p><BsTrash/></p></Link> : '' }
+                    { currentUser ?  <Link to="/company/egeteknik"><p><BsFileEarmarkPlus /></p></Link> : '' }
                   </div>
                 </div>
 
@@ -80,8 +82,8 @@ function OwnerEdit() {
                       <div className="ownerPage-itemAction__doctype">
                         <p className={companies.itemFile}>{companies.itemFile}</p>
                       </div>
-                      {/*<button onClick={deleteItem}>{companies.id}</button>*/}
-                      <button onClick={() => deleteItem(companies.id)}>Delete</button>
+                      { currentUser ? <button onClick={() => deleteItem(companies.id)}><p><BsTrash/></p></button> : '' }
+                      { currentUser ? '' : <Link to="/company/egeteknik"><p><BsBookmark /></p></Link> }
                     </div>
                       <div className="ownerPage-item__info">
                         <h5>{companies.itemTitle}</h5>
@@ -123,4 +125,4 @@ function OwnerEdit() {
   );
 }
 
-export default OwnerEdit;
+export default CompanyPage;

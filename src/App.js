@@ -7,8 +7,7 @@ import Login from './components/pages/Login'
 import SignUp from './components/pages/SignUp'
 import UserPage from './components/pages/user/UserPage'
   import UserEdit from './components/pages/user/UserEdit'
-import OwnerPage from './components/pages/owner/OwnerPage'
-  import OwnerEdit from './components/pages/owner/OwnerEdit'
+import CompanyPage from './components/pages/company/CompanyPage'
 import About from './components/pages/About'
 import './App.scss';
 import Admin from './components/pages/Admin'
@@ -32,8 +31,7 @@ function App() {
               <Route path="/userpage" component={UserPage} />
                 <Route path="/useredit" component={UserEdit} />
               <Route path="/testpage" component={TestingFirebase} />
-              <Route path="/ownerpage" component={OwnerPage} />
-                <Route path="/owneredit/:companyID" component={OwnerEdit} />
+              <Route path="/company/:companyID" component={CompanyPage} />
               <Route path="/about" component={About}/>
               </Switch>
             <Footer />

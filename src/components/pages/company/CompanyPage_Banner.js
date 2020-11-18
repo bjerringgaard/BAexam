@@ -1,5 +1,5 @@
 import React from 'react'
-import './OwnerPage.scss';
+import './CompanyPage.scss';
 import {Link, useParams} from 'react-router-dom';
 import firebase from '../../../Firebase'
 import { useAuth } from "../../../Auth";
@@ -7,7 +7,7 @@ import { useAuth } from "../../../Auth";
 import { BsPencil } from 'react-icons/bs';
 
 
-function OwnerEdit_Banner() {
+function CompanyPage_Banner() {
   const db = firebase.firestore().collection('accounts');
   const { companyID } = useParams();
   const { currentUser } = useAuth();
@@ -47,13 +47,13 @@ function OwnerEdit_Banner() {
             <p>{data.desc}</p>
             <div className="infolinks">
               <a className="contact-link" href={"mailto:" + data.contactemail}>Contact us</a>
-              { currentUser ? <a href={"mailto:" + data.contactemail}>Rediger profil <BsPencil/></a>: ''}
+              { currentUser ? <a href="">Rediger profil <BsPencil/></a>: ''}
             </div>
           </div>
         </div>
         <div className="ownerPage-header__bigBtn">
-          { currentUser ? <Link to="/ownerpage"><p>SE SOM BRUGER</p></Link> : '' }
-          { currentUser ? <Link to="/ownerpage"><p>TILFØJ MESSE</p></Link> : '' }
+          { currentUser ? <Link to="/company/egeteknik"><p>SE SOM BRUGER</p></Link> : '' }
+          { currentUser ? <Link to="/company/egeteknik"><p>TILFØJ MESSE</p></Link> : '' }
         </div>
       </div>
     ))}
@@ -61,4 +61,4 @@ function OwnerEdit_Banner() {
   );
 }
 
-export default OwnerEdit_Banner;
+export default CompanyPage_Banner;
