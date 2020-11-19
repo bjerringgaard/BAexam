@@ -5,14 +5,16 @@ import { useAuth } from "../../../Auth";
 
 import './CompanyPage.scss';
 import { BsFileEarmarkPlus, BsTrash, BsBookmark } from 'react-icons/bs';
+import { FiRefreshCw } from 'react-icons/fi';
 
 import CompanyPage_Banner from './CompanyPage_Banner';
 
 function CompanyPage() {
-  const db = firebase.firestore().collection('items');
+  const db = firebase.firestore();
   const { currentUser } = useAuth();
 
   const [company, setCompany] = React.useState([]);
+  const [companyData, setCompanyData] = React.useState([]);
   const { companyID } = useParams();
 
   const [title, setTitle] = React.useState([]);
@@ -24,6 +26,7 @@ function CompanyPage() {
   React.useEffect(() => {
     const unsubscribe = firebase
     db
+    .collection('items')
     .where('companyID', '==', companyID)
     .onSnapshot((snapshot) => {
       const company = snapshot.docs.map((doc) =>({
@@ -38,8 +41,11 @@ function CompanyPage() {
     // Add item
     const addItem = (e) => {
       e.preventDefault()
-      db.add({
+      db
+      .collection('items')
+      .add({
         companyID: companyID,
+        emailID: currentUser.email,
         itemTitle: title,
         itemDesc: desc,
         itemFile: file,
@@ -66,7 +72,7 @@ function CompanyPage() {
           <div className="cell auto admin-component">
               <CompanyPage_Banner />
 
-              <div className="ownerPage-messe">
+                <div className="ownerPage-messe">
                 <div className="ownerPage-messe__action">
                   <h2>MESSE TITEL</h2>
                   <p>NUM</p>
@@ -82,8 +88,9 @@ function CompanyPage() {
                       <div className="ownerPage-itemAction__doctype">
                         <p className={companies.itemFile}>{companies.itemFile}</p>
                       </div>
-                      { currentUser ? <button onClick={() => deleteItem(companies.id)}><p><BsTrash/></p></button> : '' }
-                      { currentUser ? '' : <Link to="/company/egeteknik"><p><BsBookmark /></p></Link> }
+                      { currentUser.email == companies.emailID ? <button onClick={() => deleteItem(companies.id)}><p><FiRefreshCw /></p></button> : '' }
+                      { currentUser.email == companies.emailID ? <button onClick={() => deleteItem(companies.id)}><p><BsTrash/></p></button> : '' }
+                      { currentUser.email == companies.emailID ? '' : <Link to="/company/egeteknik"><p><BsBookmark /></p></Link> }
                     </div>
                       <div className="ownerPage-item__info">
                         <h5>{companies.itemTitle}</h5>
@@ -121,7 +128,7 @@ function CompanyPage() {
                 </div>   
               </div>
           </div>
-      </div>
+        </div>
   );
 }
 

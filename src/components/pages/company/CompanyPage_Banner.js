@@ -47,13 +47,13 @@ function CompanyPage_Banner() {
             <p>{data.desc}</p>
             <div className="infolinks">
               <a className="contact-link" href={"mailto:" + data.contactemail}>Contact us</a>
-              { currentUser ? <a href="">Rediger profil <BsPencil/></a>: ''}
+              { currentUser.email == data.email ? <a href="">Rediger profil <BsPencil/></a>: ''}
             </div>
           </div>
         </div>
         <div className="ownerPage-header__bigBtn">
-          { currentUser ? <Link to="/company/egeteknik"><p>SE SOM BRUGER</p></Link> : '' }
-          { currentUser ? <Link to="/company/egeteknik"><p>TILFØJ MESSE</p></Link> : '' }
+          { currentUser.email == data.email ? <Link to="/company/egeteknik"><p>SE SOM BRUGER</p></Link> : '' }
+          { currentUser.email == data.email ? <Link to="/company/egeteknik"><p>TILFØJ MESSE</p></Link> : '' }
         </div>
       </div>
     ))}
