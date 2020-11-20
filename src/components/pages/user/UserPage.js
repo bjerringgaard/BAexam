@@ -40,7 +40,6 @@ function UserPage() {
               <div className="userPage-items__docinfo">
                 <h5>TITLE</h5>
                 <p>TEXT</p>
-                <hr/>
               </div>
 
               <div className="userPage-comment">

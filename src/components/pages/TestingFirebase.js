@@ -67,6 +67,7 @@ React.useEffect(() => {
   db
   .collection('items')
   .where('messeID', '==', 'agromek2020')
+  .where('companyID', '==', 'egeteknik')
   .onSnapshot((snapshot) => {
     const company = snapshot.docs.map((doc) =>({
         id: doc.id,
@@ -80,7 +81,7 @@ React.useEffect(() => {
 
     return (
       <div>
-      {messeData.map(messe => (
+      {messeData.map( messe => (
         <div className="ownerPage-header">
           <h1>{messe.messeTitle}</h1>
           {company.map(item =>(

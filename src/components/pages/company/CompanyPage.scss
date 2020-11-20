@@ -5,6 +5,12 @@
     padding: 25px;
 }
 
+hr{
+  margin-left: 5px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 .delete {
     background-color: crimson;
 }
@@ -130,12 +136,24 @@
         margin-bottom: 0;
         margin-right: 0;
       }
+
+      .deleteButton{
+        &:hover{
+          color: crimson;
+        }
+      }
+
+      .refreshButton{
+        &:hover{
+          color: lightgreen;
+        }
+      }
     }
 
     h2{
       font-size: 2rem;
       width: fit-content;
-      margin: 10px;
+      margin-left: 10px;
     }
 
     p{
@@ -150,7 +168,8 @@
     border: 1px solid lightgrey;
     border-radius: 10px;
     padding: 20px;
-    margin-right: 20px;
+    margin-right: 25px;
+    margin-left: 5px;
     margin-bottom: 30px;
 
     &__info{
@@ -162,19 +181,6 @@
     .ownerPage-itemAction{
       display: flex;
       align-items: center;
-
-      &__bookmark{
-        background-color: blue;
-        color: $fullwhite;
-        border-radius: 10px;
-        padding: 5px 10px;
-        width: fit-content;
-        margin-right: 10px;
-        margin-left: 10px;
-        p{
-          margin: 0;
-        }
-      }
   
       &__doctype{
         margin-left: 5px;
@@ -196,15 +202,45 @@
         }
       }
     }
+
+    &__actions{
+      display: flex;
+      margin-left: auto;
+
+      button{
+        background-color: rgba(255, 0, 0, 0);
+        padding: 0;
+        color: #505050;
+          p{
+          font-size: 24px;
+          margin: 0 0 0 20px;
+          }
+      }
+
+      .deleteButton{
+        &:hover{
+          color: crimson;
+        }
+      }
+
+      .refreshButton{
+        &:hover{
+          color: lightgreen;
+        }
+      }
+    }
   }
 
-  .ownerPage-comment{
+  .ownerPage-item-comment{
+    //margin-bottom: 30px;
     margin-left: 10px;
-    margin-bottom: 30px;
     display: flex;
 
     &__profileimg{
       img{
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
         border-radius: 10px;
         }
     }
@@ -222,19 +258,28 @@
         box-shadow: none;
       }
 
-      input[type=submit]{
+      button{
         justify-content: center;
         height: 50px;
         width: fit-content;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 10px;
+        padding-right: 5px;
 
         border-radius: 10px;
     
-        background-color: $app-background;
-        color: $fullwhite;
+        background-color: rgba(255, 0, 0, 0);
+        color: #505050;
     
         border: none;
+
+        &:hover{
+          color: purple;
+        }
+
+        svg{
+          margin-top: -10px;
+          font-size: 30px;
+        }
       }
     }
   }
