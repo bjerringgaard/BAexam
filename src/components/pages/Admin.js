@@ -5,6 +5,7 @@ import { useAuth } from "../../Auth";
 import AdminView from './AdminView';
 import CreateOwner from './CreateOwner';
 import { firestore } from 'firebase';
+import { RiWheelchairFill } from 'react-icons/ri';
 
 function Admin() { 
 //const {currentUser} = useAuth();
@@ -19,9 +20,9 @@ var user = firebase.auth().currentUser;
         const fetchData = async () => {
             const db = firebase.firestore()
             
-            const data = await db.collection('accounts').where('account', '==', 'uid').get()
+            const data = await db.collection('accounts').where('id', '==', user.uid).get()
             
-            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid})))
+            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
             
         }
     fetchData()
@@ -43,13 +44,16 @@ var user = firebase.auth().currentUser;
                     {accounts.map(account => (
                         
                         <>
-                        <div className="cell small-10" key={account.id}><br /><br />{account.fname} <br /><br /> {account.uid}</div>
+                        <div className="cell small-10" key={account.id}><br /><br />{account.email} <br /><br /> {account.uid} <br /><br /> {account.name}</div>
                         </>
                         
                         ))}
                      
                         
                 <div>
+<br /><br />
+                     {}   
+                  
     
                 </div>
                 </div>
