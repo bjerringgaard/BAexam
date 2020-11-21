@@ -42,6 +42,7 @@ const onCreate = (e) => {
     } */ 
 
 const db = firebase.firestore();
+var user = firebase.auth().currentUser;
 const [messeData, setMesseData] = React.useState([]);
 const [company, setCompany] = React.useState([]);
 
@@ -81,14 +82,14 @@ React.useEffect(() => {
 
     return (
       <div>
-      {messeData.map( messe => (
+      {user ? messeData.map( messe => (
         <div className="ownerPage-header">
           <h1>{messe.messeTitle}</h1>
           {company.map(item =>(
             <h2>{item.itemTitle}</h2>
           ))}
         </div>
-      ))}
+      )) : 'DU SKAL LOGGE IND !!!!!'}
       </div>
 
 

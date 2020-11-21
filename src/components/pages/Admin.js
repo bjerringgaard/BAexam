@@ -8,8 +8,15 @@ import { firestore } from 'firebase';
 import { RiWheelchairFill } from 'react-icons/ri';
 
 function Admin() { 
+
+
+
+
+
+
 //const {currentUser} = useAuth();
 var user = firebase.auth().currentUser;
+
     // VIRKER SJOVT NOK HER MEN IKKE ANDRE STEDER
     // .doc(user.uid).get().then(doc =>{
     //     console.log("First Name: " + doc.data().fname)
@@ -20,14 +27,19 @@ var user = firebase.auth().currentUser;
         const fetchData = async () => {
             const db = firebase.firestore()
             
-            const data = await db.collection('accounts').where('id', '==', user.uid).get()
+            const data = await db.collection('accounts').get()
             
+            // udskriver det første ID i Collection
+            const docRefId = data.docs[0].id;
+            console.log(docRefId)
+
             setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
             
         }
     fetchData()
     },[])
    
+    
 
   return (
     <div className="admin-component main-area">
@@ -41,13 +53,13 @@ var user = firebase.auth().currentUser;
                 <div className="cell small-10"><br /><br />
                     </div>
                     
-                    {accounts.map(account => (
+                    {user.uid == 'mDZUiHyMfRMm9yQTiz1LBtw0jrk1' ? accounts.map(account => (
                         
                         <>
                         <div className="cell small-10" key={account.id}><br /><br />{account.email} <br /><br /> {account.uid} <br /><br /> {account.name}</div>
                         </>
                         
-                        ))}
+                        )) : 'Der ingen der logget ind'}
                      
                         
                 <div>
