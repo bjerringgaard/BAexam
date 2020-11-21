@@ -1,8 +1,8 @@
 import React from 'react';
 import ExpoItems from '../layout/ExpoItems';
-import { Link, Route } from "react-router-dom"
+//import { Link, Route } from "react-router-dom"
 //import { BrowserRouter as Router, Route } from 'react-router-dom';
-import firebase from '../../Firebase'
+//import firebase from '../../Firebase'
 import './Home.scss';
 //import HomePage from './components/pages/Home';
 

@@ -11,6 +11,7 @@ const SignUp = ({ history }) => {
         event.preventDefault();
         const {email, password} = event.target.elements;
         const db = firebase.firestore()
+        const user = firebase.auth()
         try {
             await firebase
             .auth()
@@ -18,7 +19,7 @@ const SignUp = ({ history }) => {
             .then(cred => {
                 db.collection('accounts').doc(cred.user.uid).set({
                   admin: false,
-                  owner: false
+                  owner: false,
                 })
               })
             history.push ('/admin');

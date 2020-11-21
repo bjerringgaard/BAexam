@@ -3,6 +3,7 @@ import { RiDeleteBinLine } from 'react-icons/ri';
 import { FiRefreshCw } from 'react-icons/fi';
 import { BsPersonPlus } from 'react-icons/bs';
 import firebase from '../../Firebase'
+//import { useAuth } from "../../Auth";
 
 export default function AdminView() {
 
@@ -44,13 +45,13 @@ export default function AdminView() {
             <div>
             <div className="grid-x admin-panel">
             <div className="cell small-6 admin-panel__header">
-                <div class="grid-x">
+                <div className="grid-x">
                     <div className="cell small-6 admin-panel__text">Users</div>
                     <div className="cell small-6 admin-panel__create"><BsPersonPlus /></div>
                 </div>
             </div>
                 <div className="cell small-6 admin-panel__header">
-                <div class="grid-x">
+                <div className="grid-x">
                     <div className="cell small-6 admin-panel__text">Owner</div>
                     <div className="cell small-6 admin-panel__create"><BsPersonPlus /></div>
                 </div>
