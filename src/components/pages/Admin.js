@@ -22,23 +22,39 @@ var user = firebase.auth().currentUser;
     //     console.log("First Name: " + doc.data().fname)
     //     console.log("Email: " + user.email)
     // })
-    const [accounts, setAccounts] = useState([])
-    useEffect(() =>{
-        const fetchData = async () => {
-            const db = firebase.firestore()
+    // const [accounts, setAccounts] = useState([])
+    // useEffect(() =>{
+    //     const fetchData = async () => {
+    //         const db = firebase.firestore()
             
-            const data = await db.collection('accounts').get()
+    //         const data = await db.collection('accounts').get()
             
-            // udskriver det første ID i Collection
-            const docRefId = data.docs[0].id;
-            console.log(docRefId)
+    //         // udskriver det første ID i Collection
+    //         const docRefId = data.docs['mDZUiHyMfRMm9yQTiz1LBtw0jrk1'];
+    //         console.log(docRefId)
 
-            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
+    //         setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
             
-        }
-    fetchData()
-    },[])
+    //     }
+    // fetchData()
+    // },[])
    
+    const db = firebase.firestore();
+
+db.settings({timestampsInSnapshots: true});
+
+const collection = db.collection('accounts').where('userID', '==', user.uid);
+
+collection.get().then(snapshot => {
+
+  snapshot.forEach(doc => {
+
+    console.log( doc.data().fname);    
+    console.log( user.uid );
+
+  });
+
+});
     
 
   return (
@@ -53,13 +69,13 @@ var user = firebase.auth().currentUser;
                 <div className="cell small-10"><br /><br />
                     </div>
                     
-                    {user.uid == 'mDZUiHyMfRMm9yQTiz1LBtw0jrk1' ? accounts.map(account => (
+                    {/* {user.uid == 'mDZUiHyMfRMm9yQTiz1LBtw0jrk1' ? accounts.map(account => (
                         
                         <>
                         <div className="cell small-10" key={account.id}><br /><br />{account.email} <br /><br /> {account.uid} <br /><br /> {account.name}</div>
                         </>
                         
-                        )) : 'Der ingen der logget ind'}
+                        )) : 'Der ingen der logget ind'} */}
                      
                         
                 <div>

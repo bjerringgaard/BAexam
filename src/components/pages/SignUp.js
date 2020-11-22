@@ -20,6 +20,7 @@ const SignUp = ({ history }) => {
                 db.collection('accounts').doc(cred.user.uid).set({
                   admin: false,
                   owner: false,
+                  userID: cred.user.uid
                 })
               })
             history.push ('/admin');
