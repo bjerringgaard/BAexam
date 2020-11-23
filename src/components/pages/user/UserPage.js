@@ -1,63 +1,58 @@
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react'
 import {Link} from 'react-router-dom';
 import './UserPage.scss';
-
+import firebase from '../../../Firebase'
+import { FiLogOut } from 'react-icons/fi';
+import { BiEdit } from 'react-icons/bi';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 function UserPage() {
+
+  var user = firebase.auth().currentUser;
+
+    // VIRKER SJOVT NOK HER MEN IKKE ANDRE STEDER
+    // .doc(user.uid).get().then(doc =>{
+    //     console.log("First Name: " + doc.data().fname)
+    //     console.log("Email: " + user.email)
+    // })
+    const [accounts, setAccounts] = useState([])
+    useEffect(() =>{
+        const fetchData = async () => {
+            const db = firebase.firestore()
+            const data = await db.collection('accounts').where('userID', '==', user.uid).get()
+            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
+        }
+
+    fetchData()
+    },[])
+   
+
   return (
-  <div className="grclassName-x main-area">
-      <div className="cell auto admin-component">
-        <div className="userPage-banner">
-          <div className="userPage-banner__logo">
-            <img src="http://placekitten.com/200/200" alt=""/>
-          </div>
-          <div>
-            <h1>USERNAME</h1>
-            <h3>COMPANY NAME</h3>
-          </div>
-        </div>
-        <Link to="/useredit"><p className="userPage-profileSettings">PROFILE SETTINGS</p></Link>
-        
-        <div className="userPage-messe">
-          <h2>MESSE TITLE</h2>
+<div className="user-component main-area">
+  <div className="grid-x user-information">
+  {accounts.map(account => (
+    <div className="cell small-10" key={account.id}>
+      <div className="cell"><h1>{account.fname}</h1></div>
+      <div className="cell user-information__text-blue">{account.username ? account.username : '@intet brugernavn'}</div>
+      <div className="cell user-information__text">{account.email}</div>
+      <div className="cell user-information__text"><BiEdit /></div>
+    </div>
+    ))}
+    <div className="cell small-2 user-information__logout"> <button className="user-information__button-text" onClick={() => firebase.auth().signOut()}>Logud <FiLogOut /></button> </div>
 
-          <div className="userPage-messe__entry">
-            <div className="userPage-messe__action">
-              <h5>COMPANY NAME</h5>
-              <p>NUM</p>
-              <p>...</p>
-            </div>
-
-            <div className="userPage-items">
-              <div className="userPage-items__first-row">
-                <div className="userPage-items__doctype"><p>DOCTYPE</p></div>
-                <div className="userPage-items__action">
-                  <p>COMMENT</p>
-                  <p>DELETE</p>
-                </div>
-              </div>
-
-              <div className="userPage-items__docinfo">
-                <h5>TITLE</h5>
-                <p>TEXT</p>
-              </div>
-
-              <div className="userPage-comment">
-                <div className="userPage-comment__profileimg">
-                  <img src="http://placekitten.com/50/50" alt=""/>
-                </div>
-                  <div className="userPage-comment__info">
-                    <div className="userPage-comment__first-row">
-                      <p><b>USERNAME</b></p>
-                      <p>CommentTime</p>
-                    </div>
-                    <p>CommentText</p>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  </div>
+  <h1>Bookmarks</h1>
+    <div className="grid-x user-bookmarks">
+    <div className="cell small-12 user-bookmarks__titel">
+    <div className="grid-x">
+      <div className="cell small-10 "><h2>Vi søger udvikler</h2></div>
+      <div className="cell small-2 user-bookmarks__delete"><h2><RiDeleteBinLine /></h2></div>
+      </div>  
+    </div>
+    <div className="cell small-12 user-bookmarks__text"><span>Format:</span><br />PDF</div>
+    <div className="cell small-12 user-bookmarks__text"><span>Firma :</span><br />Egeteknik</div>
+    <div className="cell small-12 user-bookmarks__comment "><span>Kommentar :</span><br />De virker som en god virksomhed, her vil jeg gerne søge job.</div>
+    </div>
   </div>
   );
 }

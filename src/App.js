@@ -28,7 +28,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
               <PrivateRoute path="/admin" component={Admin} />
-              <Route path="/userpage" component={UserPage} />
+              <PrivateRoute path="/userpage" component={UserPage} />
                 <Route path="/useredit" component={UserEdit} />
               <Route path="/testpage" component={TestingFirebase} />
               <Route path="/company/:companyID" component={CompanyPage} />

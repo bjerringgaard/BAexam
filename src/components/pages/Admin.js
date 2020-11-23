@@ -37,7 +37,7 @@ var user = firebase.auth().currentUser;
                     </div>
                     {accounts.map(account => (
                         <>
-                        <div className="cell small-10" key={account.id}><br /><br />Velkommen <strong>{account.email}, {account.fname}</strong> <br /><br /> {account.uid} <br /><br /> {account.fname}</div>
+                        <div className="cell small-10" key={account.id}>Velkommen <strong>{account.email}, {account.fname}, {account.uid}</strong></div>
                         </>
                     ))}    
                 <div>
