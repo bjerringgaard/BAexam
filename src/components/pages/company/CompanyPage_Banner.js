@@ -52,7 +52,6 @@ function CompanyPage_Banner() {
           </div>
         </div>
         <div className="ownerPage-header__bigBtn">
-          { currentUser.email == data.email ? <Link to="/company/egeteknik"><p>SE SOM BRUGER</p></Link> : '' }
           { currentUser.email == data.email ? <Link to="/company/egeteknik"><p>TILFØJ MESSE</p></Link> : '' }
         </div>
       </div>
