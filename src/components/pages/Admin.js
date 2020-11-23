@@ -8,12 +8,6 @@ import { firestore } from 'firebase';
 import { RiWheelchairFill } from 'react-icons/ri';
 
 function Admin() { 
-
-
-
-
-
-
 //const {currentUser} = useAuth();
 var user = firebase.auth().currentUser;
 
@@ -22,75 +16,34 @@ var user = firebase.auth().currentUser;
     //     console.log("First Name: " + doc.data().fname)
     //     console.log("Email: " + user.email)
     // })
-    // const [accounts, setAccounts] = useState([])
-    // useEffect(() =>{
-    //     const fetchData = async () => {
-    //         const db = firebase.firestore()
-            
-    //         const data = await db.collection('accounts').get()
-            
-    //         // udskriver det første ID i Collection
-    //         const docRefId = data.docs['mDZUiHyMfRMm9yQTiz1LBtw0jrk1'];
-    //         console.log(docRefId)
+    const [accounts, setAccounts] = useState([])
+    useEffect(() =>{
+        const fetchData = async () => {
+            const db = firebase.firestore()
+            const data = await db.collection('accounts').where('userID', '==', user.uid).get()
+            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
+        }
 
-    //         setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
-            
-    //     }
-    // fetchData()
-    // },[])
+    fetchData()
+    },[])
    
-    const db = firebase.firestore();
-
-db.settings({timestampsInSnapshots: true});
-
-const collection = db.collection('accounts').where('userID', '==', user.uid);
-
-collection.get().then(snapshot => {
-
-  snapshot.forEach(doc => {
-
-    console.log( doc.data().fname);    
-    console.log( user.uid );
-
-  });
-
-});
-    
-
   return (
     <div className="admin-component main-area">
         <div className="grid-x">
             <div className="cell auto">
-          
-   
-            <p className="admin-component__welcome">Velkommen <strong>
-            {/* {accounts.map(account => (  */}
+            <p className="admin-component__welcome">
                 <div>
-                <div className="cell small-10"><br /><br />
+                <div className="cell small-10">
                     </div>
-                    
-                    {/* {user.uid == 'mDZUiHyMfRMm9yQTiz1LBtw0jrk1' ? accounts.map(account => (
-                        
+                    {accounts.map(account => (
                         <>
-                        <div className="cell small-10" key={account.id}><br /><br />{account.email} <br /><br /> {account.uid} <br /><br /> {account.name}</div>
+                        <div className="cell small-10" key={account.id}><br /><br />Velkommen <strong>{account.email}, {account.fname}</strong> <br /><br /> {account.uid} <br /><br /> {account.fname}</div>
                         </>
-                        
-                        )) : 'Der ingen der logget ind'} */}
-                     
-                        
+                    ))}    
                 <div>
-<br /><br />
-                     {}   
-                  
-    
                 </div>
                 </div>
-            {/* ))}    */}
-            </strong>
-            </p>  
-   
-                                    
-            
+            </p>                       
             </div>
             <div className="cell auto admin-component__sign-out">
                 <button onClick={() => firebase.auth().signOut()}>Sign Out</button>  
