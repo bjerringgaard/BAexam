@@ -11,6 +11,7 @@ function CompanyPage_Banner() {
   const db = firebase.firestore().collection('accounts');
   const { companyID } = useParams();
   const { currentUser } = useAuth();
+  var user = firebase.auth().currentUser;
 
   const [companyData, setCompanyData] = React.useState([]);
 
@@ -30,7 +31,6 @@ function CompanyPage_Banner() {
     })
     return () => companyInformation
   },[])
-
 
 
   return (

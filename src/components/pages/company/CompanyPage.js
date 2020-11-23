@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
+import { Redirect } from "react-router";
 import firebase from '../../../Firebase'
 import { useAuth } from "../../../Auth";
 
@@ -69,6 +70,9 @@ function CompanyPage() {
       .delete()
     }
 
+  if (!currentUser) {
+    return <Redirect to="/login" />;
+  }
 
   return (
   <div className="grid-x main-area">

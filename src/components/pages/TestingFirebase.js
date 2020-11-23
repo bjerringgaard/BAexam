@@ -67,7 +67,6 @@ React.useEffect(() => {
   const unsubscribe = firebase
   db
   .collection('items')
-  .where('messeID', '==', 'agromek2020')
   .where('companyID', '==', 'egeteknik')
   .onSnapshot((snapshot) => {
     const company = snapshot.docs.map((doc) =>({
@@ -85,8 +84,9 @@ React.useEffect(() => {
       {user ? messeData.map( messe => (
         <div className="ownerPage-header">
           <h1>{messe.messeTitle}</h1>
-          {company.map(item =>(
-            <h2>{item.itemTitle}</h2>
+          {company.map(item => ( item.messeID == messe.messeID ? 
+            <h2>{item.itemTitle}</h2> : 
+            ''
           ))}
         </div>
       )) : 'DU SKAL LOGGE IND !!!!!'}
