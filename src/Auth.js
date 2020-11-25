@@ -11,6 +11,10 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [pending, setPending] = useState(true);
 
+  function updateEmail(email) {
+    return currentUser.updateEmail(email)
+  }
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setCurrentUser(user)
@@ -23,8 +27,10 @@ export const AuthProvider = ({ children }) => {
   }
 
 
+
+
   return (
-    <AuthContext.Provider value={{currentUser}}>
+    <AuthContext.Provider value={{currentUser, updateEmail}}>
       {children}
     </AuthContext.Provider>
   );

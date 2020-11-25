@@ -6,7 +6,7 @@ import Home from './components/pages/Home'
 import Login from './components/pages/Login'
 import SignUp from './components/pages/SignUp'
 import UserPage from './components/pages/user/UserPage'
-  import UserEdit from './components/pages/user/UserEdit'
+import UserEdit from './components/pages/user/UserEdit'
 import CompanyPage from './components/pages/company/CompanyPage'
 import About from './components/pages/About'
 import './App.scss';
