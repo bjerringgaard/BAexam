@@ -43,6 +43,7 @@ const [fname, setName] = React.useState(spell.fname);
 
   return (
     <>
+      <span class="label">Email</span>
       <input
       id="email"
       type="email"
@@ -50,18 +51,21 @@ const [fname, setName] = React.useState(spell.fname);
       required
       defaultValue={currentUser.email}
       />
+      <span class="label">Password</span>
       <input
       id="password"
       type="password"
       ref={passwordRef}
       placeholder="Leave blank to keep the same"
       />
+      <span class="label">Password</span>
       <input
       id="password-confirm"
       type="password"
       ref={passwordConfirmRef}
       placeholder="Leave blank to keep the same"
       />
+      <span class="label">Bruger Navn</span>
       <input
         value={fname}
         type="text"
