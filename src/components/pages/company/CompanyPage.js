@@ -5,6 +5,7 @@ import firebase from '../../../Firebase'
 import { useAuth } from "../../../Auth";
 
 import CompanyPage_Banner from './CompanyPage_Banner';
+import AddItem from './AddItem';
 
 import './CompanyPage.scss';
 import { BsFileEarmarkPlus, BsTrash, BsBookmark } from 'react-icons/bs';
@@ -15,6 +16,8 @@ function CompanyPage() {
   const db = firebase.firestore();
   const { currentUser } = useAuth();
 
+  const [hidden, setHidden] = React.useState(true);
+
   const [company, setCompany] = React.useState([]);
   const [companyData, setCompanyData] = React.useState([]);
   const [messeData, setMesseData] = React.useState([]);
@@ -23,7 +26,6 @@ function CompanyPage() {
   const [title, setTitle] = React.useState([]);
   const [desc, setDesc] = React.useState([]);
   const [file, setFile] = React.useState([]);
-  const [messe, setMesse] = React.useState([]);
 
   // Read Account
   React.useEffect(() => {  
@@ -110,9 +112,10 @@ function CompanyPage() {
   return (
     <div className="grid-x main-area">
       {companyData.map (account => (
-        <div className="cell auto admin-component">
+        <div key={account.id} className="cell auto admin-component">
           <CompanyPage_Banner />
 
+          {hidden ? '' : 
           <div className="ownerEdit-addItem">
             <form>
               <label>Title</label>
@@ -132,14 +135,17 @@ function CompanyPage() {
               />
               <br/>
               <br/>
+              <button onClick={() => setHidden(true)}>Hide</button>
             </form>
           </div>  
+          }
   
           {messeData.map (messe => (
-          <div className="ownerPage-messe">
+          <div key={messe.id} className="ownerPage-messe" >
             <div className="ownerPage-messe__action">
               <h2>{messe.messeTitle}</h2>
               <div className="right"> 
+                { currentUser.email == account.email ?  <Link onClick={() => setHidden(false)}><p className="refreshButton">Show</p></Link> : '' }
                 { currentUser.email == account.email ?  <Link onClick={() => addItem(messe.messeID)}><p className="refreshButton"><BsFileEarmarkPlus /></p></Link> : '' }
                 { currentUser.email == account.email ?  <Link to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></Link> : '' }
               </div>
