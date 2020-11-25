@@ -22,12 +22,10 @@ function CompanyPage() {
   const [companyData, setCompanyData] = React.useState([]);
   const [messeData, setMesseData] = React.useState([]);
   const { companyID } = useParams();
-  const messeIDtest = '';
 
   const [title, setTitle] = React.useState([]);
   const [desc, setDesc] = React.useState([]);
   const [file, setFile] = React.useState([]);
-  const [messe, setMesse] = React.useState([]);
 
   // Read Account
   React.useEffect(() => {  
@@ -82,7 +80,7 @@ function CompanyPage() {
   },[])
 
     // Add item
-    const addItem = () => {
+    const addItem = (messeID) => {
       db
       .collection('items')
       .add({
@@ -137,7 +135,7 @@ function CompanyPage() {
               />
               <br/>
               <br/>
-              <button onClick={() => AddItem()}></button>
+              <button onClick={() => setHidden(true)}>Hide</button>
             </form>
           </div>  
           }
@@ -147,8 +145,8 @@ function CompanyPage() {
             <div className="ownerPage-messe__action">
               <h2>{messe.messeTitle}</h2>
               <div className="right"> 
-                { currentUser.email == account.email ?  <Link onClick={() => setHidden(false)}><p className="refreshButton"><BsFileEarmarkPlus /></p></Link> : '' }
-                { currentUser.email == account.email ?  <Link onClick={() => AddItem(messe.messeID)}><p className="refreshButton"><BsFileEarmarkPlus /></p></Link> : '' }
+                { currentUser.email == account.email ?  <Link onClick={() => setHidden(false)}><p className="refreshButton">Show</p></Link> : '' }
+                { currentUser.email == account.email ?  <Link onClick={() => addItem(messe.messeID)}><p className="refreshButton"><BsFileEarmarkPlus /></p></Link> : '' }
                 { currentUser.email == account.email ?  <Link to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></Link> : '' }
               </div>
             </div>
