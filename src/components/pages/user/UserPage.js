@@ -46,7 +46,6 @@ function UserPage() {
         return () => unsubscribe
     },[])
 
-   
 
   return (
 <div className="user-component main-area">
@@ -75,7 +74,7 @@ function UserPage() {
     
   </div>
   <h1>Bookmarks</h1>
-  {notes.user ? notes.map(note => (
+  {notes.map(note => (
     <div className="grid-x user-bookmarks">
     
     <div className="cell small-12 user-bookmarks__titel">
@@ -89,7 +88,7 @@ function UserPage() {
     <div className="cell small-12 user-bookmarks__comment "><span>Kommentar :</span><br />{note.userNote}</div>
     
     </div>
-    )) : 'Du har ingen bookmarks endnu :)'}
+    ))}
   </div>
   );
 }

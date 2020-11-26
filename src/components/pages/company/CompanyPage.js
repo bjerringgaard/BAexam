@@ -1,31 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import { Redirect } from "react-router";
 import firebase from '../../../Firebase'
 import { useAuth } from "../../../Auth";
 
 import CompanyPage_Banner from './CompanyPage_Banner';
-import AddItem from './AddItem';
+import {Note} from './Note';
 
 import './CompanyPage.scss';
-import { BsFileEarmarkPlus, BsTrash, BsBookmark } from 'react-icons/bs';
+import { BsFileEarmarkPlus, BsTrash} from 'react-icons/bs';
 import { FiRefreshCw } from 'react-icons/fi';
-import { AiOutlineSend } from 'react-icons/ai';
 
 function CompanyPage() {
   const db = firebase.firestore();
   const { currentUser } = useAuth();
-
-  const [hidden, setHidden] = React.useState(true);
-
-  const [company, setCompany] = React.useState([]);
-  const [companyData, setCompanyData] = React.useState([]);
-  const [messeData, setMesseData] = React.useState([]);
   const { companyID } = useParams();
 
-  const [title, setTitle] = React.useState([]);
-  const [desc, setDesc] = React.useState([]);
-  const [file, setFile] = React.useState([]);
+  const [company, setCompany] = useState([]);
+  const [companyData, setCompanyData] = useState([]);
+  const [messeData, setMesseData] = useState([]);
+
+  const [hidden, setHidden] = useState(true);
 
   // Read Account
   React.useEffect(() => {  
@@ -80,6 +75,10 @@ function CompanyPage() {
   },[])
 
     // Add item
+    const [title, setTitle] = useState([]);
+    const [desc, setDesc] = useState([]);
+    const [file, setFile] = useState([]);
+
     const addItem = (messeID) => {
       db
       .collection('items')
@@ -151,7 +150,7 @@ function CompanyPage() {
               </div>
             </div>
   
-            {company.map(items =>( items.messeID == messe.messeID ?
+            {company.map(items => ( items.messeID == messe.messeID ?
               <div key={items.id} className="ownerPage-item">
                 <div className="ownerPage-itemAction">
                   <div className="ownerPage-itemAction__doctype">
@@ -166,23 +165,7 @@ function CompanyPage() {
                   <h5>{items.itemTitle}</h5>
                   <p>{items.itemDesc}</p>
                 </div>
-                
-                { currentUser.email == account.email ? '' :
-                <div>
-                  <hr/>
-                  <div className="ownerPage-item-comment">
-                    <div className="ownerPage-item-comment__profileimg">
-                      <img src="http://placekitten.com/50/50" alt=""/>
-                    </div>
-  
-                    <form>
-                      <input type="text" placeholder="Skriv en kommentar..."/>
-                      <button type="submit"><AiOutlineSend/></button>
-                      <button><BsBookmark /></button>
-                    </form>
-                  </div>
-                </div>
-                }
+                { currentUser.email == account.emailID ? '' : <Note items={items}/> }
               </div> 
               : ''
               ))}

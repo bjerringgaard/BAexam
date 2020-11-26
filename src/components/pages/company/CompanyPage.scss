@@ -254,11 +254,11 @@ hr{
         height: 50px;
         border: 1px solid lightgrey;
         border-radius: 10px;
-        margin: 0 10px;
+        margin: 0 10px 0 0;
         box-shadow: none;
       }
 
-      button{
+      a{
         justify-content: center;
         height: 50px;
         width: fit-content;
@@ -277,7 +277,7 @@ hr{
         }
 
         svg{
-          margin-top: -10px;
+          margin-top: 10px;
           font-size: 30px;
         }
       }
