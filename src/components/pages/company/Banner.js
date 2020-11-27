@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './CompanyPage.scss';
 import {Link, useParams} from 'react-router-dom';
 import firebase from '../../../Firebase'
@@ -6,14 +6,17 @@ import { useAuth } from "../../../Auth";
 
 import { BsPencil } from 'react-icons/bs';
 
+import { Messe } from './Messe';
 
-function CompanyPage_Banner() {
+
+function Banner() {
   const db = firebase.firestore().collection('accounts');
   const { companyID } = useParams();
   const { currentUser } = useAuth();
   var user = firebase.auth().currentUser;
 
   const [companyData, setCompanyData] = React.useState([]);
+  const [hidden, setHidden] = useState(true);
 
   // Read Company Account 
   React.useEffect(() => {  
@@ -52,12 +55,13 @@ function CompanyPage_Banner() {
           </div>
         </div>
         <div className="ownerPage-header__bigBtn">
-          { currentUser.email == data.email ? <Link to="/company/egeteknik"><p>TILFØJ MESSE</p></Link> : '' }
+          { currentUser.email == data.email ? <Link onClick={() => setHidden(false)}><p>TILFØJ MESSE</p></Link> : '' }
         </div>
+        {hidden ? '' :  <Messe /> }
       </div>
     ))}
     </div>
   );
 }
 
-export default CompanyPage_Banner;
+export default Banner;

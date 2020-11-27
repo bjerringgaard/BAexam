@@ -4,8 +4,9 @@ import { Redirect } from "react-router";
 import firebase from '../../../Firebase'
 import { useAuth } from "../../../Auth";
 
-import CompanyPage_Banner from './CompanyPage_Banner';
+import Banner from './Banner';
 import {Note} from './Note';
+import {Item} from './Item';
 
 import './CompanyPage.scss';
 import { BsFileEarmarkPlus, BsTrash} from 'react-icons/bs';
@@ -112,40 +113,21 @@ function CompanyPage() {
     <div className="grid-x main-area">
       {companyData.map (account => (
         <div key={account.id} className="cell auto admin-component">
-          <CompanyPage_Banner />
-
-          {hidden ? '' : 
-          <div className="ownerEdit-addItem">
-            <form>
-              <label>Title</label>
-              <input
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-              />
-              <label>Description</label>
-              <input
-              value={desc}
-              onChange={e => setDesc(e.target.value)}
-              />
-              <label>File</label>
-              <input
-              value={file}
-              onChange={e => setFile(e.target.value)}
-              />
-              <br/>
-              <br/>
-              <button onClick={() => setHidden(true)}>Hide</button>
-            </form>
-          </div>  
-          }
+          <Banner />
+          
   
           {messeData.map (messe => (
           <div key={messe.id} className="ownerPage-messe" >
+            {hidden ? '' : 
+            <div>
+            <Item messe={messe}/>
+            <Link onClick={() => setHidden(true)}>Close</Link>
+            </div>
+            }
             <div className="ownerPage-messe__action">
               <h2>{messe.messeTitle}</h2>
               <div className="right"> 
-                { currentUser.email == account.email ?  <Link onClick={() => setHidden(false)}><p className="refreshButton">Show</p></Link> : '' }
-                { currentUser.email == account.email ?  <Link onClick={() => addItem(messe.messeID)}><p className="refreshButton"><BsFileEarmarkPlus /></p></Link> : '' }
+                { currentUser.email == account.email ?  <Link onClick={() => setHidden(false)}><p className="refreshButton"><BsFileEarmarkPlus /></p></Link> : '' }
                 { currentUser.email == account.email ?  <Link to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></Link> : '' }
               </div>
             </div>

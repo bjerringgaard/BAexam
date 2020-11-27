@@ -1,20 +1,18 @@
 import React from 'react'
-import {Link, useParams} from 'react-router-dom';
-import { Redirect } from "react-router";
+import {useParams, Link} from 'react-router-dom';
 import firebase from '../../../Firebase'
-import { useAuth } from "../../../Auth";
 
-function AddItem() {
+export const Item = ({messe}) => {
   const [title, setTitle] = React.useState([]);
   const [desc, setDesc] = React.useState([]);
   const [file, setFile] = React.useState([]);
-  const [messe, setMesse] = React.useState([]);
+
   const db = firebase.firestore();
   const { companyID } = useParams();
 
 
   // Add item
-  const addItem = () => {
+  const addItem = (messe) => {
     db
     .collection('items')
     .add({
@@ -22,7 +20,7 @@ function AddItem() {
       itemTitle: title,
       itemDesc: desc,
       itemFile: file,
-      messeID: 'agromek2020',
+      messeID: messe,
     })
     .then (() => {
       setTitle('')
@@ -33,7 +31,7 @@ function AddItem() {
 
   return (
   <div className="ownerEdit-addItem">
-    <form>
+    <form id={messe.messeID}>
       <label>Title</label>
       <input
       value={title}
@@ -50,9 +48,8 @@ function AddItem() {
       onChange={e => setFile(e.target.value)}
       />
       <br/>
-      <button onClick={addItem}>Create</button>
+      <Link onClick={() => addItem(messe.messeID)}>Create</Link>
     </form>
   </div>
-  )
-}
-export default AddItem;
+  );
+};
