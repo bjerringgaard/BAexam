@@ -79,12 +79,13 @@ function UserPage() {
     
     <div className="cell small-12 user-bookmarks__titel">
     <div className="grid-x">
-      <div className="cell small-10 "><h2>Vi søger udvikler</h2></div>
+      <div className="cell small-10 "><h2>{note.itemTitle}</h2></div>
       <div className="cell small-2 user-bookmarks__delete"><h2><RiDeleteBinLine /></h2></div>
       </div>  
     </div>
-    <div className="cell small-12 user-bookmarks__text"><span>Format:</span><br />PDF</div>
-    <div className="cell small-12 user-bookmarks__text"><span>Firma :</span><br />Egeteknik</div>
+    <div className="cell small-12 user-bookmarks__text"><span>Format:</span><br />{note.itemFile}</div>
+    <div className="cell small-12 user-bookmarks__text"><span>Firma skal lige ændres i DBEN :</span><br />{note.itemDesc}</div>
+    <div className="cell small-12 user-bookmarks__text"><span>Description:</span><br />{note.itemDesc}</div>
     <div className="cell small-12 user-bookmarks__comment "><span>Kommentar :</span><br />{note.userNote}</div>
     
     </div>

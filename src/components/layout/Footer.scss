@@ -4,10 +4,14 @@
 .footer {
     min-height: 10vh;
     background-color: blue;
-    color: $white;
+    color: lighten( $black, 10% );
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
     @include breakpoint(large) {
-        background-color: $dark-gray;
+        background-color: lighten( $black, 90% );
       }
 
 }

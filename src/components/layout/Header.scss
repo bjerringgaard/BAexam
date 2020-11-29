@@ -3,8 +3,8 @@
 
 .header {
     min-height: 10vh;
-    background-color: #383838;
-    color: $white;
+    background-color: lighten( $black, 90% );
+    color: lighten( $black, 10% );
 
     &__navigation {
         flex-direction: column;
@@ -16,7 +16,7 @@
         font-size: 5px;
 
         a {
-            color: $white;
+            color: lighten( $black, 10% );
         }
     
         a:hover {

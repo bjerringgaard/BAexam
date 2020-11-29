@@ -44,6 +44,11 @@
 .user-information {
   margin-bottom: 25px;
 
+  .label {
+  background-color: $dollargreen;
+  font-size: 1rem;
+  padding: .5rem .5rem;
+  }
   svg {
     font-size: 1.9rem;
     margin-left: 0px;
