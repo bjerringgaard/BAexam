@@ -5,17 +5,65 @@
 .admin-component {
     padding: 25px;
 
+    button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 6px 12px;
+        margin-top: 5px;
+        height: 50px;
+        font-size: 1rem;
+        border-radius: 10px;
+        background-color: darken( $dollargreen, 20% );
+        color: $white;
+    
+        svg {
+          font-size: 1.2rem;
+          margin-left: 10px;
+          margin-top: 0px;
+          color: lighten( $black, 85% );;
+        }
+    
+        &:hover {
+            background-color: darken( $dollargreen, 25% );
+            color: $white;
+            cursor: pointer;   
+        }
+      }    
+
     &__sign-out{
         display: flex;
         justify-content: flex-end;
+        button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6px 12px;
+            margin-top: 5px;
+            height: 50px;
+            font-size: 1rem;
+            border-radius: 10px;
+            background-color: $logoutred;
+            color: $white;
+        
+            svg {
+              font-size: 1.2rem;
+              margin-left: 10px;
+              margin-top: 0px;
+              color: lighten( $black, 85% );;
+            }
+        
+            &:hover {
+                background-color: darken( $logoutred, 10% );
+                color: $white;
+                cursor: pointer;   
+            }
+          }
     }
 
-    button {
-        background-color: #1f1f1f;
-        color: white;
-        padding: 20px;
-        cursor: pointer;  
-    }
+
 
     &__welcome {
         font-size: 1rem;
@@ -23,27 +71,33 @@
 
     h1 {
        font-weight: 600;
+       font-size: 1.8rem;
     }
 }
 
 .admin-panel {
-    background-color: #383838;
-    padding: 25px;
-    color: #e4e4db;
+    background-color: none;
+    padding-top: 25px;
+    color: $black;
     margin-top: 25px;
     margin-bottom: 25px;
     border-radius: 10px;
+    border: 1px solid;
+    border-color: lighten( $black, 85% );
 
     &__header {
         font-weight: 600;
 
         svg{
-            color: $dollargreen;
+            color: darken( $dollargreen, 15% );
+            font-size: 25px;
+            margin-right: 25px;
         }
     }
 
     &__text {
         padding-left: 25px;
+        font-size: 1.2rem;
     }
 
     &__create {
@@ -53,19 +107,10 @@
 
     &__content {
         margin-top: 25px;
-        margin-bottom: 25px;
         width: 100%;
     }
 
-    svg {
-        font-size: 25px;
-        margin-right: 15px;
 
-        &:hover {
-            color: #56d7af;
-        }
-        
-    }
 
     .icons {
         display: flex;
@@ -74,54 +119,52 @@
 
     &__information {
         margin: 25px;
+        svg {
+            font-size: 25px;
+            margin-right: 15px;
+            color: lighten( $black, 10% );
+    
+            &:hover {
+                color: #56d7af;
+            }
+            
+        }
     }
 
     &__users {
-        background-color: #505050;
+        background-color: lighten( $black, 95% );
+        font-size: 0.9rem;
+        font-weight: 500;
     }
 
     &__owners {
-        background-color: #585858;
+        background-color: lighten( $black, 95% );
+        font-size: 0.9rem;
+        font-weight: 500;
     }
 
 }
 
 .create-owner {
  margin-top: 25px;
- padding: 25px;
- background-color: #383838;
  border-radius: 10px;
 
- h1 {
-    font-weight: 600;
- }
-
- input {
-     background-color: #505050;
-     color: $white;
-
-     &:focus {
-         background-color: #505050;
-     }
- }
-
- label{
-     margin-top: 10px;
- }
-
- button {
-    background-color: #1f1f1f;
-    color: $white;
-    padding: 20px;
-    outline: none;
-    margin-top: 15px;
-
-    &:hover {
-        background-color: #292929;
-        color: $white;
-        cursor: pointer;   
-    }
+ .label {
+    background-color: lighten( $black, 90% );
+    color: $black;
+    font-size: 0.9rem;
+    padding: .5rem .5rem;
 }
+
+h1 {
+    font-weight: 600;
+}
+
+
+label{
+    margin-top: 10px;
+}
+
 
   &__header {
     color: $white;

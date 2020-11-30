@@ -46,13 +46,13 @@ export default function AdminView() {
             <div className="grid-x admin-panel">
             <div className="cell small-6 admin-panel__header">
                 <div className="grid-x">
-                    <div className="cell small-6 admin-panel__text">Users</div>
+                    <div className="cell small-6 admin-panel__text">Companies</div>
                     <div className="cell small-6 admin-panel__create"><BsPersonPlus /></div>
                 </div>
             </div>
                 <div className="cell small-6 admin-panel__header">
                 <div className="grid-x">
-                    <div className="cell small-6 admin-panel__text">Owner</div>
+                    <div className="cell small-6 admin-panel__text">Users</div>
                     <div className="cell small-6 admin-panel__create"><BsPersonPlus /></div>
                 </div>
                 </div>

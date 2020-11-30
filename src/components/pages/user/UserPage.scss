@@ -1,10 +1,6 @@
 @import '../../../settings';
 @import '~foundation-sites/scss/foundation';
 
-
-.color{
-  background-color: blue;
-}
 // User Profile
 .user-component {
   padding: 25px;
@@ -24,7 +20,7 @@
     height: 50px;
     font-size: 1.2rem;
     border-radius: 10px;
-    background: $logoutred;
+    background-color: darken( $dollargreen, 15% );
     color: $white;
 
     svg {
@@ -34,7 +30,7 @@
     }
 
     &:hover {
-        background-color: darken( $logoutred, 10% );
+        background-color: darken( $dollargreen, 25% );
         color: $white;
         cursor: pointer;   
     }
@@ -44,11 +40,15 @@
 .user-information {
   margin-bottom: 25px;
 
+  
+
   .label {
-  background-color: $dollargreen;
-  font-size: 1rem;
-  padding: .5rem .5rem;
-  }
+    background-color: lighten( $black, 90% );
+    color: $black;
+    font-size: 0.9rem;
+    padding: .5rem .5rem;
+}
+
   svg {
     font-size: 1.9rem;
     margin-left: 0px;
@@ -68,6 +68,31 @@
   &__logout{
     display: flex; 
     justify-content: flex-end;
+    button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6px 12px;
+      margin-top: 5px;
+      height: 50px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      background-color:$logoutred;
+      color: $white;
+  
+      svg {
+        font-size: 1.2rem;
+        margin-left: 10px;
+        margin-top: 0px;
+      }
+  
+      &:hover {
+          background-color: darken( $logoutred, 10% );
+          color: $white;
+          cursor: pointer;   
+      }
+    }
   }
 }
 
