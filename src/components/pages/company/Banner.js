@@ -56,6 +56,7 @@ function Banner() {
         </div>
         <div className="ownerPage-header__bigBtn">
           { currentUser.uid === account.id ? <Link onClick={() => setHidden(false)}><p>TILFØJ MESSE</p></Link> : '' }
+          { currentUser.uid === account.id ? <Link onClick={() => setHidden(false)}><p>TILFØJ INDHOLD</p></Link> : '' }
         </div>
         {hidden ? '' :  <Messe /> }
       </div>
