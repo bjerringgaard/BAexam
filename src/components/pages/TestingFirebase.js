@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import firebase from '../../Firebase'
 
 export default function TestingFirebase() {
-  /*
+  
     const [spells, setSpells] = useState([])
     const [newOwnerHeader, setnewOwnerHeader] = React.useState([])
 
@@ -39,7 +39,7 @@ const onCreate = (e) => {
           .collection("spell")
           .doc(id)
           .delete()
-    } */ 
+    } 
 
 const db = firebase.firestore();
 var user = firebase.auth().currentUser;
