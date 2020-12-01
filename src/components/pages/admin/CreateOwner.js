@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { withRouter } from 'react-router-dom';
-import firebase from '../../Firebase'
+import firebase from '../../../Firebase'
 
 const CreateOwner = ({ history }) => {
     const [fname, setName] = React.useState([]);

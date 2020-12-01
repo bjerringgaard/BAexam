@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import './Login.scss';
 import firebase from '../../Firebase'
 import { AuthContext } from "../../Auth";
+import { firestore } from "firebase";
 
 const Login = ({ history }) => {
 
@@ -16,7 +17,7 @@ const Login = ({ history }) => {
         await firebase
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/admin");
+        history.push("/userpage");
       } catch (error) {
         alert(error);
       }
@@ -29,7 +30,7 @@ const Login = ({ history }) => {
 
 
   if (currentUser) {
-    return <Redirect to="/admin" />;
+    return <Redirect to="/userpage" />;
   }
 
   return (
@@ -54,7 +55,6 @@ const Login = ({ history }) => {
             <input type="submit" value="Submit" />
             <div className="login-form__bottom-text">
               <p>Ingen Konto? <Link to="/signUp">Opret bruger her</Link></p>
-              <p>Vil du vide mere om os? <Link to="/about">Klik her</Link></p>
             </div>
           </div>
         </form>

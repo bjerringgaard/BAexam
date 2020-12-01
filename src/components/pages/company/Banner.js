@@ -49,7 +49,7 @@ function Banner() {
             <h1>{account.name}</h1>
             <p>{account.desc}</p>
             <div className="infolinks">
-              <Link className="contact-link" href={"mailto:" + account.contactemail}>Contact us</Link>
+              <Link className="contact-link" to={"mailto:" + account.contactemail}>Contact us</Link>
               { currentUser.uid === account.id ? <a>Rediger profil <BsPencil/></a>: ''}
             </div>
           </div>

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { FiRefreshCw } from 'react-icons/fi';
 import { BsPersonPlus } from 'react-icons/bs';
-import firebase from '../../Firebase'
+import firebase from '../../../Firebase'
 //import { useAuth } from "../../Auth";
 
 export default function AdminView() {
@@ -70,7 +70,7 @@ export default function AdminView() {
                     <div className="cell small-6 admin-panel__users">
                     {users.map(user => (
                         <div className="grid-x admin-panel__information" key={user.id}>
-                                <div className="cell small-10">{user.fname}</div>
+                                <div className="cell small-10">{user.name}</div>
                                 <div className="cell auto icons"><RiDeleteBinLine /> <FiRefreshCw /></div>
                         </div>
                         ))}

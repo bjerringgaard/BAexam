@@ -19,11 +19,12 @@ const SignUp = ({ history }) => {
             .then(cred => {
                 db.collection('accounts').doc(cred.user.uid).set({
                   admin: false,
-                  owner: false,
-                  userID: cred.user.uid
+                  company: false,
+                  user: true,
+                  id: cred.user.uid
                 })
               })
-            history.push ('/admin');
+            history.push ('/userpage');
         
         }
         catch (error) {

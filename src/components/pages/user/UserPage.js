@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './UserPage.scss';
 import firebase from '../../../Firebase'
 import {UserUpdate} from './UserUpdate'
@@ -22,8 +22,8 @@ function UserPage() {
     useEffect(() =>{
         const fetchData = async () => {
             const db = firebase.firestore()
-            const data = await db.collection('accounts').where('userID', '==', user.uid).get()
-            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
+            const data = await db.collection('accounts').where('id', '==', user.uid).get()
+            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, id:user.uid, email: user.email})))
         }
 
     fetchData()
@@ -35,7 +35,7 @@ function UserPage() {
         const unsubscribe = firebase
         .firestore()
         .collection('notes')
-        .where('userID', '==', user.uid)
+        .where('id', '==', user.uid)
         .onSnapshot((snapshot) => {
             const newNote = snapshot.docs.map((doc) =>({
                 id: doc.id,
@@ -56,9 +56,9 @@ function UserPage() {
   {accounts.map(account => (
     <div className="cell small-10" key={account.id}>
     
-      <div className="cell"><h1>{account.fname}</h1></div>
-      <div className="cell user-information__text-blue">{account.username ? account.username : '@intet brugernavn'}</div>
+      <div className="cell"><h1>{account.name}</h1></div>
       <div className="cell user-information__text">{account.email}</div>
+      <Link className="cell user-information__text-blue" to={"company/" + account.companyID} >Go til Company page</Link>
       <div className="cell user-information__text"><BiEdit /></div>
       {/* <input
         value={account.fname}

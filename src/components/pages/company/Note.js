@@ -20,7 +20,7 @@ export const Note = ({items}) => {
       itemDesc: desc,
       itemFile: file,
       messeID: messe,
-      userID: currentUser.uid,
+      id: currentUser.uid,
       userNote: note,
     })
     .then (() => {
@@ -37,7 +37,7 @@ export const Note = ({items}) => {
       itemDesc: desc,
       itemFile: file,
       messeID: messe,
-      userID: currentUser.uid,
+      id: currentUser.uid,
     })
   }
 

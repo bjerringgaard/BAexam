@@ -11,7 +11,7 @@ const { currentUser, updatePassword, updateEmail } = useAuth()
 const history = useHistory()
 const [error, setError] = useState("")
 const [loading, setLoading] = useState(false)
-const [fname, setName] = React.useState(spell.fname);
+const [name, setName] = React.useState(spell.name);
 const [adresse, setAdresse] = React.useState(spell.adresse);
 const [cvr, setCvr] = React.useState(spell.cvr);
 const [desc, setDesc] = React.useState(spell.desc);
@@ -22,7 +22,32 @@ const [logo, setLogo] = React.useState(spell.logo);
     const db = firebase.firestore()
     const promises = []
  
-    db.collection('accounts').doc(spell.uid).set({...spell, fname, adresse, cvr, desc, phone, logo})
+    db.collection('accounts').doc(spell.id).set({...spell, name, adresse, cvr, desc, phone, logo})
+    if (emailRef.current.value !== currentUser.email) {
+        promises.push(updateEmail(emailRef.current.value))
+      }
+      if (passwordRef.current.value) {
+        promises.push(updatePassword(passwordRef.current.value))
+      }
+
+
+    Promise.all(promises)
+    .then(() => {
+      history.push("/userpage")
+    })
+    .catch(() => {
+      setError("Failed to update account")
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+  }
+
+  const onUpdateUser = () => {
+    const db = firebase.firestore()
+    const promises = []
+ 
+    db.collection('accounts').doc(spell.id).set({...spell, name})
     if (emailRef.current.value !== currentUser.email) {
         promises.push(updateEmail(emailRef.current.value))
       }
@@ -72,12 +97,13 @@ const [logo, setLogo] = React.useState(spell.logo);
       />
       <span class="label">Bruger Navn</span>
       <input
-        value={fname}
+        value={name}
         type="text"
         onChange={e => {
           setName(e.target.value);
         }}
       />
+      <button onClick={onUpdateUser}>Update</button>
       </div>
 
       :
@@ -107,7 +133,7 @@ const [logo, setLogo] = React.useState(spell.logo);
       />
       <span class="label">Bruger Navn</span>
       <input
-        value={fname}
+        value={name}
         type="text"
         onChange={e => {
           setName(e.target.value);
@@ -153,9 +179,10 @@ const [logo, setLogo] = React.useState(spell.logo);
           setLogo(e.target.value);
         }}
       />
+      <button onClick={onUpdate}>Update</button>
       </div>
       }      
-      <button onClick={onUpdate}>Update</button>
+      
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './Admin.scss';
-import firebase from '../../Firebase'
+import firebase from '../../../Firebase'
 //import { useAuth } from "../../Auth";
 import AdminView from './AdminView';
 import CreateOwner from './CreateOwner';
@@ -19,8 +19,8 @@ var user = firebase.auth().currentUser;
     useEffect(() =>{
         const fetchData = async () => {
             const db = firebase.firestore()
-            const data = await db.collection('accounts').where('userID', '==', user.uid).get()
-            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
+            const data = await db.collection('accounts').where('id', '==', user.uid).get()
+            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, id:user.uid, email: user.email})))
         }
     fetchData()
     },[])
@@ -35,7 +35,7 @@ var user = firebase.auth().currentUser;
                     </div>
                     {accounts.map(account => (
                         <>
-                        <div className="cell small-10" key={account.id}>Velkommen <strong>{account.email}, {account.fname}, {account.uid}</strong></div>
+                        <div className="cell small-10" key={account.id}>Velkommen <strong>{account.email}, {account.name}, {account.id}</strong></div>
                         </>
                     ))}    
                 <div>
