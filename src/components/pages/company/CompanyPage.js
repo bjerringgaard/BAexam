@@ -75,28 +75,6 @@ function CompanyPage() {
     return () => unsubscribe
   },[])
 
-    // Add item
-    const [title, setTitle] = useState([]);
-    const [desc, setDesc] = useState([]);
-    const [file, setFile] = useState([]);
-
-    const addItem = (messeID) => {
-      db
-      .collection('items')
-      .add({
-        companyID: companyID,
-        itemTitle: title,
-        itemDesc: desc,
-        itemFile: file,
-        messeID: messeID,
-      })
-      .then (() => {
-        setTitle('')
-        setDesc('')
-        setFile('')
-      })
-    }
-
     // Delete Item
     const deleteItem = (id) => {
       db
@@ -112,23 +90,22 @@ function CompanyPage() {
   return (
     <div className="grid-x main-area">
       {companyData.map (account => (
-        <div key={account.id} className="cell auto admin-component">
+        <div key={account.id} className="cell auto">
           <Banner />
           
-  
           {messeData.map (messe => (
           <div key={messe.id} className="ownerPage-messe" >
             {hidden ? '' : 
-            <div>
-            <Item messe={messe}/>
-            <Link onClick={() => setHidden(true)}>Close</Link>
-            </div>
+              <div>
+              <Item messe={messe} />
+              <Link onClick={() => setHidden(true)}>Close</Link>
+              </div>
             }
             <div className="ownerPage-messe__action">
               <h2>{messe.messeTitle}</h2>
               <div className="right"> 
-                { currentUser.email == account.email ?  <Link onClick={() => setHidden(false)}><p className="refreshButton"><BsFileEarmarkPlus /></p></Link> : '' }
-                { currentUser.email == account.email ?  <Link to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></Link> : '' }
+                { currentUser.uid == account.id ?  <Link onClick={() => setHidden(false)}><p className="refreshButton"><BsFileEarmarkPlus /></p></Link> : '' }
+                { currentUser.uid == account.id ?  <Link to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></Link> : '' }
               </div>
             </div>
   
@@ -139,15 +116,15 @@ function CompanyPage() {
                     <p className={items.itemFile}>{items.itemFile}</p>
                   </div>
                   <div className="ownerPage-item__actions">
-                    { currentUser.email == account.email ? <button className="refreshButton"><p><FiRefreshCw /></p></button> : '' }
-                    { currentUser.email == account.email ? <button className="deleteButton" onClick={() => deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
+                    { currentUser.uid == account.id ? <button className="refreshButton"><p><FiRefreshCw /></p></button> : '' }
+                    { currentUser.uid == account.id ? <button className="deleteButton" onClick={() => deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
                   </div>
                 </div>
                 <div className="ownerPage-item__info">
                   <h5>{items.itemTitle}</h5>
                   <p>{items.itemDesc}</p>
                 </div>
-                { currentUser.email == account.emailID ? '' : <Note items={items}/> }
+                { currentUser.uid != account.id ? <Note items={items}/> : '' }
               </div> 
               : ''
               ))}

@@ -1,11 +1,10 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect} from 'react'
 import './Admin.scss';
 import firebase from '../../Firebase'
-import { useAuth } from "../../Auth";
+//import { useAuth } from "../../Auth";
 import AdminView from './AdminView';
 import CreateOwner from './CreateOwner';
-import { firestore } from 'firebase';
-import { RiWheelchairFill } from 'react-icons/ri';
+//import { firestore } from 'firebase';
 
 function Admin() { 
 //const {currentUser} = useAuth();
@@ -23,10 +22,9 @@ var user = firebase.auth().currentUser;
             const data = await db.collection('accounts').where('userID', '==', user.uid).get()
             setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, uid:user.uid, email: user.email})))
         }
-
     fetchData()
     },[])
-   
+
   return (
     <div className="admin-component main-area">
         <div className="grid-x">

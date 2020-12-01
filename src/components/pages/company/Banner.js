@@ -13,7 +13,7 @@ function Banner() {
   const db = firebase.firestore().collection('accounts');
   const { companyID } = useParams();
   const { currentUser } = useAuth();
-  var user = firebase.auth().currentUser;
+  // var user = firebase.auth().currentUser;
 
   const [companyData, setCompanyData] = React.useState([]);
   const [hidden, setHidden] = useState(true);
@@ -38,24 +38,24 @@ function Banner() {
 
   return (
     <div>
-    {companyData.map(data => (
-      <div className="ownerPage-header">
+    {companyData.map(account => (
+      <div className="ownerPage-header" key={account.id} >
         <div className="ownerPage-banner">
           <div className="ownerPage-banner__logo">
-            <img src={data.logo} alt=""/>
+            <img src={account.logo} alt=""/>
           </div>
 
           <div className="ownerPage-banner__text">
-            <h1>{data.name}</h1>
-            <p>{data.desc}</p>
+            <h1>{account.name}</h1>
+            <p>{account.desc}</p>
             <div className="infolinks">
-              <a className="contact-link" href={"mailto:" + data.contactemail}>Contact us</a>
-              { currentUser.email == data.email ? <a href="">Rediger profil <BsPencil/></a>: ''}
+              <Link className="contact-link" href={"mailto:" + account.contactemail}>Contact us</Link>
+              { currentUser.uid === account.id ? <a>Rediger profil <BsPencil/></a>: ''}
             </div>
           </div>
         </div>
         <div className="ownerPage-header__bigBtn">
-          { currentUser.email == data.email ? <Link onClick={() => setHidden(false)}><p>TILFØJ MESSE</p></Link> : '' }
+          { currentUser.uid === account.id ? <Link onClick={() => setHidden(false)}><p>TILFØJ MESSE</p></Link> : '' }
         </div>
         {hidden ? '' :  <Messe /> }
       </div>

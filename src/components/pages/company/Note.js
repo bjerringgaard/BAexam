@@ -50,7 +50,7 @@ export const Note = ({items}) => {
               <img src="http://placekitten.com/50/50" alt=""/>
             </div> */}
             <form id={items.id} >
-              <input id={items.id} name={items.id} type="text" placeholder="Skriv en kommentar..." value={note} onChange={e => setNote(e.target.value)}/>
+              <input id={items.id} name={items.id} type="text" placeholder="Skriv et personligt notat..." value={note} onChange={e => setNote(e.target.value)}/>
               <Link onClick={() => addNote(items.itemTitle, items.itemDesc, items.itemFile, items.messeID)}><p className="refreshButton"><AiOutlineSend/></p></Link>
               <Link onClick={() => addBookmark(items.itemTitle, items.itemDesc, items.itemFile, items.messeID)}><p className="refreshButton"><BsBookmark /></p></Link>
             </form>

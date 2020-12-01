@@ -14,7 +14,7 @@ const CreateOwner = ({ history }) => {
         event.preventDefault();
         const { email, password, fname, adresse, companyID, cvr, phone, desc, logo } = event.target.elements;
         const db = firebase.firestore()
-        const user = firebase.auth()
+        //const user = firebase.auth()
         try {
             await firebase
                 .auth()
