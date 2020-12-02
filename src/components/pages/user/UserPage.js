@@ -8,15 +8,12 @@ import { BiEdit } from 'react-icons/bi';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 function UserPage() {
-
   var user = firebase.auth().currentUser;
-
     // VIRKER SJOVT NOK HER MEN IKKE ANDRE STEDER
     // .doc(user.uid).get().then(doc =>{
     //     console.log("First Name: " + doc.data().fname)
     //     console.log("Email: " + user.email)
     // })
-
     // USER INFORMATION
     const [accounts, setAccounts] = useState([])
     useEffect(() =>{
@@ -35,7 +32,7 @@ function UserPage() {
         const unsubscribe = firebase
         .firestore()
         .collection('notes')
-        .where('id', '==', user.uid)
+        .where('noteID', '==', user.uid)
         .onSnapshot((snapshot) => {
             const newNote = snapshot.docs.map((doc) =>({
                 id: doc.id,
@@ -46,6 +43,15 @@ function UserPage() {
         return () => unsubscribe
     },[])
 
+   // DELETE USER NOTES
+   const deleteItem = (noteID) => {
+    firebase
+      .firestore()
+      .collection("notes")
+      .doc(noteID)
+      .delete()
+      console.log(noteID)
+}
 
   return (
 <div className="user-component main-area">
@@ -53,7 +59,7 @@ function UserPage() {
 
   <div className="grid-x user-information">
   
-  {accounts.map(account => (
+  {accounts.map(account => ( 
     <div className="cell small-10" key={account.id}>
     
       <div className="cell"><h1>{account.name}</h1></div>
@@ -67,20 +73,25 @@ function UserPage() {
         }}
       /> */}
       <UserUpdate spell={account} />
+
     </div>
     ))}
     <div className="cell small-2 user-information__logout"> <button className="user-information__button-text" onClick={() => firebase.auth().signOut()}>Logud <FiLogOut /></button> </div>
-
     
   </div>
   <h1>Bookmarks</h1>
-  {notes.map(note => (
-    <div className="grid-x user-bookmarks">
+      {notes.map(note => (
+    <div key={note.id} className="grid-x user-bookmarks">
     
     <div className="cell small-12 user-bookmarks__titel">
     <div className="grid-x">
+      
       <div className="cell small-10 "><h2>{note.itemTitle}</h2></div>
-      <div className="cell small-2 user-bookmarks__delete"><h2><RiDeleteBinLine /></h2></div>
+      <div className="cell small-2 user-bookmarks__delete">
+        <h2>
+        <RiDeleteBinLine onClick={() => deleteItem(note.id)}/>
+          </h2>
+        </div>
       </div>  
     </div>
     <div className="cell small-12 user-bookmarks__text"><span>Format:</span><br />{note.itemFile}</div>

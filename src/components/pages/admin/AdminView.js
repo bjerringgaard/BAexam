@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { RiDeleteBinLine } from 'react-icons/ri';
-import { FiRefreshCw } from 'react-icons/fi';
+//import { FiRefreshCw } from 'react-icons/fi';
 import { BsPersonPlus } from 'react-icons/bs';
 import firebase from '../../../Firebase'
 //import { useAuth } from "../../Auth";
@@ -62,7 +62,7 @@ export default function AdminView() {
                     {accounts.map(account => (
                         <div className="grid-x admin-panel__information" key={account.id}>
                                 <div className="cell small-10">{account.name}</div>
-                                <div className="cell auto icons"><RiDeleteBinLine /> <FiRefreshCw /></div>
+                                <div className="cell auto icons"><RiDeleteBinLine /></div>
                         </div>
                         ))}
                     </div>
@@ -71,7 +71,7 @@ export default function AdminView() {
                     {users.map(user => (
                         <div className="grid-x admin-panel__information" key={user.id}>
                                 <div className="cell small-10">{user.name}</div>
-                                <div className="cell auto icons"><RiDeleteBinLine /> <FiRefreshCw /></div>
+                                <div className="cell auto icons"><RiDeleteBinLine /></div>
                         </div>
                         ))}
                     </div>

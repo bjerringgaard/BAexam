@@ -3,19 +3,19 @@ import firebase from '../../Firebase'
 
 export default function TestingFirebase() {
   
-    const [spells, setSpells] = useState([])
+    const [notes, setNotes] = useState([])
     const [newOwnerHeader, setnewOwnerHeader] = React.useState([])
 
     useEffect(() =>{
         const unsubscribe = firebase
         .firestore()
-        .collection('spell')
+        .collection('notes')
         .onSnapshot((snapshot) => {
-            const newSpells = snapshot.docs.map((doc) =>({
+            const newNotes = snapshot.docs.map((doc) =>({
                 id: doc.id,
                 ...doc.data()
             }))
-            setSpells(newSpells)
+            setNotes(newNotes)
         })
         return () => unsubscribe
     },[])
@@ -33,12 +33,13 @@ const onCreate = (e) => {
     })
 }
 
-    const deleteItem = (id) => {
+    const deleteItem = (uid) => {
         firebase
           .firestore()
-          .collection("spell")
-          .doc(id)
+          .collection("notes")
+          .doc(uid)
           .delete()
+          console.log(uid)
     } 
 
 const db = firebase.firestore();
@@ -80,6 +81,9 @@ React.useEffect(() => {
 
 
     return (
+
+<div>
+      
       <div>
       {user ? messeData.map( messe => (
         <div className="ownerPage-header">
@@ -94,7 +98,7 @@ React.useEffect(() => {
 
 
 
-      /*
+      
         <div>
         <input
             value={newOwnerHeader}
@@ -102,14 +106,14 @@ React.useEffect(() => {
             />
         <button onClick={onCreate}>Create</button>
 
-        {spells.map(spell => (
-                <div key={spells.id}>
-                <p> {spell.name}</p>
-                <button onClick={() => deleteItem(spell.id)}>Delete</button>
+        {notes.map(note => (
+                <div key={note.id}>
+                <p> {note.itemDesc}</p>
+                <button onClick={() => deleteItem(note.id)}>Delete</button>
                 </div>
             ))}
         </div>
-        */
       
+      </div>
     );
 }
