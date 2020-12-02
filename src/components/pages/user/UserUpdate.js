@@ -186,3 +186,5 @@ const [logo, setLogo] = React.useState(spell.logo);
     </>
   );
 };
+
+export default UserUpdate;

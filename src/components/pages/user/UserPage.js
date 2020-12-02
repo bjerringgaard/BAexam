@@ -6,23 +6,33 @@ import {UserUpdate} from './UserUpdate'
 import { FiLogOut } from 'react-icons/fi';
 import { BiEdit } from 'react-icons/bi';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { AiOutlineCloseSquare } from 'react-icons/ai';
+
 
 function UserPage() {
+
+
+  
   var user = firebase.auth().currentUser;
     // VIRKER SJOVT NOK HER MEN IKKE ANDRE STEDER
     // .doc(user.uid).get().then(doc =>{
     //     console.log("First Name: " + doc.data().fname)
     //     console.log("Email: " + user.email)
     // })
+
+    // VISER REDIGERNG MODAL HVIS MAN CLICKER
+    const [showResults, setShowResults] = useState(false)
+    const onClick = () => setShowResults(true)
+    const onClose = () => setShowResults(false)
+
     // USER INFORMATION
     const [accounts, setAccounts] = useState([])
-    useEffect(() =>{
-        const fetchData = async () => {
-            const db = firebase.firestore()
-            const data = await db.collection('accounts').where('id', '==', user.uid).get()
-            setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, id:user.uid, email: user.email})))
-        }
-
+    useEffect(() => {
+      const fetchData = async () => {
+          const db = firebase.firestore()
+          const data = await db.collection('accounts').where('id', '==', user.uid).get()
+          setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, id:user.uid, email: user.email})))
+        }     
     fetchData()
     },[])
 
@@ -60,9 +70,8 @@ function UserPage() {
       <div className="cell small-10" key={account.id}>
         <div className="cell"><h1>{account.name}</h1></div>
         <div className="cell user-information__text">{account.email}</div>
-        <Link className="cell user-information__text-blue" to={"company/" + account.companyID} >Go til Company page</Link>
-        <div className="cell user-information__text"><BiEdit /></div>
-        <UserUpdate spell={account} />
+        {account.company === true ? <Link className="cell user-information__text-blue" to={"company/" + account.companyID} >Go til Company page</Link> : ''}
+        <div className="cell user-information__text"><BiEdit onClick={onClick}/> { showResults ? <><AiOutlineCloseSquare onClick={onClose}/>  <UserUpdate spell={account} /></> : '' }</div>
       </div>
       ))}
       <div className="cell small-2 user-information__logout"> <button className="user-information__button-text" onClick={() => firebase.auth().signOut()}>Logud <FiLogOut /></button> </div>
