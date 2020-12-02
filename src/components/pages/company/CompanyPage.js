@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Redirect } from "react-router";
 import firebase from '../../../Firebase'
 import { useAuth } from "../../../Auth";
@@ -104,12 +104,12 @@ function CompanyPage() {
             <div className="ownerPage-messe__action">
               <h2>{messe.messeTitle}</h2>
               <div className="right"> 
-                { currentUser.uid == account.id ?  <button type="button" onClick={() => setHidden(false)}><p className="refreshButton"><BsFileEarmarkPlus /></p></button> : '' }
-                { currentUser.uid == account.id ?  <button type="button" to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></button> : '' }
+                { currentUser.uid === account.id ?  <button type="button" onClick={() => setHidden(false)}><p className="refreshButton"><BsFileEarmarkPlus /></p></button> : '' }
+                { currentUser.uid === account.id ?  <button type="button" to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></button> : '' }
               </div>
             </div>
   
-            {company.map(items => ( items.messeID == messe.messeID ?
+            {company.map(items => ( items.messeID === messe.messeID ?
               <div key={items.id} className="ownerPage-item">
                 <div className="ownerPage-itemAction">
                   <div className="ownerPage-itemAction__doctype">
@@ -117,15 +117,15 @@ function CompanyPage() {
                   </div>
                   <a href={items.url} target="_blank">Download</a>
                   <div className="ownerPage-item__actions">
-                    { currentUser.uid == account.id ? <button className="refreshButton"><p><FiRefreshCw /></p></button> : '' }
-                    { currentUser.uid == account.id ? <button className="deleteButton" onClick={() => deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
+                    { currentUser.uid === account.id ? <button className="refreshButton"><p><FiRefreshCw /></p></button> : '' }
+                    { currentUser.uid === account.id ? <button className="deleteButton" onClick={() => deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
                   </div>
                 </div>
                 <div className="ownerPage-item__info">
                   <h5>{items.itemTitle}</h5>
                   <p>{items.itemDesc}</p>
                 </div>
-                { currentUser.uid != account.id ? <Note items={items}/> : '' }
+                { currentUser.uid !== account.id ? <Note items={items}/> : '' }
               </div> 
               : ''
               ))}

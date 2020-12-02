@@ -50,7 +50,7 @@ function Banner() {
             <p>{account.desc}</p>
             <div className="infolinks">
               <Link className="contact-link" to={"mailto:" + account.contactemail}>Contact us</Link>
-              { currentUser.uid === account.id ? <a>Rediger profil <BsPencil/></a>: ''}
+              { currentUser.uid === account.id ? <button type="button">Rediger profil <BsPencil/></button>: ''}
             </div>
           </div>
         </div>
