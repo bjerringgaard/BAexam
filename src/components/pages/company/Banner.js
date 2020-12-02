@@ -58,7 +58,7 @@ function Banner() {
           { currentUser.uid === account.id ? <Link onClick={() => setHidden(false)}><p>TILFØJ MESSE</p></Link> : '' }
           { currentUser.uid === account.id ? <Link onClick={() => setHidden(false)}><p>TILFØJ INDHOLD</p></Link> : '' }
         </div>
-        {hidden ? '' :  <div><Messe /> <button onClick={() => setHidden(true)}>Close</button></div>  }
+        {hidden ? '' :  <div><Messe /> <button type="button" onClick={() => setHidden(true)}>Close</button></div>  }
       </div>
     ))}
     </div>

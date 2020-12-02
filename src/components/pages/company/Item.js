@@ -87,8 +87,9 @@ export const Item = ({messe}) => {
         onChange={e => setFileType(e.target.value)}
         />
         <input type="file" onChange={fileUpload} />
+        { error && <div className="error">{ error }</div>}
         <br/>
-        {hidden ? '' : <button onClick={() => addItem(messe.messeID)}>Create</button>}
+        {hidden ? '' : <button type="button" onClick={() => addItem(messe.messeID)}>Create</button>}
       </form>
     </div>
     );

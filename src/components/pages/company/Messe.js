@@ -50,8 +50,8 @@ export const Messe = () => {
       {messeListeData.map(messe => (
         <div>
           <li >{messe.messeTitle}</li>
-          <Link onClick={() => addMesse(messe.id)}>TILFØJ </Link> 
-          <Link onClick={() => deleteMesse(messe.id)}> DELETE</Link> 
+          <button type="button" onClick={() => addMesse(messe.id)}>TILFØJ </button> 
+          <button type="button" onClick={() => deleteMesse(messe.id)}> DELETE</button> 
         </div>
         
 
