@@ -1,6 +1,6 @@
-import firebase from 'firebase'
-import "firebase/storage"
-import 'firebase/auth'
+import firebase from 'firebase';
+import 'firebase/storage';
+import 'firebase/auth';
 
 
 const config =  {
@@ -14,9 +14,6 @@ const config =  {
     appId: "1:695297053014:web:995578f44aca8e619146f7"
   };
   // Initialize Firebase
-
-
 firebase.initializeApp(config);
-
 
 export default firebase;
