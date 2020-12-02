@@ -98,14 +98,14 @@ function CompanyPage() {
             {hidden ? '' : 
               <div>
               <Item messe={messe} />
-              <Link onClick={() => setHidden(true)}>Close</Link>
+              <button type="button" onClick={() => setHidden(true)}>Close</button>
               </div>
             }
             <div className="ownerPage-messe__action">
               <h2>{messe.messeTitle}</h2>
               <div className="right"> 
-                { currentUser.uid == account.id ?  <Link onClick={() => setHidden(false)}><p className="refreshButton"><BsFileEarmarkPlus /></p></Link> : '' }
-                { currentUser.uid == account.id ?  <Link to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></Link> : '' }
+                { currentUser.uid == account.id ?  <button type="button" onClick={() => setHidden(false)}><p className="refreshButton"><BsFileEarmarkPlus /></p></button> : '' }
+                { currentUser.uid == account.id ?  <button type="button" to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></button> : '' }
               </div>
             </div>
   
@@ -113,8 +113,9 @@ function CompanyPage() {
               <div key={items.id} className="ownerPage-item">
                 <div className="ownerPage-itemAction">
                   <div className="ownerPage-itemAction__doctype">
-                    <p className={items.itemFile}>{items.itemFile}</p>
+                    <p className={items.itemFileType}>{items.itemFileType}</p>
                   </div>
+                  <a href={items.url} target="_blank">Download</a>
                   <div className="ownerPage-item__actions">
                     { currentUser.uid == account.id ? <button className="refreshButton"><p><FiRefreshCw /></p></button> : '' }
                     { currentUser.uid == account.id ? <button className="deleteButton" onClick={() => deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
