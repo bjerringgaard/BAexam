@@ -40,8 +40,6 @@
 .user-information {
   margin-bottom: 25px;
 
-  
-
   .label {
     background-color: lighten( $black, 90% );
     color: $black;
@@ -53,11 +51,17 @@
     font-size: 1.9rem;
     margin-left: 0px;
     margin-top: 5px;
+
+    &:hover {
+      color: $dollargreen;
+      cursor: pointer;  
+    }
   }
 
   &__text {
     color: lighten( $black, 50% );
     font-size: 1.2rem;
+    margin-bottom: 10px;
   }
 
   &__text-blue {
@@ -85,12 +89,6 @@
         font-size: 1.2rem;
         margin-left: 10px;
         margin-top: 0px;
-      }
-  
-      &:hover {
-          background-color: darken( $logoutred, 10% );
-          color: $white;
-          cursor: pointer;   
       }
     }
   }

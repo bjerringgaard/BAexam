@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer'
 import Login from './components/pages/Login'
 import SignUp from './components/pages/SignUp'
 import UserPage from './components/pages/user/UserPage'
+import UserUpdate from './components/pages/user/UserUpdate'
 import CompanyPage from './components/pages/company/CompanyPage'
 
 import './App.scss';
@@ -27,6 +28,7 @@ function App() {
               <Route path="/signup" component={SignUp} />
               <PrivateRoute path="/admin" component={Admin} />
               <PrivateRoute path="/userpage" component={UserPage} />
+              <PrivateRoute path="/userupdate" component={UserUpdate} />
               <Route path="/testpage" component={TestingFirebase} />
               <Route path="/company/:companyID" component={CompanyPage} />
               </Switch>

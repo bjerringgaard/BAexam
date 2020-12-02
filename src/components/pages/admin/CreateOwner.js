@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import firebase from '../../../Firebase'
 
 const CreateOwner = ({ history }) => {
-    const [fname, setName] = React.useState([]);
+    const [name, setName] = React.useState([]);
     const [adresse, setAdresse] = React.useState([]);
     const [companyID, setCompanyID] = React.useState([]);
     const [cvr, setCvr] = React.useState([]);
@@ -12,7 +12,7 @@ const CreateOwner = ({ history }) => {
     const [logo, setLogo] = React.useState([]);
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
-        const { email, password, fname, adresse, companyID, cvr, phone, desc, logo } = event.target.elements;
+        const { email, password, name, adresse, companyID, cvr, phone, desc, logo } = event.target.elements;
         const db = firebase.firestore()
         //const user = firebase.auth()
         try {
@@ -23,14 +23,14 @@ const CreateOwner = ({ history }) => {
                     db.collection('accounts').doc(cred.user.uid).set({
                         admin: false,
                         company: true,
-                        fname: fname.value,
+                        name: name.value,
                         adresse: adresse.value,
                         companyID: companyID.value,
                         cvr: cvr.value,
                         phone: phone.value,
                         desc: desc.value,
                         logo: logo.value,
-                        userID: cred.user.uid
+                        id: cred.user.uid
                     })
                 })
             history.push('/admin');
@@ -59,8 +59,8 @@ return (
                         <span class="label">Firma Navn</span>
                         <input
                             type="text"
-                            name="fname"
-                            value={fname}
+                            name="name"
+                            value={name}
                             onChange={e => setName(e.target.value)}
                         />
                     </div>
