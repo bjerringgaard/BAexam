@@ -1,27 +1,46 @@
-import React from 'react'
+import React from 'react';
 import {useParams, Link} from 'react-router-dom';
-import firebase from '../../../Firebase'
+import firebase from '../../../Firebase';
 
 export const Item = ({messe}) => {
   const [title, setTitle] = React.useState([]);
   const [desc, setDesc] = React.useState([]);
   const [fileType, setFileType] = React.useState([]);
+  const [file, setFile] = React.useState(null);
+  const types = ['application/pdf']
+
+  const [hidden, setHidden] = React.useState(true);
+  
+  const [url, setUrl] = React.useState(null); 
+  const [progress, setProgress] = React.useState(0);
+  const [error, setError] = React.useState(null);
 
   const db = firebase.firestore();
   const { companyID } = useParams();
 
-  // file uploader
-  const [file, setFile] = React.useState(null);
-  const [error, setError] = React.useState(null);
-  const types = ['application/pdf']
+  // File Upload
+  const fileUpload = (e) => {
+    let file = e.target.files[0];
 
-  const fileHandler = (e) => {
-    let selected = e.target.files[0];
-    console.log(selected);
-
-    if (selected && types.includes(selected.type)) {
-      setFile(selected);
+    if (file && types.includes(file.type)) {
+      setFile(file);
       setError('');
+
+      const storageRef = firebase.storage().ref('files/' + file.name);
+
+      let uploadTask = storageRef.put(file)
+
+      uploadTask.on('state_changed', (snap) => {
+        let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+          setProgress(percentage);
+      }, (error) => {
+        setError(error);
+      }, async () => {
+        const url = await storageRef.getDownloadURL();
+        setUrl(url)
+        console.log('file: ', url)
+        setHidden(false)
+      })
     }
     else {
       setFile(null);
@@ -29,7 +48,7 @@ export const Item = ({messe}) => {
     }
   }
 
-  // Add item
+  // Add to db
   const addItem = (messe) => {
 
     db
@@ -40,6 +59,7 @@ export const Item = ({messe}) => {
       itemDesc: desc,
       itemFileType: fileType,
       messeID: messe,
+      url: url
     })
     .then (() => {
       setTitle('')
@@ -49,31 +69,28 @@ export const Item = ({messe}) => {
   }
 
   return (
-  <div className="ownerEdit-addItem">
-    <form id={messe.messeID}>
-      <label>Title</label>
-      <input
-      value={title}
-      onChange={e => setTitle(e.target.value)}
-      />
-      <label>Description</label>
-      <input
-      value={desc}
-      onChange={e => setDesc(e.target.value)}
-      />
-      <label>File</label>
-      <input
-      value={fileType}
-      onChange={e => setFileType(e.target.value)}
-      />
-      <input type="file" onChange={fileHandler} />
-      <div className="output">
-        {error && <div className="error"> { error } </div> }
-        {file && <div className="error"> { file.name } </div> }
-      </div>
-      <br/>
-      <Link onClick={() => addItem(messe.messeID)}>Create</Link>
-    </form>
-  </div>
-  );
+    <div className="ownerEdit-addItem">
+      <form id={messe.messeID}>
+        <label>Title</label>
+        <input
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+        />
+        <label>Description</label>
+        <input
+        value={desc}
+        onChange={e => setDesc(e.target.value)}
+        />
+        <label>File</label>
+        <input
+        value={fileType}
+        onChange={e => setFileType(e.target.value)}
+        />
+        <input type="file" onChange={fileUpload} />
+        <br/>
+        {hidden ? '' : <button onClick={() => addItem(messe.messeID)}>Create</button>}
+      </form>
+    </div>
+    );
 };
+
