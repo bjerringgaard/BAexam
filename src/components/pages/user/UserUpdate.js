@@ -81,21 +81,21 @@ const [logo, setLogo] = React.useState(spell.logo);
       defaultValue={currentUser.email}
   
       />
-      <span class="label">Password</span>
+      <span className="label">Password</span>
       <input
       id="password"
       type="password"
       ref={passwordRef}
       placeholder="Leave blank to keep the same"
       />
-      <span class="label">Password</span>
+      <span className="label">Password</span>
       <input
       id="password-confirm"
       type="password"
       ref={passwordConfirmRef}
       placeholder="Leave blank to keep the same"
       />
-      <span class="label">Bruger Navn</span>
+      <span className="label">Bruger Navn</span>
       <input
         value={name}
         type="text"
@@ -109,7 +109,7 @@ const [logo, setLogo] = React.useState(spell.logo);
       :
 
       <div>
-      <span class="label">Email</span>
+      <span className="label">Email</span>
       <input
       id="email"
       type="email"
@@ -117,21 +117,21 @@ const [logo, setLogo] = React.useState(spell.logo);
       required
       defaultValue={currentUser.email}
       />
-      <span class="label">Password</span>
+      <span className="label">Password</span>
       <input
       id="password"
       type="password"
       ref={passwordRef}
       placeholder="Leave blank to keep the same"
       />
-      <span class="label">Password</span>
+      <span className="label">Password</span>
       <input
       id="password-confirm"
       type="password"
       ref={passwordConfirmRef}
       placeholder="Leave blank to keep the same"
       />
-      <span class="label">Bruger Navn</span>
+      <span className="label">Bruger Navn</span>
       <input
         value={name}
         type="text"
@@ -139,7 +139,7 @@ const [logo, setLogo] = React.useState(spell.logo);
           setName(e.target.value);
         }}
       />
-      <span class="label">Adresse</span>
+      <span className="label">Adresse</span>
       <input
         value={adresse}
         type="text"
@@ -147,7 +147,7 @@ const [logo, setLogo] = React.useState(spell.logo);
           setAdresse(e.target.value);
         }}
       />
-      <span class="label">CVR</span>
+      <span className="label">CVR</span>
       <input
         value={cvr}
         type="text"
@@ -155,7 +155,7 @@ const [logo, setLogo] = React.useState(spell.logo);
           setCvr(e.target.value);
         }}
       />
-      <span class="label">Beskrivelse</span>
+      <span className="label">Beskrivelse</span>
       <input
         value={desc}
         type="text"
@@ -163,7 +163,7 @@ const [logo, setLogo] = React.useState(spell.logo);
           setDesc(e.target.value);
         }}
       />
-      <span class="label">Telefon</span>
+      <span className="label">Telefon</span>
       <input
         value={phone}
         type="text"
@@ -171,7 +171,7 @@ const [logo, setLogo] = React.useState(spell.logo);
           setPhone(e.target.value);
         }}
       />
-      <span class="label">Logo</span>
+      <span className="label">Logo</span>
       <input
         value={logo}
         type="text"

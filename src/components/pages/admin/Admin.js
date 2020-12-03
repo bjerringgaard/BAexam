@@ -9,30 +9,17 @@ import CreateOwner from './CreateOwner';
 
 function Admin() { 
 
-
 //const {currentUser} = useAuth();
 var user = firebase.auth().currentUser;
-
-    // VIRKER SJOVT NOK HER MEN IKKE ANDRE STEDER
-    // .doc(user.uid).get().then(doc =>{
-    //     console.log("First Name: " + doc.data().fname)
-    //     console.log("Email: " + user.email)
-    // })
     const [accounts, setAccounts] = useState([])
     useEffect(() =>{
         const fetchData = async () => {
-  
             const db = firebase.firestore()
             const data = await db.collection('accounts').where('id', '==', user.uid).get()
             setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, id:user.uid, email: user.email})))
         }
-  
-    
     fetchData()
     },[])
-
-
-
 
   return (
  
@@ -58,7 +45,7 @@ var user = firebase.auth().currentUser;
             </div>
     </div>
     <h1>Admin Panel</h1>
-
+    {/* Tjekker om du er logget ind som admin eller ej */}
     {accounts.map(account => ( 
         <>                   
     {account.admin === true ? <><AdminView /><CreateOwner /></> : <Redirect to="/userpage" />}

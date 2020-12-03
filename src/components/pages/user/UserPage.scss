@@ -61,7 +61,6 @@
   &__text {
     color: lighten( $black, 50% );
     font-size: 1.2rem;
-    margin-bottom: 10px;
   }
 
   &__text-blue {
@@ -84,6 +83,11 @@
       border-radius: 10px;
       background-color:$logoutred;
       color: $white;
+
+      &:hover {
+        background-color: darken( $logoutred, 10% );
+        cursor: pointer;  
+      }
   
       svg {
         font-size: 1.2rem;
@@ -127,16 +131,30 @@
     font-size: 1.2rem;
     margin-bottom: 10px;
   }
-
   
   &__comment {
     color: lighten( $black, 50% );
     font-size: 1.2rem;
     margin-bottom: 10px;
+      a {
+        color: lighten( $black, 50% );
+        font-size: 24px;
+
+        &:hover {
+          color: darken( $dollargreen, 15% );
+          cursor: pointer;  
+        }
+      }
   }
 
   &__delete {
     display: flex; 
     justify-content: flex-end;
+
+    &:hover {
+      color: $dollargreen;
+      cursor: pointer;  
+    }
+
   }
 }

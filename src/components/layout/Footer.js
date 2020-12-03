@@ -6,7 +6,7 @@ import './Footer.scss';
 function Footer() {
   return (
       <div className="grid-x footer">
-          <div className="cell auto">FOOOTER</div>
+          <div className="cell auto">Codename Interactive Exhibition © 2021</div>
       </div>
   );
 }

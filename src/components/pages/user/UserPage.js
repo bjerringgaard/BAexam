@@ -5,35 +5,17 @@ import firebase from '../../../Firebase'
 import {UserUpdate} from './UserUpdate'
 import { FiLogOut } from 'react-icons/fi';
 import { BiEdit } from 'react-icons/bi';
-import { RiDeleteBinLine } from 'react-icons/ri';
+import { BsDownload } from 'react-icons/bs';
+import { BsTrash } from 'react-icons/bs';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 
 
 function UserPage() {
 
   var user = firebase.auth().currentUser;
-    // VIRKER SJOVT NOK HER MEN IKKE ANDRE STEDER
-    // .doc(user.uid).get().then(doc =>{
-    //     console.log("First Name: " + doc.data().fname)
-    //     console.log("Email: " + user.email)
-    // })
-
-    // VISER REDIGERNG MODAL HVIS MAN CLICKER
     const [showResults, setShowResults] = useState(false)
     const onClick = () => setShowResults(true)
     const onClose = () => setShowResults(false)
-
-
-    // USER INFORMATION OLD WAY
-    // const [accounts, setAccounts] = useState([])
-    // useEffect(() => {
-    //   const fetchData = async () => {
-    //       const db = firebase.firestore()
-    //       const data = await db.collection('accounts').where('id', '==', user.uid).get()
-    //       setAccounts(data.docs.map(doc => ({...doc.data(), id: doc.id, id:user.uid, email: user.email})))
-    //     }     
-    // fetchData()
-    // },[])
 
     // USER INFORMATION NEW WAY
     const [accounts, setAccounts] = useState([])
@@ -103,15 +85,20 @@ function UserPage() {
         <div className="cell small-10 "><h2>{note.itemTitle}</h2></div>
         <div className="cell small-2 user-bookmarks__delete">
           <h2>
-          <RiDeleteBinLine onClick={() => window.confirm(`Are you sure you wish to delete ${note.itemTitle}`) && deleteItem(note.id)}/>
+          <BsTrash onClick={() => window.confirm(`Are you sure you wish to delete ${note.itemTitle}`) && deleteItem(note.id)}/>
             </h2>
           </div>
         </div>  
       </div>
-      <div className="cell small-12 user-bookmarks__text"><span>Firma:</span><br />{note.companyName}</div>
-      <div className="cell small-12 user-bookmarks__text"><span>Description:</span><br />{note.itemDesc}</div>
-      <div className="cell small-12 user-bookmarks__comment "><span>Kommentar :</span><br />{note.userNote}</div>
-      <div className="cell small-12 user-bookmarks__comment "><span>Download :</span><br /><a href={note.url} target="blank" >Hent den tilhørende pdf</a></div>
+      <div className="cell small-12 user-bookmarks__text">
+        <span>Firma</span><br />{note.companyName}
+      </div>
+      <div className="cell small-12 user-bookmarks__text">
+        <span>Description</span><br />{note.itemDesc}</div>
+      <div className="cell small-12 user-bookmarks__comment ">
+        <span>Kommentar</span><br />{note.userNote}</div>
+      <div className="cell small-12 user-bookmarks__comment ">
+        <span>Download</span><br /><a href={note.url} target="blank" ><BsDownload /></a></div>
       </div>
       ))}
   </div>
