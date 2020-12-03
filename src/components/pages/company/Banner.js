@@ -7,16 +7,17 @@ import { useAuth } from "../../../Auth";
 import { BsPencil } from 'react-icons/bs';
 
 import { Messe } from './Messe';
+import { Item } from './Item';
 
 
 function Banner() {
   const db = firebase.firestore().collection('accounts');
   const { companyID } = useParams();
   const { currentUser } = useAuth();
-  // var user = firebase.auth().currentUser;
 
   const [companyData, setCompanyData] = React.useState([]);
-  const [hidden, setHidden] = useState(true);
+  const [hiddenMesse, setHiddenMesse] = useState(true);
+  const [hiddenItem, setHiddenItem] = useState(true);
 
   // Read Company Account 
   React.useEffect(() => {  
@@ -55,10 +56,12 @@ function Banner() {
           </div>
         </div>
         <div className="ownerPage-header__bigBtn">
-          { currentUser.uid === account.id ? <Link onClick={() => setHidden(false)}><p>TILFØJ MESSE</p></Link> : '' }
-          { currentUser.uid === account.id ? <Link onClick={() => setHidden(false)}><p>TILFØJ INDHOLD</p></Link> : '' }
+          { currentUser.uid === account.id ? <Link onClick={() => setHiddenMesse(false)}><p>TILFØJ MESSE</p></Link> : '' }
+          { currentUser.uid === account.id ? <Link onClick={() => setHiddenItem(false)}><p>TILFØJ INDHOLD</p></Link> : '' }
         </div>
-        {hidden ? '' :  <div><Messe /> <button type="button" onClick={() => setHidden(true)}>Close</button></div>  }
+        {hiddenMesse ? '' :  <div><Messe /> <button type="button" onClick={() => setHiddenMesse(true)}>Close</button></div>  }
+        {hiddenItem ? '' :  <div><Item /> <button type="button" onClick={() => setHiddenItem(true)}>Close</button></div>  }
+
       </div>
     ))}
     </div>

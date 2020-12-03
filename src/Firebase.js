@@ -4,7 +4,6 @@ import 'firebase/auth';
 
 
 const config =  {
-
     apiKey: "AIzaSyDGlsVDlfeFINmGMH6NZ7K0HU8GIb7T7GY",
     authDomain: "baexam-ef57c.firebaseapp.com",
     databaseURL: "https://baexam-ef57c.firebaseio.com",

@@ -6,10 +6,9 @@ import { useAuth } from "../../../Auth";
 
 import Banner from './Banner';
 import {Note} from './Note';
-import {Item} from './Item';
 
 import './CompanyPage.scss';
-import { BsFileEarmarkPlus, BsTrash} from 'react-icons/bs';
+import { BsTrash, BsDownload} from 'react-icons/bs';
 import { FiRefreshCw } from 'react-icons/fi';
 
 function CompanyPage() {
@@ -83,6 +82,7 @@ function CompanyPage() {
       .delete()
     }
 
+  // Check login
   if (!currentUser) {
     return <Redirect to="/login" />;
   }
@@ -95,37 +95,24 @@ function CompanyPage() {
           
           {messeData.map (messe => (
           <div key={messe.id} className="ownerPage-messe" >
-            {hidden ? '' : 
-              <div>
-              <Item messe={messe} />
-              <button type="button" onClick={() => setHidden(true)}>Close</button>
-              </div>
-            }
             <div className="ownerPage-messe__action">
               <h2>{messe.messeTitle}</h2>
-              <div className="right"> 
-                { currentUser.uid === account.id ?  <button type="button" onClick={() => setHidden(false)}><p className="refreshButton"><BsFileEarmarkPlus /></p></button> : '' }
-                { currentUser.uid === account.id ?  <button type="button" to="/company/egeteknik"><p className="deleteButton"><BsTrash/></p></button> : '' }
-              </div>
             </div>
   
             {company.map(items => ( items.messeID === messe.messeID ?
               <div key={items.id} className="ownerPage-item">
-                <div className="ownerPage-itemAction">
-                  <div className="ownerPage-itemAction__doctype">
-                    <p className={items.itemFileType}>{items.itemFileType}</p>
+                <div className="grid-x">
+                  <div className="cell small-10 ownerPage-item__info">
+                    <h5>{items.itemTitle}</h5>
+                    <p>{items.itemDesc}</p>
+                      <a href={items.url} target="_blank" className="downloadBtn"><BsDownload /><p>Download</p></a>
                   </div>
-                  <a href={items.url} target="_blank">Download</a>
-                  <div className="ownerPage-item__actions">
+                  <div className="cell small-2 ownerPage-item__actions">
                     { currentUser.uid === account.id ? <button className="refreshButton"><p><FiRefreshCw /></p></button> : '' }
-                    { currentUser.uid === account.id ? <button className="deleteButton" onClick={() => deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
+                    { currentUser.uid === account.id ? <button className="deleteButton" onClick={() => window.confirm(`Are you sure you wish to delete ${items.itemTitle}`) && deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
                   </div>
                 </div>
-                <div className="ownerPage-item__info">
-                  <h5>{items.itemTitle}</h5>
-                  <p>{items.itemDesc}</p>
-                </div>
-                { currentUser.uid !== account.id ? <Note items={items}/> : '' }
+                { currentUser.uid !== account.id ? <Note items={items} account={account}/> : '' }
               </div> 
               : ''
               ))}
