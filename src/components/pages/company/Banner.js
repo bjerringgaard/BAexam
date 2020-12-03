@@ -42,11 +42,11 @@ function Banner() {
     {companyData.map(account => (
       <div className="ownerPage-header" key={account.id} >
         <div className="grid-x ownerPage-banner">
-          <div className="cell small-2 ownerPage-banner__logo">
+          <div className="cell small-12 medium-2 ownerPage-banner__logo">
             <img src={account.logo} alt=""/>
           </div>
 
-          <div className="cell small-10 ownerPage-banner__text">
+          <div className="cell small-12 medium-10 ownerPage-banner__text">
             <h1>{account.name}</h1>
             <p>{account.desc}</p>
             <div className="infolinks">
@@ -58,8 +58,8 @@ function Banner() {
           { currentUser.uid === account.id ? <Link onClick={() => setHiddenMesse(false)}><p>MESSE ADMINISTRATION</p></Link> : '' }
           { currentUser.uid === account.id ? <Link onClick={() => setHiddenItem(false)}><p>TILFØJ INDHOLD</p></Link> : '' }
         </div>
-        {hiddenMesse ? '' :  <div className="modal"><Messe /> <button type="button" onClick={() => setHiddenMesse(true)}>Close</button></div>  }
-        {hiddenItem ? '' :  <div><Item/> <button type="button" onClick={() => setHiddenItem(true)}>Close</button></div>  }
+        {hiddenMesse ? '' :  <div className="modal"><div className="modal-content"><Messe /><button className="closeMesse" type="button" onClick={() => setHiddenMesse(true)}>Luk</button></div></div>}
+        {hiddenItem ? '' :  <div className="modal"><div className="modal-content"><Item/><button className="close" type="button" onClick={() => setHiddenItem(true)}>Annuller</button></div></div>  }
 
       </div>
     ))}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {useParams} from 'react-router-dom';
 import firebase from '../../../Firebase'
+import { BsTrash, BsFileEarmarkPlus } from 'react-icons/bs';
 
 export const Messe = () => {
   const [messeListeData, setMesseListeData] = useState([]);
@@ -45,16 +46,22 @@ export const Messe = () => {
   }
 
   return (
-  <div>
+  <div className="messeModal">
+    <h4>Administrer Messer</h4>
     <ul>
       {messeListeData.map(messe => (
         <div>
-          <li >{messe.messeTitle}</li>
-          <button type="button" onClick={() => addMesse(messe.id)}>TILFØJ </button> 
-          <button type="button" onClick={() => deleteMesse(messe.id)}> DELETE</button> 
+          <div className="grid-x" > 
+            <div className="cell small-6">
+              <li >{messe.messeTitle}</li>
+            </div>
+            <div className="action cell small-6">
+              <button type="button" onClick={() => addMesse(messe.id)}><BsFileEarmarkPlus/> </button> 
+              <button type="button" onClick={() => deleteMesse(messe.id)}><BsTrash/></button> 
+            </div>
+          </div>
+          <hr/>
         </div>
-        
-
       ))}
     </ul> 
   </div>

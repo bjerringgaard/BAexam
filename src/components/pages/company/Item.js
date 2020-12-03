@@ -87,6 +87,7 @@ export const Item = () => {
 
   return (
         <div className="ownerEdit-addItem">
+          <h4>Tilføj indhold</h4>
           <form>
             <label>Messe</label>
               <select onChange={e => setMesse(e.target.value)}>
@@ -98,12 +99,14 @@ export const Item = () => {
 
             <label>Title</label>
             <input
+            type="text"
             value={title}
             onChange={e => setTitle(e.target.value)}
             />
 
             <label>Description</label>
             <input
+            type="text"
             value={desc}
             onChange={e => setDesc(e.target.value)}
             />
@@ -111,7 +114,7 @@ export const Item = () => {
             <input type="file" onChange={fileUpload} />
             { error && <div className="error">{ error }</div>}
             <br/>
-            {hidden ? '' : <button type="button" onClick={() => addItem()}>Create</button>}
+            {hidden ? <button type="button" className="disabled">Ingen fil</button> : <button className="active" type="button" onClick={() => addItem()}>Tilføj</button>}
           </form>
         </div>
     );
