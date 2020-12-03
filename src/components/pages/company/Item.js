@@ -2,10 +2,10 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 import firebase from '../../../Firebase';
 
-export const Item = ({messe}) => {
+export const Item = () => {
   const [title, setTitle] = React.useState([]);
   const [desc, setDesc] = React.useState([]);
-  const [fileType, setFileType] = React.useState([]);
+  const [messe, setMesse] = React.useState([]);
   const types = ['application/pdf']
 
   const [hidden, setHidden] = React.useState(true);
@@ -14,6 +14,8 @@ export const Item = ({messe}) => {
   const [url, setUrl] = React.useState(null); 
   const [progress, setProgress] = React.useState(0);
   const [error, setError] = React.useState(null);
+  
+  const [messeData, setMesseData] = React.useState([]);
 
   const db = firebase.firestore();
   const { companyID } = useParams();
@@ -48,50 +50,73 @@ export const Item = ({messe}) => {
     }
   }
 
-  // Add to db
-  const addItem = (messe) => {
+  // Read Messe
+  React.useEffect(() => {
+    const messeDeltager = firebase
+    db
+    .collection('messe')
+    .where('deltager', 'array-contains', companyID)
+    .onSnapshot((snapshot) => {
+      const messeData = snapshot
+      .docs
+      .map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+      setMesseData(messeData)
+    })
+    return () => messeDeltager
+  },[])
 
+  // Add to db
+  const addItem = () => {
     db
     .collection('items')
     .add({
       companyID: companyID,
       itemTitle: title,
       itemDesc: desc,
-      itemFileType: fileType,
+      url: url,
       messeID: messe,
-      url: url
     })
     .then (() => {
       setTitle('')
       setDesc('')
-      setFileType('')
     })
   }
 
   return (
-    <div className="ownerEdit-addItem">
-      <form id={messe.messeID}>
-        <label>Title</label>
-        <input
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-        />
-        <label>Description</label>
-        <input
-        value={desc}
-        onChange={e => setDesc(e.target.value)}
-        />
-        <label>File</label>
-        <input
-        value={fileType}
-        onChange={e => setFileType(e.target.value)}
-        />
-        <input type="file" onChange={fileUpload} />
-        { error && <div className="error">{ error }</div>}
-        <br/>
-        {hidden ? '' : <button type="button" onClick={() => addItem(messe.messeID)}>Create</button>}
-      </form>
-    </div>
+        <div className="ownerEdit-addItem">
+          <h4>Tilføj indhold</h4>
+          <form>
+            <label>Messe</label>
+              <select onChange={e => setMesse(e.target.value)}>
+              <option value='null'>Vælg venligst</option>
+                {messeData.map (messe => (
+                  <option value={messe.messeID}>{messe.messeTitle}</option>
+                ))}
+              </select>
+
+            <label>Title</label>
+            <input
+            type="text"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            />
+
+            <label>Description</label>
+            <input
+            type="text"
+            value={desc}
+            onChange={e => setDesc(e.target.value)}
+            />
+
+            <input type="file" onChange={fileUpload} />
+            { error && <div className="error">{ error }</div>}
+            <br/>
+            {hidden ? <button type="button" className="disabled">Ingen fil</button> : <button className="active" type="button" onClick={() => addItem()}>Tilføj</button>}
+          </form>
+        </div>
     );
 };
 
