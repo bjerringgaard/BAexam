@@ -108,9 +108,10 @@ function UserPage() {
         </div>  
       </div>
       <div className="cell small-12 user-bookmarks__text"><span>Format:</span><br />{note.itemFile}</div>
-      <div className="cell small-12 user-bookmarks__text"><span>Firma skal lige ændres i DBEN :</span><br />{note.itemDesc}</div>
+      <div className="cell small-12 user-bookmarks__text"><span>Firma skal lige ændres i DBEN :</span><br />{note.companyID}</div>
       <div className="cell small-12 user-bookmarks__text"><span>Description:</span><br />{note.itemDesc}</div>
       <div className="cell small-12 user-bookmarks__comment "><span>Kommentar :</span><br />{note.userNote}</div>
+      <div className="cell small-12 user-bookmarks__comment "><span>Download :</span><br /><a href={note.url} target="blank" >Download PDf</a></div>
       </div>
       ))}
   </div>
