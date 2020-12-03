@@ -70,7 +70,6 @@ export const Item = () => {
 
   // Add to db
   const addItem = () => {
-
     db
     .collection('items')
     .add({
@@ -87,36 +86,34 @@ export const Item = () => {
   }
 
   return (
-    <div className="ownerEdit-addItem">
-      <form>
+        <div className="ownerEdit-addItem">
+          <form>
+            <label>Messe</label>
+              <select onChange={e => setMesse(e.target.value)}>
+              <option value='null'>Vælg venligst</option>
+                {messeData.map (messe => (
+                  <option value={messe.messeID}>{messe.messeTitle}</option>
+                ))}
+              </select>
 
-        <label>Messe</label>
-          <select onChange={e => setMesse(e.target.value)}>
-          <option value='null'>Vælg venligst</option>
-            {messeData.map (messe => (
-              <option value={messe.messeID}>{messe.messeTitle}</option>
-            ))}
-          </select>
+            <label>Title</label>
+            <input
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            />
 
-        <label>Title</label>
-        <input
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-        />
+            <label>Description</label>
+            <input
+            value={desc}
+            onChange={e => setDesc(e.target.value)}
+            />
 
-        <label>Description</label>
-        <input
-        value={desc}
-        onChange={e => setDesc(e.target.value)}
-        />
-
-        <input type="file" onChange={fileUpload} />
-        { error && <div className="error">{ error }</div>}
-        <br/>
-        {hidden ? '' : <button type="button" onClick={() => addItem()}>Create</button>}
-
-      </form>
-    </div>
+            <input type="file" onChange={fileUpload} />
+            { error && <div className="error">{ error }</div>}
+            <br/>
+            {hidden ? '' : <button type="button" onClick={() => addItem()}>Create</button>}
+          </form>
+        </div>
     );
 };
 

@@ -41,26 +41,25 @@ function Banner() {
     <div>
     {companyData.map(account => (
       <div className="ownerPage-header" key={account.id} >
-        <div className="ownerPage-banner">
-          <div className="ownerPage-banner__logo">
+        <div className="grid-x ownerPage-banner">
+          <div className="cell small-2 ownerPage-banner__logo">
             <img src={account.logo} alt=""/>
           </div>
 
-          <div className="ownerPage-banner__text">
+          <div className="cell small-10 ownerPage-banner__text">
             <h1>{account.name}</h1>
             <p>{account.desc}</p>
             <div className="infolinks">
-              <Link className="contact-link" to={"mailto:" + account.contactemail}>Contact us</Link>
-              { currentUser.uid === account.id ? <button type="button">Rediger profil <BsPencil/></button>: ''}
+              { currentUser.uid !== account.id ? <Link className="contact-link" to={"mailto:" + account.contactemail}>Contact us</Link> : '' }
             </div>
           </div>
         </div>
         <div className="ownerPage-header__bigBtn">
-          { currentUser.uid === account.id ? <Link onClick={() => setHiddenMesse(false)}><p>TILFØJ MESSE</p></Link> : '' }
+          { currentUser.uid === account.id ? <Link onClick={() => setHiddenMesse(false)}><p>MESSE ADMINISTRATION</p></Link> : '' }
           { currentUser.uid === account.id ? <Link onClick={() => setHiddenItem(false)}><p>TILFØJ INDHOLD</p></Link> : '' }
         </div>
-        {hiddenMesse ? '' :  <div><Messe /> <button type="button" onClick={() => setHiddenMesse(true)}>Close</button></div>  }
-        {hiddenItem ? '' :  <div><Item /> <button type="button" onClick={() => setHiddenItem(true)}>Close</button></div>  }
+        {hiddenMesse ? '' :  <div className="modal"><Messe /> <button type="button" onClick={() => setHiddenMesse(true)}>Close</button></div>  }
+        {hiddenItem ? '' :  <div><Item/> <button type="button" onClick={() => setHiddenItem(true)}>Close</button></div>  }
 
       </div>
     ))}
