@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './UserPage.scss';
 import firebase from '../../../Firebase'
 import {UserUpdate} from './UserUpdate'
@@ -88,7 +88,8 @@ function UserPage() {
       <div className="cell small-10" key={account.id}>
         <div className="cell"><h1>{account.name}</h1></div>
         <div className="cell user-information__text">{user.email}</div>
-        {account.company === true ? <Link className="cell user-information__text-blue" to={"company/" + account.companyID} >Go til Company page</Link> : ''}
+        {account.company === true ? <Link className="cell user-information__text-blue" to={"../company/" + account.companyID} >Go til Company page</Link> : ''}
+        {account.admin === true ? <Link className="cell user-information__text-blue" to={"admin/"} >Go til Admin Page</Link> : <Redirect to="/userpage" />}
         <div className="cell user-information__text"><BiEdit onClick={onClick}/> { showResults ? <><AiOutlineCloseSquare onClick={onClose}/>  <UserUpdate spell={account} /></> : '' }</div>
       </div>
       ))}
@@ -107,11 +108,10 @@ function UserPage() {
           </div>
         </div>  
       </div>
-      <div className="cell small-12 user-bookmarks__text"><span>Format:</span><br />{note.itemFile}</div>
-      <div className="cell small-12 user-bookmarks__text"><span>Firma skal lige ændres i DBEN :</span><br />{note.companyID}</div>
+      <div className="cell small-12 user-bookmarks__text"><span>Firma:</span><br />{note.companyName}</div>
       <div className="cell small-12 user-bookmarks__text"><span>Description:</span><br />{note.itemDesc}</div>
       <div className="cell small-12 user-bookmarks__comment "><span>Kommentar :</span><br />{note.userNote}</div>
-      <div className="cell small-12 user-bookmarks__comment "><span>Download :</span><br /><a href={note.url} target="blank" >Download PDf</a></div>
+      <div className="cell small-12 user-bookmarks__comment "><span>Download :</span><br /><a href={note.url} target="blank" >Hent den tilhørende pdf</a></div>
       </div>
       ))}
   </div>

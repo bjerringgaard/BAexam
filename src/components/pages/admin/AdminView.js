@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import { RiDeleteBinLine } from 'react-icons/ri';
 //import { FiRefreshCw } from 'react-icons/fi';
-import { BsPersonPlus } from 'react-icons/bs';
+import { BiLinkExternal } from 'react-icons/bi';
 import firebase from '../../../Firebase'
 //import { useAuth } from "../../Auth";
+import {Link} from 'react-router-dom';
 
 export default function AdminView() {
 
@@ -47,13 +48,13 @@ export default function AdminView() {
             <div className="cell small-6 admin-panel__header">
                 <div className="grid-x">
                     <div className="cell small-6 admin-panel__text">Companies</div>
-                    <div className="cell small-6 admin-panel__create"><BsPersonPlus /></div>
+                    <div className="cell small-6 admin-panel__create"></div>
                 </div>
             </div>
                 <div className="cell small-6 admin-panel__header">
                 <div className="grid-x">
                     <div className="cell small-6 admin-panel__text">Users</div>
-                    <div className="cell small-6 admin-panel__create"><BsPersonPlus /></div>
+                    <div className="cell small-6 admin-panel__create"></div>
                 </div>
                 </div>
                 <div className="grid-x admin-panel__content">
@@ -62,7 +63,7 @@ export default function AdminView() {
                     {accounts.map(account => (
                         <div className="grid-x admin-panel__information" key={account.id}>
                                 <div className="cell small-10">{account.name}</div>
-                                <div className="cell auto icons"><RiDeleteBinLine /></div>
+                                <div className="cell auto icons"><Link className="cell user-information__text-blue" to={"company/" + account.companyID} ><BiLinkExternal /></Link></div>
                         </div>
                         ))}
                     </div>
@@ -71,7 +72,7 @@ export default function AdminView() {
                     {users.map(user => (
                         <div className="grid-x admin-panel__information" key={user.id}>
                                 <div className="cell small-10">{user.name}</div>
-                                <div className="cell auto icons"><RiDeleteBinLine /></div>
+                                <div className="cell auto icons"></div>
                         </div>
                         ))}
                     </div>

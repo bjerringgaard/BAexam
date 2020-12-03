@@ -73,13 +73,13 @@ const [logo, setLogo] = React.useState(spell.logo);
   {/* Viser forskellige redigering muligheder alt efter om det en bruger eller et Company */}
   {spell.company === false ? 
       <div>
-      <span class="label">Email</span>
       <input
       id="email"
       type="email"
       ref={emailRef}
       required
       defaultValue={currentUser.email}
+  
       />
       <span class="label">Password</span>
       <input
@@ -187,4 +187,3 @@ const [logo, setLogo] = React.useState(spell.logo);
   );
 };
 
-export default UserUpdate;
