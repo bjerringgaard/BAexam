@@ -109,7 +109,7 @@ React.useEffect(() => {
         {notes.map(note => (
                 <div key={note.id}>
                 <p> {note.itemDesc}</p>
-                <button onClick={() => deleteItem(note.id)}>Delete</button>
+                <button onClick={() => window.confirm("Are you sure you wish to delete this item?") && deleteItem(note.id)}>Delete</button>
                 </div>
             ))}
         </div>
