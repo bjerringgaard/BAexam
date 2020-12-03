@@ -1,16 +1,16 @@
 import React from 'react';
-import {useParams, Link} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import firebase from '../../../Firebase';
 
 export const Item = ({messe}) => {
   const [title, setTitle] = React.useState([]);
   const [desc, setDesc] = React.useState([]);
   const [fileType, setFileType] = React.useState([]);
-  const [file, setFile] = React.useState(null);
   const types = ['application/pdf']
 
   const [hidden, setHidden] = React.useState(true);
   
+  const [file, setFile] = React.useState(null);
   const [url, setUrl] = React.useState(null); 
   const [progress, setProgress] = React.useState(0);
   const [error, setError] = React.useState(null);
