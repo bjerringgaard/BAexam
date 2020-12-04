@@ -2,18 +2,16 @@ import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
-import Home from './components/pages/Home'
 import Login from './components/pages/Login'
 import SignUp from './components/pages/SignUp'
 import UserPage from './components/pages/user/UserPage'
-  import UserEdit from './components/pages/user/UserEdit'
-import OwnerPage from './components/pages/owner/OwnerPage'
-  import OwnerEdit from './components/pages/owner/OwnerEdit'
-import About from './components/pages/About'
+import CompanyPage from './components/pages/company/CompanyPage'
+
 import './App.scss';
-import Admin from './components/pages/Admin'
+import Admin from './components/pages/admin/Admin'
 import { AuthProvider} from './Auth'
 import PrivateRoute from './PrivateRoute'
+import TestingFirebase from './components/pages/TestingFirebase';
 
 
 function App() {
@@ -24,15 +22,13 @@ function App() {
           <Router>
             <Header />
               <Switch>  
-              <Route path="/" exact component={Home} />
+              <Route path="/" exact component={Login} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={SignUp} />
               <PrivateRoute path="/admin" component={Admin} />
-              <Route path="/userpage" component={UserPage} />
-                <Route path="/useredit" component={UserEdit} />
-              <Route path="/ownerpage" component={OwnerPage} />
-                <Route path="/owneredit/:companyURL" component={OwnerEdit} />
-              <Route path="/about" component={About}/>
+              <PrivateRoute path="/userpage" component={UserPage} />
+              <Route path="/testpage" component={TestingFirebase} />
+              <Route path="/company/:companyID" component={CompanyPage} />
               </Switch>
             <Footer />
           </Router>

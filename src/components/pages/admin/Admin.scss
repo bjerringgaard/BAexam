@@ -1,0 +1,174 @@
+@import '../../../settings';
+@import '~foundation-sites/scss/foundation';
+
+
+.admin-component {
+    padding: 25px;
+
+    button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 6px 12px;
+        margin-top: 5px;
+        height: 50px;
+        font-size: 1rem;
+        border-radius: 10px;
+        background-color: darken( $dollargreen, 20% );
+        color: $white;
+    
+        svg {
+          font-size: 24px;
+          margin-left: 10px;
+          margin-top: 0px;
+          color: lighten( $black, 85% );;
+        }
+    
+        &:hover {
+            background-color: darken( $dollargreen, 25% );
+            color: $white;
+            cursor: pointer;   
+        }
+      }    
+
+    &__sign-out{
+        display: flex;
+        justify-content: flex-end;
+        button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6px 12px;
+            margin-top: 5px;
+            height: 50px;
+            font-size: 1rem;
+            border-radius: 10px;
+            background-color: $logoutred;
+            color: $white;
+        
+            svg {
+              font-size: 1.2rem;
+              margin-left: 10px;
+              margin-top: 0px;
+              color: lighten( $black, 85% );;
+            }
+        
+            &:hover {
+                background-color: darken( $logoutred, 10% );
+                color: $white;
+                cursor: pointer;   
+            }
+          }
+    }
+
+
+
+    &__welcome {
+        font-size: 1rem;
+    }
+
+    h1 {
+       font-weight: 600;
+       font-size: 1.8rem;
+    }
+}
+
+.admin-panel {
+    background-color: none;
+    padding-top: 25px;
+    color: $black;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: lighten( $black, 85% );
+
+    &__header {
+        font-weight: 600;
+
+        svg{
+            color: darken( $dollargreen, 15% );
+            font-size: 25px;
+            margin-right: 25px;
+        }
+    }
+
+    &__text {
+        padding-left: 25px;
+        font-size: 1.2rem;
+    }
+
+    &__create {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__content {
+        margin-top: 25px;
+        width: 100%;
+    }
+
+
+
+    .icons {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__information {
+        margin: 25px;
+        svg {
+            font-size: 25px;
+            margin-right: 15px;
+            color: lighten( $black, 10% );
+    
+            &:hover {
+                color: #56d7af;
+            }
+            
+        }
+    }
+
+    &__users {
+        background-color: lighten( $black, 95% );
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    &__owners {
+        background-color: lighten( $black, 95% );
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+}
+
+.create-owner {
+ margin-top: 25px;
+ border-radius: 10px;
+
+ .label {
+    background-color: lighten( $black, 90% );
+    color: $black;
+    font-size: 0.9rem;
+    padding: .5rem .5rem;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+
+label{
+    margin-top: 10px;
+}
+
+
+  &__header {
+    color: $white;
+    font-weight: 600;
+  }
+
+}

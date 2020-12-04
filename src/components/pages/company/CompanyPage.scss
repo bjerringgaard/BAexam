@@ -1,0 +1,415 @@
+@import '../../../settings';
+@import '~foundation-sites/scss/foundation';
+
+.login-form {
+    padding: 25px;
+}
+
+hr{
+  margin-left: 5px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.delete {
+    background-color: crimson;
+}
+
+// Owner Page
+.ownerPage-header{
+  margin-left: 20px;
+
+  &__bigBtn{
+    display: flex;
+    margin-right: 20px;
+
+    a{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 50px;
+      border-radius: 5px;
+
+      text-align: center;
+      font-size: 1rem;
+
+      color: darkgray;
+      border: 1px solid darkgray;
+
+      margin-top: 20px;
+      margin-right: 5px;
+      margin-left: 5px;
+
+      p{
+        margin: 0;
+      }
+    }
+  }
+}
+.ownerPage-banner {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  display: flex;
+
+  &__logo{
+    width: 150px;
+    height: 150px;
+
+    img{
+    border-radius: 25px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    }
+  }
+
+  &__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    h1{
+      font-size: 2rem;
+    }
+
+    p{
+      margin-bottom: 20px;
+      width: 70%;
+      word-wrap: break-word;
+    }
+
+    .infolinks{
+      display: flex;
+      .contact-link{
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 5px;
+
+        font-size: 1rem;
+  
+        color: darkgray;
+        border: 1px solid darkgray;
+        margin-right: 10px;
+      }
+
+      a{
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 5px;
+
+        font-size: 1rem;
+  
+        color: darkgray;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.ownerPage-addContent{
+    text-align: center;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+
+    font-size: 1rem;
+
+    color: darkgray;
+    border: 1px solid darkgray;
+    margin-top: 20px;
+}
+
+.ownerPage-messe{
+  margin-left: 20px;
+  margin-top: 40px;
+
+  &__action{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .deleteButton{
+      &:hover{
+        color: crimson;
+      }
+    }
+
+    .refreshButton{
+      &:hover{
+        color: lightgreen;
+      }
+    }
+
+    h2{
+      font-size: 2rem;
+      width: fit-content;
+      margin-left: 10px;
+    }
+
+    p{
+      font-size: 20px;
+      margin: 10px;
+      margin-left: 20px;
+      color: #505050;
+    }
+  }
+
+  .ownerPage-item {
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 20px;
+    margin-right: 25px;
+    margin-left: 5px;
+    margin-bottom: 30px;
+
+    &__info {
+      align-items: flex-start;
+      align-items: flex-start;
+
+      h5{
+        font-weight: 500;
+      }
+
+      .downloadBtn {
+        background-color: lighten($black, 90%);
+        border-radius: 10px;
+        width: fit-content;
+        padding: 10px 20px;
+  
+        display: flex;
+        align-items: center;
+  
+        color: lighten($black, 30%);
+        text-decoration: none;
+  
+        p{
+          color: lighten($black, 30%);
+          margin: 0;
+          margin-left: 10px;
+          font-size: 16px;
+        }
+  
+        svg{
+          font-size: 20px;
+        }
+      }
+    }
+
+    &__actions{
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+
+      button{
+        background-color: rgba(255, 0, 0, 0);
+        padding: 0;
+        color: #505050;
+          p{
+          font-size: 24px;
+          margin: 0 0 0 20px;
+          }
+      }
+
+      .deleteButton{
+        &:hover{
+          color: crimson;
+        }
+      }
+
+      .refreshButton{
+        &:hover{
+          color: lightgreen;
+        }
+      }
+    }
+  }
+
+  .ownerPage-item-comment{
+    display: flex;
+
+    form {
+      display: flex;
+      width: 100%;
+
+      input[type=text]{
+        flex-grow: 1;
+        height: 50px;
+        border: 1px solid lightgrey;
+        border-radius: 10px;
+        margin: 0 10px 0 10px;
+        box-shadow: none;
+      }
+
+      button{
+        justify-content: center;
+        height: 50px;
+        width: fit-content;
+        padding-left: 10px;
+        padding-right: 7px;
+        cursor: pointer;
+
+        border-radius: 10px;
+    
+        background-color: rgba(255, 0, 0, 0);
+        color: #505050;
+    
+        border: none;
+
+        &:hover{
+          color: purple;
+        }
+
+        svg{
+          margin-top: 14px;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+// Owner Edit
+.ownerEdit-addMesse{
+  padding: 20px;
+  margin: 50px 20px 0px 20px;
+  
+  display: flex;
+  justify-content: center;
+
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+
+  h5{
+    margin: 0;
+    color: lightgray;
+  }
+}
+
+.ownerEdit-addItem{
+  display: flex;
+  flex-direction: column;
+
+  h4{
+    margin-bottom: 30px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input[type=text], select{
+      flex-grow: 1;
+      height: 50px;
+      border: 1px solid lightgrey;
+      border-radius: 10px;
+      box-shadow: none;
+    }
+
+    button{
+      width: fit-content;
+      padding: 10px 30px;
+      height: 50px;
+      border-radius: 10px;
+      min-width: 150px;
+    }
+
+    .disabled{
+      background-color: lighten($black, 90%);
+      color: lighten($black, 30%);
+    }
+
+    .active{
+      background-color: $dollargreen;
+      color: white;
+    }
+  }
+}
+
+.close{
+  position: absolute;
+  margin-left: 160px;
+  margin-top: -50px;
+
+  min-width: 150px;
+  width: fit-content;
+  padding: 10px 30px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: lighten($black, 90%);
+  color: lighten($black, 30%);
+}
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+
+  .modal-content {
+    background-color: #fefefe;
+    border-radius: 10px;
+    margin: 15% auto;
+    padding: 50px;
+    border: 1px solid #888;
+    width: 50%;
+
+    .messeModal{
+
+      h4{
+        margin-bottom: 30px;
+      }
+
+      hr{
+        margin: 10px 0;
+      }
+
+      ul{
+        margin: 0;
+
+        li{
+          margin: 5px 0 0 0;
+          padding: 10px 0;
+          list-style-type: none;
+          height: 50px;
+          display: flex;
+          align-items: center;
+        }
+
+      }
+
+      .action{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        
+        button{
+          margin-left: 10px;
+          height: 50px;
+          width: 40px;
+          color: lighten($black, 30%);
+          cursor: pointer;
+
+          svg{
+            font-size: 24px;
+          }
+        }
+      }
+    }
+    .closeMesse{
+      margin-top: 20px;
+      min-width: 150px;
+      width: fit-content;
+      padding: 10px 30px;
+      height: 50px;
+      border-radius: 10px;
+      background-color: lighten($black, 90%);
+      color: lighten($black, 30%);
+    }
+  }
+}
+
+
