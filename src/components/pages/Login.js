@@ -34,30 +34,27 @@ const Login = ({ history }) => {
   }
 
   return (
-    <div className="grid-x main-area">
-      <div className="cell auto admin-component">
-          <div className="login-banner">              
-            <h1>PROJEKT NAVN</h1>
-            <h3>Login</h3>
-            <div className="login-banner__logo">
-              <img src="http://placekitten.com/200/200" alt=""/>
-            </div>
+    <div className="grid-x login main-area">
+      <div className="cell auto">
+          <div className="login__banner">              
+            <h1>LOGIN</h1>
+            <p>Welcome! Login to acces the IXPO services.</p>
           </div>
-          
-        <form onSubmit={handleLogin}>
-          <div className="login-form">
-            <label for="email">Email</label>
-            <input name="email" type="email" placeholder="Email" />
-            
-            <label for="password">Password</label>
-            <input name="password" type="password" placeholder="Password" />
-            
-            <input type="submit" value="Submit" />
-            <div className="login-form__bottom-text">
-              <p>Ingen Konto? <Link to="/signUp">Opret bruger her</Link></p>
-            </div>
-          </div>
-        </form>
+
+          <div className="login__form">
+            <form onSubmit={handleLogin}>
+              <label for="email">Email</label>
+              <input name="email" type="email"/>
+              
+              <label for="password">Password</label>
+              <input name="password" type="password"/>
+              
+              <input type="submit" value="Login"/>
+              <div className="login__form-bottom-text">
+                <p>Ingen Konto? <Link to="/signUp">Opret bruger her</Link></p>
+              </div>
+            </form>
+        </div>
       </div>
     </div>
   );

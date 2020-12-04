@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 import { withRouter } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import firebase from '../../Firebase'
 //import {Link} from 'react-router-dom';
 //import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -33,22 +34,30 @@ const SignUp = ({ history }) => {
     }, [history]);
 
   return (
-      <div className="grid-x main-area">
-          <div className="cell auto login-form">
-            <form onSubmit={handleSignUp}>
-              <div id="form">
-              <h1>Sign Up Page</h1>
-                <label for="email">Email</label>
-                <input type="email" name="email" />
-                
-                <label for="password">Password</label>
-                <input type="password" name="password" />
-                
-                <input type="submit" value="Sign Up" />
+    <div className="grid-x login main-area">
+      <div className="cell">
+        <div className="login__banner">              
+          <h1>SIGN UP</h1>
+          <p>Create an account to access IXPO</p>
+        </div>
+
+        <div className="login__form">
+          <form onSubmit={handleSignUp}>
+            
+              <label for="email">Email</label>
+              <input type="email" name="email" />
+              
+              <label for="password">Password</label>
+              <input type="password" name="password" />
+              
+              <input type="submit" value="Sign Up" />
+              <div className="login__form-bottom-text">
+                <p>Har du allerede en konto? <Link to="/login">login her</Link></p>
               </div>
-            </form>
-          </div>
+          </form>
+        </div>
       </div>
+    </div>
   );
 }
 
