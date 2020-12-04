@@ -16,28 +16,24 @@ hr{
 }
 
 // Owner Page
+
 .ownerPage-header{
   margin-left: 20px;
 
   &__bigBtn{
-    display: flex;
-    margin-right: 20px;
+    margin-right: 10px;
 
-    a{
-      width: 100%;
+    div{
       box-sizing: border-box;
-      padding: 10px 50px;
+      padding: 10px 30px;
       border-radius: 5px;
-
       text-align: center;
       font-size: 1rem;
-
-      color: darkgray;
       border: 1px solid darkgray;
-
       margin-top: 20px;
-      margin-right: 5px;
-      margin-left: 5px;
+    }
+    a{
+      color: darkgray;
 
       p{
         margin: 0;
@@ -53,6 +49,7 @@ hr{
   &__logo{
     width: 150px;
     height: 150px;
+    margin-bottom: 20px;
 
     img{
     border-radius: 25px;
@@ -69,6 +66,7 @@ hr{
 
     h1{
       font-size: 2rem;
+      margin-top: 0;
     }
 
     p{
@@ -255,7 +253,7 @@ hr{
         border: none;
 
         &:hover{
-          color: purple;
+          color: $dollargreen;
         }
 
         svg{
@@ -355,7 +353,15 @@ hr{
     margin: 15% auto;
     padding: 50px;
     border: 1px solid #888;
-    width: 50%;
+    width: 90%;
+
+    @include breakpoint(medium) {
+      width: 70%;
+      }
+
+    @include breakpoint(large) {
+      width: 50%
+      }
 
     .messeModal{
 
