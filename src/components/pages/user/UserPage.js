@@ -67,7 +67,7 @@ function UserPage() {
   <div className="user-component main-area">
     <div className="grid-x user-information">
     {accounts.map(account => ( 
-      <div className="cell small-10" key={account.id}>
+      <div className="cell small-12 medium-12 user-information__profile" key={account.id}>
         <div className="cell"><h1>{account.name}</h1></div>
         <div className="cell user-information__text">{user.email}</div>
         {account.company === true ? <Link className="cell user-information__text-blue" to={"../company/" + account.companyID} >Go til Company page</Link> : ''}
@@ -75,7 +75,7 @@ function UserPage() {
         <div className="cell user-information__text"><BiEdit onClick={onClick}/> { showResults ? <><AiOutlineCloseSquare onClick={onClose}/>  <UserUpdate spell={account} /></> : '' }</div>
       </div>
       ))}
-      <div className="cell small-2 user-information__logout"> <button className="user-information__button-text" onClick={() => firebase.auth().signOut()}>Logud <FiLogOut /></button> </div>
+      <div className="cell small-12 medium-2 user-information__logout"> <button className="user-information__button-text" onClick={() => firebase.auth().signOut()}>Logud <FiLogOut /></button> </div>
     </div>
     <h1>Bookmarks</h1>
         {notes.map(note => (

@@ -12,11 +12,19 @@
     &__navigation {
         flex-direction: column;
         display: flex;
-        align-items: flex-end;
+        align-items: flex-start;
         padding-right: 25px;
         justify-content: center;
         height: 10vh;
         font-size: 5px;
+
+        @include breakpoint(medium) {
+            align-items: flex-end;
+            }
+
+        @include breakpoint(large) {
+            align-items: flex-end;
+            }
 
         a {
             color: lighten( $black, 10% );
@@ -52,6 +60,16 @@
         padding-left: 10px;
         font-weight: 800;
         margin-top: 10px;
+
+        @include breakpoint(medium) {
+            align-items: flex-start;
+            padding-left: 10px;
+        }
+
+        @include breakpoint(large) {
+            align-items: flex-start;
+            padding-left: 10px;
+        }
         
         p {
             font-size: 1.8em;
