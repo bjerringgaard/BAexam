@@ -5,6 +5,7 @@ import firebase from '../../../Firebase'
 //import { useAuth } from "../../Auth";
 import AdminView from './AdminView';
 import CreateOwner from './CreateOwner';
+import CreateExpo from './CreateExpo';
 //import { firestore } from 'firebase';
 
 function Admin() { 
@@ -48,11 +49,10 @@ var user = firebase.auth().currentUser;
     {/* Tjekker om du er logget ind som admin eller ej */}
     {accounts.map(account => ( 
         <>                   
-    {account.admin === true ? <><AdminView /><CreateOwner /></> : <Redirect to="/userpage" />}
+    {account.admin === true ? <><AdminView /><CreateOwner /><CreateExpo/></> : <Redirect to="/userpage" />}
         </>
     ))}    
-   
-     </div>
+    </div>
 
   );
                     
