@@ -23,12 +23,12 @@ const CreateExpo = () => {
   }
 
   return (
-    <div className="create-expo">
+    <div className="comp-wrapper">
     <h1>Tilføj Expo</h1>
     <form>
-      <div className="grid-x grid-margin-x create-owner">
-        <div className="cell small-6">
-          <span class="label">Title</span>
+      <div className="grid-x grid-margin-x create-expo">
+        <div className="cell small-12 medium-6">
+          <label>Title</label>
           <input
             type="text" 
             name="messeTitle" 
@@ -36,8 +36,8 @@ const CreateExpo = () => {
             onChange={e => setMesseTitle(e.target.value)}
           />
         </div>
-        <div className="cell small-6">
-          <span class="label">Id</span>
+        <div className="cell small-12 medium-6">
+          <label>Messe ID</label>
           <input 
             type="text" 
             name="messeID" 

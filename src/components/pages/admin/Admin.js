@@ -23,7 +23,6 @@ var user = firebase.auth().currentUser;
     },[])
 
   return (
- 
     <div className="admin-component main-area">
         <div className="grid-x">
             <div className="cell auto">

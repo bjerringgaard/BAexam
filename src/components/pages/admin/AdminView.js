@@ -41,45 +41,29 @@ export default function AdminView() {
     },[])
 
 
-    return (
-        <div>
-            <div>
-            <div className="grid-x admin-panel">
-            <div className="cell small-6 admin-panel__header">
-                <div className="grid-x">
-                    <div className="cell small-6 admin-panel__text">Companies</div>
-                    <div className="cell small-6 admin-panel__create"></div>
-                </div>
+  return (
+    <div className="comp-wrapper">
+      <div className="grid-x admin-panel">
+        <div className="cell small-12 medium-6 admin-panel__owners">
+          <div className="cell small-6 admin-panel__owners-title"><h1>Firmaer</h1></div>
+            {accounts.map(account => (
+            <div className="grid-x admin-panel__information" key={account.id}>
+              <div className="cell small-10">{account.name}</div>
+              <div className="cell auto icons"><Link className="cell user-information__text-blue" to={"company/" + account.companyID} ><BiLinkExternal /></Link></div>
             </div>
-                <div className="cell small-6 admin-panel__header">
-                <div className="grid-x">
-                    <div className="cell small-6 admin-panel__text">Users</div>
-                    <div className="cell small-6 admin-panel__create"></div>
-                </div>
-                </div>
-                <div className="grid-x admin-panel__content">
-
-                    <div className="cell small-6 admin-panel__owners">
-                    {accounts.map(account => (
-                        <div className="grid-x admin-panel__information" key={account.id}>
-                                <div className="cell small-10">{account.name}</div>
-                                <div className="cell auto icons"><Link className="cell user-information__text-blue" to={"company/" + account.companyID} ><BiLinkExternal /></Link></div>
-                        </div>
-                        ))}
-                    </div>
-                    
-                    <div className="cell small-6 admin-panel__users">
-                    {users.map(user => (
-                        <div className="grid-x admin-panel__information" key={user.id}>
-                                <div className="cell small-10">{user.name}</div>
-                                <div className="cell auto icons"></div>
-                        </div>
-                        ))}
-                    </div>
-
-            </div>
-            </div>
-            </div>
+            ))}
         </div>
-    )
-}
+        
+        <div className="cell small-12 medium-6 admin-panel__users">
+          <div className="cell small-6 admin-panel__users-title"><h1>Brugere</h1></div>
+            {users.map(user => (
+            <div className="grid-x admin-panel__information" key={user.id}>
+              <div className="cell small-10">{user.name}</div>
+              <div className="cell auto icons"></div>
+            </div>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+};
