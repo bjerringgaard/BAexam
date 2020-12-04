@@ -49,7 +49,7 @@ export default function AdminView() {
             {accounts.map(account => (
             <div className="grid-x admin-panel__information" key={account.id}>
               <div className="cell small-10">{account.name}</div>
-              <div className="cell auto icons"><Link className="cell user-information__text-blue" to={"company/" + account.companyID} ><BiLinkExternal /></Link></div>
+              <div className="cell auto icons"><Link className="cell user-information__text-blue" to={`../company/${account.companyID}`} ><BiLinkExternal /></Link></div>
             </div>
             ))}
         </div>

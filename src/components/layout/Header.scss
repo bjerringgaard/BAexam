@@ -7,8 +7,6 @@
     color: lighten( $black, 10% );
     border-bottom: 1px solid #f2f2f2;
 
-
-
     &__navigation {
         flex-direction: column;
         display: flex;
@@ -20,11 +18,11 @@
 
         @include breakpoint(medium) {
             align-items: flex-end;
-            }
+        }
 
         @include breakpoint(large) {
             align-items: flex-end;
-            }
+        }
 
         a {
             color: lighten( $black, 10% );
@@ -48,9 +46,7 @@
             padding: 10px;
             cursor: pointer;
         }
-    }
-
-  
+    }   
 
     &__logo {
         flex-direction: column;
@@ -75,5 +71,4 @@
             font-size: 1.8em;
         }
     }
-
 }
