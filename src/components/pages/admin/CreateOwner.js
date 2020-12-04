@@ -42,21 +42,21 @@ const CreateOwner = ({ history }) => {
     }, [history]);
 
 return (
-    <div>
+    <div className="comp-wrapper">
         <h1>Tilføj Firma</h1>
         <form onSubmit={handleSignUp}>
             
                 <div className="grid-x grid-margin-x create-owner">
-                    <div className="cell small-6">
-                        <span class="label">Email</span>
+                    <div className="cell small-12 medium-6">
+                        <label>Email</label>
                         <input type="email" name="email" />
                     </div>
-                    <div className="cell small-6">
-                        <span class="label">Password</span>
+                    <div className="cell small-12 medium-6">
+                        <label>Password</label>
                         <input type="password" name="password" />
                     </div>
-                    <div className="cell small-6">
-                        <span class="label">Firma Navn</span>
+                    <div className="cell small-12 medium-6">
+                        <label>Firma Navn</label>
                         <input
                             type="text"
                             name="name"
@@ -64,8 +64,8 @@ return (
                             onChange={e => setName(e.target.value)}
                         />
                     </div>
-                    <div className="cell small-6">
-                        <span class="label">Adresse</span>
+                    <div className="cell small-12 medium-6">
+                        <label>Adresse</label>
                         <input
                             type="text"
                             name="adresse"
@@ -73,8 +73,8 @@ return (
                             onChange={e => setAdresse(e.target.value)}
                         />
                     </div>
-                    <div className="cell small-6">
-                        <span class="label">Company ID (URL)</span>
+                    <div className="cell small-12 medium-6">
+                        <label>Company ID (URL)</label>
                         <input
                             type="text"
                             name="companyID"
@@ -82,8 +82,8 @@ return (
                             onChange={e => setCompanyID(e.target.value)}
                         />
                     </div>
-                    <div className="cell small-6">
-                        <span class="label">CVR</span>
+                    <div className="cell small-12 medium-6">
+                        <label>CVR</label>
                         <input
                             type="text"
                             name="cvr"
@@ -91,8 +91,8 @@ return (
                             onChange={e => setCvr(e.target.value)}
                         />
                     </div>
-                    <div className="cell small-6">
-                        <span class="label">Telefon</span>
+                    <div className="cell small-12 medium-6">
+                        <label>Telefon</label>
                         <input
                             type="text"
                             name="phone"
@@ -100,8 +100,8 @@ return (
                             onChange={e => setPhone(e.target.value)}
                         />
                     </div>
-                    <div className="cell small-6">
-                        <span class="label">Beskrivelse</span>
+                    <div className="cell small-12 medium-6">
+                        <label>Beskrivelse</label>
                         <input
                             type="text"
                             name="desc"
@@ -109,8 +109,8 @@ return (
                             onChange={e => setDesc(e.target.value)}
                         />
                     </div>
-                    <div className="cell small-6">
-                        <span class="label">Logo</span>
+                    <div className="cell small-12 medium-6">
+                        <label>Logo</label>
                         <input
                             type="text"
                             name="logo"

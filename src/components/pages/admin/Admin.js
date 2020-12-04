@@ -1,20 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import './Admin.scss';
+import {Redirect} from 'react-router-dom';
 import firebase from '../../../Firebase'
 //import { useAuth } from "../../Auth";
 import AdminView from './AdminView';
 import CreateOwner from './CreateOwner';
+import CreateExpo from './CreateExpo';
 //import { firestore } from 'firebase';
 
 function Admin() { 
+
 //const {currentUser} = useAuth();
 var user = firebase.auth().currentUser;
-
-    // VIRKER SJOVT NOK HER MEN IKKE ANDRE STEDER
-    // .doc(user.uid).get().then(doc =>{
-    //     console.log("First Name: " + doc.data().fname)
-    //     console.log("Email: " + user.email)
-    // })
     const [accounts, setAccounts] = useState([])
     useEffect(() =>{
         const fetchData = async () => {
@@ -35,7 +32,7 @@ var user = firebase.auth().currentUser;
                     </div>
                     {accounts.map(account => (
                         <>
-                        <div className="cell small-10" key={account.id}>Velkommen <strong>{account.email}, {account.name}, {account.id}</strong></div>
+                        <div className="cell small-10" key={account.id}>Velkommen: <strong>{account.name}</strong></div>
                         </>
                     ))}    
                 <div>
@@ -48,10 +45,16 @@ var user = firebase.auth().currentUser;
             </div>
     </div>
     <h1>Admin Panel</h1>
-        <AdminView />
-        <CreateOwner />
-     </div>
+    {/* Tjekker om du er logget ind som admin eller ej */}
+    {accounts.map(account => ( 
+        <>                   
+    {account.admin === true ? <><AdminView /><CreateOwner /><CreateExpo/></> : <Redirect to="/userpage" />}
+        </>
+    ))}    
+    </div>
+
   );
+                    
 }
 
 export default Admin;

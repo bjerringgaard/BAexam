@@ -15,18 +15,18 @@
         height: 50px;
         font-size: 1rem;
         border-radius: 10px;
-        background-color: darken( $dollargreen, 20% );
+        background-color: $dollargreen;
         color: $white;
     
         svg {
-          font-size: 1.2rem;
+          font-size: 24px;
           margin-left: 10px;
           margin-top: 0px;
           color: lighten( $black, 85% );;
         }
     
         &:hover {
-            background-color: darken( $dollargreen, 25% );
+            background-color: darken( $dollargreen, 10% );
             color: $white;
             cursor: pointer;   
         }
@@ -70,30 +70,12 @@
     }
 
     h1 {
-       font-weight: 600;
-       font-size: 1.8rem;
+      font-weight: 600;
+      font-size: 1.8rem;
     }
 }
 
 .admin-panel {
-    background-color: none;
-    padding-top: 25px;
-    color: $black;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    border: 1px solid;
-    border-color: lighten( $black, 85% );
-
-    &__header {
-        font-weight: 600;
-
-        svg{
-            color: darken( $dollargreen, 15% );
-            font-size: 25px;
-            margin-right: 25px;
-        }
-    }
 
     &__text {
         padding-left: 25px;
@@ -106,69 +88,60 @@
     }
 
     &__content {
-        margin-top: 25px;
         width: 100%;
     }
-
-
 
     .icons {
         display: flex;
         justify-content: flex-end;
+        padding-left: 10px;
     }
 
     &__information {
-        margin: 25px;
+        margin: 20px 0 0 0;
         svg {
             font-size: 25px;
             margin-right: 15px;
             color: lighten( $black, 10% );
     
             &:hover {
-                color: #56d7af;
+                color: $dollargreen;
             }
             
         }
     }
 
     &__users {
-        background-color: lighten( $black, 95% );
         font-size: 0.9rem;
         font-weight: 500;
     }
 
     &__owners {
-        background-color: lighten( $black, 95% );
         font-size: 0.9rem;
         font-weight: 500;
     }
 
 }
 
-.create-owner {
- margin-top: 25px;
- border-radius: 10px;
-
- .label {
-    background-color: lighten( $black, 90% );
-    color: $black;
-    font-size: 0.9rem;
-    padding: .5rem .5rem;
+.create-owner, .create-expo {
+    margin-top: 25px;
 }
 
-h1 {
-    font-weight: 600;
-}
+.comp-wrapper{
+  margin-top: 25px;
+  border-radius: 10px;
+  border: 1px solid lightgrey;
+  padding: 20px;
 
-
-label{
-    margin-top: 10px;
-}
-
-
-  &__header {
-    color: $white;
-    font-weight: 600;
+  input[type=text], input[type=email], input[type=password]{
+    flex-grow: 1;
+    height: 50px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: none;
   }
 
+  label{
+    margin-left: 5px;
+  }
 }

@@ -3,17 +3,28 @@
 
 .header {
     min-height: 10vh;
-    background-color: lighten( $black, 90% );
+    background-color: darken( $white, 0% );
     color: lighten( $black, 10% );
+    border-bottom: 1px solid #f2f2f2;
+
+
 
     &__navigation {
         flex-direction: column;
         display: flex;
-        align-items: flex-end;
+        align-items: flex-start;
         padding-right: 25px;
         justify-content: center;
         height: 10vh;
         font-size: 5px;
+
+        @include breakpoint(medium) {
+            align-items: flex-end;
+            }
+
+        @include breakpoint(large) {
+            align-items: flex-end;
+            }
 
         a {
             color: lighten( $black, 10% );
@@ -31,7 +42,8 @@
         }
     
         ul li {
-            font-size: 0.8rem;
+            font-size: 36px;
+            margin-top: 25px;
             font-weight: 500;
             padding: 10px;
             cursor: pointer;
@@ -45,7 +57,19 @@
         display: flex;
         align-items: flex-start;
         justify-content: center;
-        padding-left: 25px;
+        padding-left: 10px;
+        font-weight: 800;
+        margin-top: 10px;
+
+        @include breakpoint(medium) {
+            align-items: flex-start;
+            padding-left: 10px;
+        }
+
+        @include breakpoint(large) {
+            align-items: flex-start;
+            padding-left: 10px;
+        }
         
         p {
             font-size: 1.8em;

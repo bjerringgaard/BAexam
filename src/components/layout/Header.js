@@ -6,8 +6,8 @@ import Navigator from './Navigation';
 function Header() {
   return (
       <div className="grid-x header">
-          <div className="cell small-6 header__logo"><p>The Messe App</p></div>
-          <div className="cell small-6">
+          <div className="cell small-12 medium-6 header__logo"><p className="header__logo">Codename IXPO</p></div>
+          <div className="cell small-12 medium-6">
               <Navigator />
           </div>
       </div>
