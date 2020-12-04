@@ -10,6 +10,44 @@ const CreateOwner = ({ history }) => {
     const [phone, setPhone] = React.useState([]);
     const [desc, setDesc] = React.useState([]);
     const [logo, setLogo] = React.useState([]);
+
+    const types = ['image/png', 'image/jpeg'];
+    const [hidden, setHidden] = React.useState(true);
+    const [file, setFile] = React.useState(null);
+    const [url, setUrl] = React.useState(null); 
+    const [progress, setProgress] = React.useState(0);
+    const [error, setError] = React.useState(null);
+
+      // File Upload
+      const fileUpload = (e) => {
+        let file = e.target.files[0];
+
+        if (file && types.includes(file.type)) {
+          setFile(file);
+          setError('');
+
+          const storageRef = firebase.storage().ref('logo/' + file.name);
+
+          let uploadTask = storageRef.put(file)
+
+          uploadTask.on('state_changed', (snap) => {
+            let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+              setProgress(percentage);
+          }, (error) => {
+            setError(error);
+          }, async () => {
+            const url = await storageRef.getDownloadURL();
+            setUrl(url)
+            console.log('file: ', url)
+            setHidden(false)
+          })
+        }
+        else {
+          setFile(null);
+          setError('File not Supported')
+        }
+      }
+
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
         const { email, password, name, adresse, companyID, cvr, phone, desc, logo } = event.target.elements;
@@ -30,6 +68,7 @@ const CreateOwner = ({ history }) => {
                         phone: phone.value,
                         desc: desc.value,
                         logo: logo.value,
+                       //logo: url,
                         id: cred.user.uid
                     })
                 })
@@ -117,9 +156,11 @@ return (
                             value={logo}
                             onChange={e => setLogo(e.target.value)}
                         />
+                        <input type="file" onChange={fileUpload} />
+                        { error && <div className="error">{ error }</div>}
                     </div>
                 </div>
-            <button type="submit" value="Sign Up">Tilføj Firma Her</button>
+                {hidden ? <button type="button" className="disabled">Ingen fil</button> : <button type="submit" value="Sign Up">Tilføj Firma Her</button>}
         </form>
     </div>
 )
