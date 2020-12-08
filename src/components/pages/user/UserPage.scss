@@ -30,7 +30,7 @@
     }
 
     &:hover {
-        background-color: darken( $dollargreen, 25% );
+        //background-color: darken( $dollargreen, 25% );
         color: $white;
         cursor: pointer;   
     }
@@ -71,8 +71,6 @@
   }
 
   &__logout{
-    display: flex; 
-    justify-content: flex-start;
 
     @include breakpoint(medium) {
       align-items: flex-end;
@@ -100,6 +98,10 @@
         font-size: 1.2rem;
         margin-left: 10px;
         margin-top: 0px;
+
+        &:hover{
+          color: $white !important;
+        }
       }
     }
   }

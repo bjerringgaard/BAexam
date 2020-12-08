@@ -9,7 +9,6 @@ const Navigation = () => {
     return (
         <div className="header__navigation">
             <ul>
-                <Link to="/login"><li className=""><BiLogIn /></li></Link>
                 <Link to="/userpage"><li className=""><RiUserLine /></li></Link>
             </ul>
         </div>

@@ -1,6 +1,20 @@
 @import '../../settings';
 @import '~foundation-sites/scss/foundation';
 
+a{
+  color: lighten( $black, 10% );
+  text-decoration: none;
+
+  &:hover {
+    color: $dollargreen;
+  }
+
+  &:visited{
+    color: lighten( $black, 10% );
+    text-decoration: none;
+  }
+}
+
 .header {
     min-height: 10vh;
     background-color: darken( $white, 0% );
@@ -22,14 +36,6 @@
 
         @include breakpoint(large) {
             align-items: flex-end;
-        }
-
-        a {
-            color: lighten( $black, 10% );
-        }
-    
-        a:hover {
-            color: $dollargreen;
         }
     
         ul{

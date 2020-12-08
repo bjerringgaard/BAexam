@@ -73,27 +73,34 @@ const [logo, setLogo] = React.useState(spell.logo);
   {/* Viser forskellige redigering muligheder alt efter om det en bruger eller et Company */}
   {spell.company === false ? 
       <div>
+      <span className="label">Email</span>
       <input
       id="email"
-      type="email"
+      type="hidden"
       ref={emailRef}
       required
       defaultValue={currentUser.email}
-  
       />
-      <span className="label">Password</span>
+      <input
+        id="Disabled"
+        type="email"
+        defaultValue={currentUser.email}
+        disabled
+      />
+
+      <span className="label">Adgangskode</span>
       <input
       id="password"
       type="password"
       ref={passwordRef}
-      placeholder="Leave blank to keep the same"
+      placeholder="Efterlad blank for at beholde din nuværende kode"
       />
-      <span className="label">Password</span>
+      <span className="label">Adgangskode Igen</span>
       <input
       id="password-confirm"
       type="password"
       ref={passwordConfirmRef}
-      placeholder="Leave blank to keep the same"
+      placeholder="Efterlad blank for at beholde din nuværende kode"
       />
       <span className="label">Bruger Navn</span>
       <input
@@ -103,33 +110,41 @@ const [logo, setLogo] = React.useState(spell.logo);
           setName(e.target.value);
         }}
       />
-      <button onClick={onUpdateUser}>Update</button>
+      <button onClick={onUpdateUser}>Opdater</button>
       </div>
 
       :
 
       <div>
       <span className="label">Email</span>
+
       <input
       id="email"
-      type="email"
+      type="hidden"
       ref={emailRef}
       required
       defaultValue={currentUser.email}
       />
+      <input
+        id="Disabled"
+        type="email"
+        defaultValue={currentUser.email}
+        disabled
+      />
+
       <span className="label">Password</span>
       <input
       id="password"
       type="password"
       ref={passwordRef}
-      placeholder="Leave blank to keep the same"
+      placeholder="Efterlad blank for at beholde din nuværende kode"
       />
       <span className="label">Password</span>
       <input
       id="password-confirm"
       type="password"
       ref={passwordConfirmRef}
-      placeholder="Leave blank to keep the same"
+      placeholder="Efterlad blank for at beholde din nuværende kode"
       />
       <span className="label">Bruger Navn</span>
       <input
@@ -179,7 +194,7 @@ const [logo, setLogo] = React.useState(spell.logo);
           setLogo(e.target.value);
         }}
       />
-      <button onClick={onUpdate}>Update</button>
+      <button onClick={onUpdate}>Opdater</button>
       </div>
       }      
       

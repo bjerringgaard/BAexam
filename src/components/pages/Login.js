@@ -38,7 +38,7 @@ const Login = ({ history }) => {
       <div className="cell auto">
           <div className="login__banner">              
             <h1>LOGIN</h1>
-            <p>Welcome! Login to acces the IXPO services.</p>
+            <p>Velkommen! Login for at få adgang til IXPO.</p>
           </div>
 
           <div className="login__form">
@@ -46,7 +46,7 @@ const Login = ({ history }) => {
               <label for="email">Email</label>
               <input name="email" type="email"/>
               
-              <label for="password">Password</label>
+              <label for="password">Adgangskode</label>
               <input name="password" type="password"/>
               
               <input type="submit" value="Login"/>

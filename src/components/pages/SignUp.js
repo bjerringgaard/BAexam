@@ -8,9 +8,11 @@ import './Login.scss';
 //import HomePage from './components/pages/Home';
 
 const SignUp = ({ history }) => {
+    const [name, setName] = React.useState([]);
+
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
-        const {email, password} = event.target.elements;
+        const {email, password, name} = event.target.elements;
         const db = firebase.firestore()
         //const user = firebase.auth()
         try {
@@ -22,11 +24,11 @@ const SignUp = ({ history }) => {
                   admin: false,
                   company: false,
                   user: true,
-                  id: cred.user.uid
+                  id: cred.user.uid,
+                  name: name.value,
                 })
               })
             history.push ('/userpage');
-        
         }
         catch (error) {
             alert(error);
@@ -37,20 +39,28 @@ const SignUp = ({ history }) => {
     <div className="grid-x login main-area">
       <div className="cell">
         <div className="login__banner">              
-          <h1>SIGN UP</h1>
-          <p>Create an account to access IXPO</p>
+          <h1>Registrer</h1>
+          <p>Opret en konto for at få adgang til IXPO</p>
         </div>
 
         <div className="login__form">
           <form onSubmit={handleSignUp}>
+
+              <label for="brugernavn">Brugernavn</label>
+              <input 
+                type="text" 
+                name="name"
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
             
               <label for="email">Email</label>
               <input type="email" name="email" />
               
-              <label for="password">Password</label>
+              <label for="password">Adgangskode</label>
               <input type="password" name="password" />
               
-              <input type="submit" value="Sign Up" />
+              <input type="submit" value="Registrer" />
               <div className="login__form-bottom-text">
                 <p>Har du allerede en konto? <Link to="/login">login her</Link></p>
               </div>

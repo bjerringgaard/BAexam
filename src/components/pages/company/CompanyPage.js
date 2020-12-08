@@ -108,8 +108,8 @@ function CompanyPage() {
                       <a href={items.url} target="_blank" className="downloadBtn"><BsDownload /><p>Download</p></a>
                   </div>
                   <div className="cell small-2 ownerPage-item__actions">
-                    { currentUser.uid === account.id ? <button className="refreshButton"><p><FiRefreshCw /></p></button> : '' }
-                    { currentUser.uid === account.id ? <button className="deleteButton" onClick={() => window.confirm(`Are you sure you wish to delete ${items.itemTitle}`) && deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
+                    {/* { currentUser.uid === account.id ? <button className="refreshButton"><p><FiRefreshCw /></p></button> : '' } */}
+                    { currentUser.uid === account.id ? <button className="deleteButton" onClick={() => window.confirm(`Er du sikker på at du vil slette ${items.itemTitle}?`) && deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
                   </div>
                 </div>
                 { currentUser.uid !== account.id ? <Note items={items} account={account}/> : '' }

@@ -25,6 +25,7 @@ export const Note = ({items, account}) => {
       companyID: companyID,
       url: url,
       companyName: name,
+      startedAt: new Date(),
     })
     .then (() => {
       setNote('')
@@ -32,7 +33,7 @@ export const Note = ({items, account}) => {
   }
 
   // Add Bookmark
-  const addBookmark = (title, desc, fileType, url, messe, name) => {
+  const addBookmark = (title, desc, url, messe, name) => {
     db
     .collection('notes')
     .add({
@@ -43,7 +44,8 @@ export const Note = ({items, account}) => {
       companyID: companyID,
       url: url,
       companyName: name,
-      
+      startedAt: new Date(),
+      userNote: null,
     })
   }
 
