@@ -43,7 +43,7 @@ function UserPage() {
         .firestore()
         .collection('notes')
         .where('noteID', '==', user.uid)
-        // .orderBy('startedAt', 'desc')
+        .orderBy('startedAt', 'desc')
         .onSnapshot((snapshot) => {
             const newNote = snapshot.docs.map((doc) =>({
                 id: doc.id,
