@@ -95,6 +95,9 @@ function UserPage() {
         <span>Firma</span><br />{note.companyName}
       </div>
       <div className="cell small-12 user-bookmarks__text">
+        <span>Messe</span><br />{note.messeTitle}
+      </div>
+      <div className="cell small-12 user-bookmarks__text">
         <span>Beskrivelse</span><br />{note.itemDesc}</div>
         { note.userNote !== null ? <div className="cell small-12 user-bookmarks__comment"><span>Kommentar</span><br />{note.userNote}</div> : ''}
       <div className="cell small-12 user-bookmarks__comment">

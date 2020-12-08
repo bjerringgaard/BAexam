@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import firebase from '../../../Firebase'
-import {Link, useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAuth } from "../../../Auth";
 
 import { BsFileEarmarkPlus, BsBookmark } from 'react-icons/bs';
@@ -13,13 +13,14 @@ export const Note = ({items, account}) => {
   const { companyID } = useParams();
 
   // Add Note
-  const addNote = (title, desc, url, messe, name) => {
+  const addNote = (title, desc, url, messe, messeTitle, name) => {
     db
     .collection('notes')
     .add({
       itemTitle: title,
       itemDesc: desc,
       messeID: messe,
+      messeTitle: messeTitle,
       noteID: currentUser.uid,
       userNote: note,
       companyID: companyID,
@@ -33,13 +34,14 @@ export const Note = ({items, account}) => {
   }
 
   // Add Bookmark
-  const addBookmark = (title, desc, url, messe, name) => {
+  const addBookmark = (title, desc, url, messe, messeTitle, name) => {
     db
     .collection('notes')
     .add({
       itemTitle: title,
       itemDesc: desc,
       messeID: messe,
+      messeTitle: messeTitle,
       noteID: currentUser.uid,
       companyID: companyID,
       url: url,
@@ -55,8 +57,8 @@ export const Note = ({items, account}) => {
           <div className="ownerPage-item-comment">
             <form id={items.id} >
               <input id={items.id} name={items.id} type="text" placeholder="Skriv personlig note..." value={note} onChange={e => setNote(e.target.value)}/>
-              <button type="button" onClick={() => addNote(items.itemTitle, items.itemDesc, items.url, items.messeID, account.name)}><p className="refreshButton"><BsFileEarmarkPlus /></p></button>
-              <button type="button" onClick={() => addBookmark(items.itemTitle, items.itemDesc, items.url, items.messeID, account.name)}><p className="refreshButton"><BsBookmark /></p></button>
+              <button type="button" onClick={() => addNote(items.itemTitle, items.itemDesc, items.url, items.messeID, items.messeTitle, account.name)}><p className="refreshButton"><BsFileEarmarkPlus /></p></button>
+              <button type="button" onClick={() => addBookmark(items.itemTitle, items.itemDesc, items.url, items.messeID, items.messeTitle, account.name)}><p className="refreshButton"><BsBookmark /></p></button>
             </form>
           </div>
         </div>
