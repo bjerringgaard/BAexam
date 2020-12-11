@@ -5,17 +5,11 @@ a{
   color: lighten( $black, 10% );
   text-decoration: none;
 
-  &:hover {
-    color: $dollargreen;
-  }
-
   &:visited{
     color: lighten( $black, 10% );
     text-decoration: none;
   }
 }
-
-
 
 .header {
     min-height: 10vh;
@@ -28,6 +22,7 @@ a{
         display: flex;
         align-items: flex-start;
         padding-right: 25px;
+        padding-top: 25px;
         justify-content: center;
         height: 10vh;
         font-size: 5px;
@@ -53,13 +48,18 @@ a{
             font-weight: 500;
             padding: 10px;
             cursor: pointer;
+
+            &:hover {
+                color: $dollargreen;
+
+            }
         }
     }   
 
     &__logo {
         flex-direction: column;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         padding-left: 10px;
         padding-top: 2px;

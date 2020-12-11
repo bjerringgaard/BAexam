@@ -40,8 +40,6 @@
 .user-information {
   margin-bottom: 25px;
 
-
-
   .label {
     background-color: lighten( $black, 90% );
     color: $black;
@@ -70,11 +68,12 @@
     font-size: 1.2rem;
   }
 
-  &__logout{
+  &__logout {
+    display: flex;
 
     @include breakpoint(medium) {
-      align-items: flex-end;
-      }
+      justify-content: flex-end;
+    }
 
     button {
       display: inline-flex;
