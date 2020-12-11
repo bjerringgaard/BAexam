@@ -6,7 +6,7 @@ import { useAuth } from "../../../Auth";
 import { BsFileEarmarkPlus, BsBookmark } from 'react-icons/bs';
 
 
-export const Note = ({items, account}) => {
+export const Note = ({items, account, messe}) => {
   const db = firebase.firestore();
   const { currentUser } = useAuth();
   const [note, setNote] = useState([]);
@@ -57,8 +57,8 @@ export const Note = ({items, account}) => {
           <div className="ownerPage-item-comment">
             <form id={items.id} >
               <input id={items.id} name={items.id} type="text" placeholder="Skriv personlig note..." value={note} onChange={e => setNote(e.target.value)}/>
-              <button type="button" onClick={() => addNote(items.itemTitle, items.itemDesc, items.url, items.messeID, items.messeTitle, account.name)}><p className="refreshButton"><BsFileEarmarkPlus /></p></button>
-              <button type="button" onClick={() => addBookmark(items.itemTitle, items.itemDesc, items.url, items.messeID, items.messeTitle, account.name)}><p className="refreshButton"><BsBookmark /></p></button>
+              <button type="button" onClick={() => addNote(items.itemTitle, items.itemDesc, items.url, items.messeID, messe.messeTitle, account.name)}><p className="refreshButton"><BsFileEarmarkPlus /></p></button>
+              <button type="button" onClick={() => addBookmark(items.itemTitle, items.itemDesc, items.url, items.messeID, messe.messeTitle, account.name)}><p className="refreshButton"><BsBookmark /></p></button>
             </form>
           </div>
         </div>

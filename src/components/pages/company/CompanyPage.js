@@ -112,7 +112,7 @@ function CompanyPage() {
                     { currentUser.uid === account.id ? <button className="deleteButton" onClick={() => window.confirm(`Er du sikker på at du vil slette ${items.itemTitle}?`) && deleteItem(items.id)}><p><BsTrash/></p></button> : '' }
                   </div>
                 </div>
-                { currentUser.uid !== account.id ? <Note items={items} account={account}/> : '' }
+                { currentUser.uid !== account.id ? <Note items={items} account={account} messe={messe} /> : '' }
               </div> 
               : ''
               ))}
