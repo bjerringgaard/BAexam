@@ -3,6 +3,7 @@ import {Link, Redirect} from 'react-router-dom';
 import './UserPage.scss';
 import firebase from '../../../Firebase'
 import {UserUpdate} from './UserUpdate'
+import { UserNoteUpdate } from "./UserNoteUpdate";
 import { FiLogOut } from 'react-icons/fi';
 import { BiEdit } from 'react-icons/bi';
 import { BsDownload } from 'react-icons/bs';
@@ -54,6 +55,7 @@ function UserPage() {
         return () => unsubscribe
     },[])
 
+
    // DELETE USER NOTES
   const deleteItem = (noteID) => {
     firebase
@@ -100,6 +102,7 @@ function UserPage() {
       <div className="cell small-12 user-bookmarks__text">
         <span>Beskrivelse</span><br />{note.itemDesc}</div>
         { note.userNote !== null ? <div className="cell small-12 user-bookmarks__comment"><span>Kommentar</span><br />{note.userNote}</div> : ''}
+        <UserNoteUpdate notes={note} />
       <div className="cell small-12 user-bookmarks__comment">
         <span>Download</span><br /><a href={note.url} target="blank"><BsDownload /></a></div>
       </div>
