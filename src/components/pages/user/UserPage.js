@@ -8,6 +8,7 @@ import { FiLogOut } from 'react-icons/fi';
 import { BiEdit } from 'react-icons/bi';
 import { BsDownload } from 'react-icons/bs';
 import { BsTrash } from 'react-icons/bs';
+import { BsFileEarmarkText } from 'react-icons/bs';
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 
 
@@ -17,6 +18,11 @@ function UserPage() {
     const [showResults, setShowResults] = useState(false)
     const onClick = () => setShowResults(true)
     const onClose = () => setShowResults(false)
+
+    // SHOW HIDE NODE
+    const [showNote, sethideNote] = useState(false)
+    const clickNote = () => sethideNote(true)
+    const closeNote = () => sethideNote(false)
 
     // USER INFORMATION NEW WAY
     const [accounts, setAccounts] = useState([])
@@ -102,7 +108,11 @@ function UserPage() {
       <div className="cell small-12 user-bookmarks__text">
         <span>Beskrivelse</span><br />{note.itemDesc}</div>
         { note.userNote !== null ? <div className="cell small-12 user-bookmarks__comment"><span>Kommentar</span><br />{note.userNote}</div> : ''}
-        <UserNoteUpdate notes={note} />
+
+        <div className="cell small-12 user-bookmarks__update">
+        <BiEdit onClick={clickNote}/> { showNote ? <><AiOutlineCloseSquare onClick={closeNote}/>  <UserNoteUpdate notes={note} /></> : '' }
+        </div>
+                
       <div className="cell small-12 user-bookmarks__comment">
         <span>Download</span><br /><a href={note.url} target="blank"><BsDownload /></a></div>
       </div>

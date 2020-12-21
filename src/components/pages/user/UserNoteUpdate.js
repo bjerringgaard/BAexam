@@ -11,14 +11,15 @@ export const UserNoteUpdate = ({ notes }) => {
   
   
     return (
-      <>
+      <div className="update-note">
         <input
+          type="text" 
           value={userNote}
           onChange={e => {
             setUserNote(e.target.value);
           }}
         />
-        <button onClick={onUpdate}>Opdate din Note</button>
-      </>
+        <button onClick={onUpdate}>Opdater din note</button>
+       </div>
     );
   };
