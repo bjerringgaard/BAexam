@@ -28,7 +28,7 @@
     height: 50px;
     font-size: 1.2rem;
     border-radius: 10px;
-    background-color: darken( $dollargreen, 15% );
+    background-color: darken( $brandblue, 15% );
     color: $white;
 
     svg {
@@ -38,7 +38,7 @@
     }
 
     &:hover {
-        //background-color: darken( $dollargreen, 25% );
+        //background-color: darken( $brandblue, 25% );
         color: $white;
         cursor: pointer;   
     }
@@ -61,7 +61,7 @@
     margin-top: 5px;
 
     &:hover {
-      color: $dollargreen;
+      color: $brandblue;
       cursor: pointer;  
     }
   }
@@ -132,7 +132,7 @@
       fill: lighten( $black, 50% );
 
       &:hover {
-        fill: darken( $dollargreen, 10% );
+        fill: darken( $brandblue, 10% );
         cursor: pointer;  
       }
     }
@@ -177,7 +177,7 @@
         font-size: 24px;
 
         &:hover {
-          color: darken( $dollargreen, 15% );
+          color: darken( $brandblue, 15% );
           cursor: pointer;  
         }
       }
@@ -188,7 +188,7 @@
     justify-content: flex-end;
 
     &:hover {
-      color: $dollargreen;
+      color: $brandblue;
       cursor: pointer;  
     }
 
@@ -214,11 +214,11 @@
     height: 50px;
     font-size: 1.2rem;
     border-radius: 10px;
-    background-color:$dollargreen;
+    background-color:$brandblue;
     color: $white;
 
     &:hover {
-      background-color: darken( $dollargreen, 10% );
+      background-color: darken( $brandblue, 10% );
       cursor: pointer;  
     }
 

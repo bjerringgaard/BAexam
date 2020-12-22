@@ -15,7 +15,7 @@
         height: 50px;
         font-size: 1rem;
         border-radius: 10px;
-        background-color: $dollargreen;
+        background-color: $brandblue;
         color: $white;
     
         svg {
@@ -26,7 +26,7 @@
         }
     
         &:hover {
-            background-color: darken( $dollargreen, 10% );
+            background-color: darken( $brandblue, 10% );
             color: $white;
             cursor: pointer;   
         }
@@ -103,7 +103,7 @@
             color: lighten( $black, 10% );
             
             &:hover {
-                color: $dollargreen;
+                color: $brandblue;
             }  
         }
     }

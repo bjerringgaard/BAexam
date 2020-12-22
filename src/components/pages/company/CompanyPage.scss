@@ -253,7 +253,7 @@ hr{
         border: none;
 
         &:hover{
-          color: $dollargreen;
+          color: $brandblue;
         }
 
         svg{
@@ -316,7 +316,7 @@ hr{
     }
 
     .active{
-      background-color: $dollargreen;
+      background-color: $brandblue;
       color: white;
     }
   }
